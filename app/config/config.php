@@ -3,7 +3,7 @@
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-define('DB_NAME', 'new_e_diary');
+define('DB_NAME', 'e_diary');
 // App Root
 define('APPROOT', dirname(dirname(__FILE__)));
 // URL Root
@@ -14,7 +14,7 @@ define('SITENAME', 'E-Diary');
 define('APPVERSION', '1.0.0');
 
 // Admin URL Root
-define('URLROOT_admin', 'http://localhost/new_e_diary/admin/admin');
+//define('URLROOT_admin', 'http://localhost/new_e_diary/admin/admin');
 // Admin Site Name
 define('SITENAME_admin', 'Admin');
 

@@ -48,7 +48,7 @@ public function index(){
     if($loggedInUser){
         switch($loggedInUser->role_id) {
 
-         case 7:  
+         case 1:  
                 
    // Load view
     $_SESSION['role_id'] = 'admin';
