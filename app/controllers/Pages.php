@@ -16,7 +16,7 @@ public function index(){
 
     //Init data
     $data =[
-        'title' => 'E-Diary1',
+        'title' => 'E-Diary',
         'email' =>  trim($_POST['email']),
         'password' =>  trim($_POST['password']),
         'email_err' => '',
@@ -95,7 +95,7 @@ public function index(){
     //Init data
     
     $data =[
-        'title' => 'E-Diary1',
+        'title' => 'E-Diary',
         'email' => '',
         'password' => '',
         'email_err' => '',
