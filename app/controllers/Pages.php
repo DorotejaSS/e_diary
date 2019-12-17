@@ -48,32 +48,32 @@ public function index(){
     if($loggedInUser){
         switch($loggedInUser->role_id) {
 
-         case 1:  
+            case 1:  
                 
-   // Load view
+    // Load view
     $_SESSION['role_id'] = 'admin';
     header('Location: admin/admin'); 
             break;
 
-         //Case za direktora   case #: 
+            case 2: 
     //Load view
-   // $_SESSION['role_id'] = 'principal';
-//header('Location: principal/principal'); 
-      //      break;
+    $_SESSION['role_id'] = 'principal';
+    header('Location: principal/principal'); 
+            break;
 
-        //Case za profesora    case #:
+            case 3:
     //Load view
-    //$_SESSION['role_id'] = 'proffesor';
-//header('Location: proffesor/proffesor'); 
-       //     break;
+    $_SESSION['role_id'] = 'proffesor';
+    header('Location: proffesor/proffesor'); 
+            break;
 
-            case 10:
+            case 4:
     //Load view
     $_SESSION['role_id'] = 'teacher';
     header('Location: teacher/teacher'); 
             break;
             
-        case 11:             
+            case 5:             
     //Load view
     $_SESSION['role_id'] = 'parent';
     header('Location: parents/parents'); 
