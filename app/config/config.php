@@ -7,7 +7,7 @@ define('DB_NAME', 'new_e_diary');
 // App Root
 define('APPROOT', dirname(dirname(__FILE__)));
 // URL Root
-define('URLROOT', 'http://localhost/e_diary');
+define('URLROOT', 'http://localhost/new_e_diary');
 // Site Name
 define('SITENAME', 'E-Diary');
 // App Version
