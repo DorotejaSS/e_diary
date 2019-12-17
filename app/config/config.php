@@ -14,7 +14,7 @@ define('SITENAME', 'E-Diary');
 define('APPVERSION', '1.0.0');
 
 // Admin URL Root
-//define('URLROOT_admin', 'http://localhost/new_e_diary/admin/admin');
+define('URLROOT_admin', 'http://localhost/new_e_diary/admin/admin');
 // Admin Site Name
 define('SITENAME_admin', 'Admin');
 
