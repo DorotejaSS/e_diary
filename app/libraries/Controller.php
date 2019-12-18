@@ -6,8 +6,9 @@
 
 class Controller {
     //Load model
-    public function model($model){
+    public function model($model){ 
         //Require model file
+<<<<<<< HEAD
         if (file_exists('../app/models/' . $model . '.php'))
         {
             require_once '../app/models/' . $model . '.php';
@@ -20,6 +21,12 @@ class Controller {
             die('Model does not exist');
         }
        
+=======
+        require_once '../app/models/' . $model . '.php';
+        
+        //Instatiate model
+        return new $model();
+>>>>>>> f6bef7ae98afea90bb31522c5d9ca91b53106158
     }
 
     //Load view

@@ -1,5 +1,5 @@
 <?php
-class Parents {
+class Admin_user {
     private $db;
 
     public function __construct(){
