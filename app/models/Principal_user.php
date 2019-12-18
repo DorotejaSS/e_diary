@@ -1,5 +1,5 @@
 <?php
-class Proffesor {
+class Principal_user {
     private $db;
 
     public function __construct(){
