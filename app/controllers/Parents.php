@@ -4,7 +4,7 @@ public function __construct(){
     if ($_SESSION['role_id'] != 'parent') {
         redirect('pages/index'); 
     }
-    $this->userModel = $this->model('Parents_user');
+    $this->userModel = $this->model('Parents');
 
 }
 

@@ -4,7 +4,7 @@ public function __construct(){
     if ($_SESSION['role_id'] != 'principal') {
         redirect('pages/index');
     }
-    $this->userModel = $this->model('Principal_user');
+    $this->userModel = $this->model('Principal');
 
 }
 
