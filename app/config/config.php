@@ -1,15 +1,18 @@
 <?php
 // DB Params
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'e_diary');
+defined('DB_HOST')? '' : define('DB_HOST', 'localhost');
+defined('DB_USER')? '' : define('DB_USER', 'root');
+defined('DB_PASS')? '' : define('DB_PASS', '');
+defined('DB_NAME')? '' : define('DB_NAME', 'e_diary');
+
 // App Root
 define('APPROOT', dirname(dirname(__FILE__)));
+
 // URL Root
 define('URLROOT', 'http://localhost/new_e_diary');
 // Site Name
 define('SITENAME', 'E-Diary');
+
 // App Version
 define('APPVERSION', '1.0.0');
 
