@@ -8,7 +8,6 @@ class Controller {
     //Load model
     public function model($model){ 
         //Require model file
-
         if (file_exists('../app/models/' . $model . '.php'))
         {
             require_once '../app/models/' . $model . '.php';
@@ -20,12 +19,6 @@ class Controller {
             //Model does not exist
             die('Model does not exist');
         }
-       
-
-        require_once '../app/models/' . $model . '.php';
-        
-        //Instatiate model
-        return new $model();
 
     }
 
