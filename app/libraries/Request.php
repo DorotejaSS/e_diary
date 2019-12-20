@@ -2,9 +2,10 @@
 
 class Request
 {
-    public $url_parts = array();
-    public $post_params = array();
-    public $get_params = array();
+    
+    public $url_parts = array();    // url parts je deo url-a do "?" 
+    public $post_params = array(); // post params su parametri koje saljemo preko posta (jos ih nema)
+    public $get_params = array(); // get params je deo koda posle '?' 
     public $request_uri;
 
     public function __construct()
@@ -14,14 +15,14 @@ class Request
         $this->extractGetParams();
         $this->extractPostParams();
     }
-
+    // razdvajamo url parts 
     private function extractUrl()
     {
         $url = explode('?', $_SERVER['REQUEST_URI']);
         $url = explode('/', substr($url[0], 1));
         $this->url_parts = $url;
     }
-    
+    // i drugi deo koji je get parts, ovo path ce vam biti jasno kada pogledate htaccess ,trazi deo 'path'
     private function extractGetParams()
     {
         unset($_GET['path']);
