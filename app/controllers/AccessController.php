@@ -4,9 +4,11 @@ class AccessController extends BaseController
 {
     public function login()
     {
-        $this->loadView('pages', 'login');
+        // $this->loadView('pages', 'login');
+        // $base_model = new BaseModel();
+        $user = new User();
     }
-
+    
     public function logout()
     {
         var_dump('logout');

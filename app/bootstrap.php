@@ -6,6 +6,9 @@ require_once 'config/routes.php';
 //Load Helpers
 require_once 'helpers/url_helper.php';
 require_once './app/helpers/autoloaders.php';
+
+// include 'kint.phar';
+
 //require_once 'helpers/session_helper.php';
 
 spl_autoload_register('autoloadLibs');
