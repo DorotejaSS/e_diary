@@ -4,7 +4,6 @@ class AccessController extends BaseController
 {
     public function login()
     {
-        var_dump('logujemo se');
         $this->loadView('pages', 'login');
     }
 
