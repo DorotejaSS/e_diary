@@ -6,4 +6,11 @@ class AccessController extends BaseController
     {
         var_dump('logujemo se');
     }
+
+    public function logout()
+    {
+        var_dump('logout');
+    }
+
+    
 }
