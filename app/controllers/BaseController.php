@@ -1,5 +1,5 @@
 <?php
-
+// bazni kontroler koji nasledjuju ostali, iz njega pozivamo view izmedju ostalog za sad
 class BaseController
 {
     private $request;
