@@ -5,9 +5,12 @@ class AccessController extends BaseController
     // pozivamo view za login i zovemo model User kome prosledjujemo ono sto smo dobili iz post-a
     public function login()
     {
-        $this->loadView('pages', 'login');
-        $user = new User();
-        $user->login($_POST['email'], $_POST['password']);
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $user = new User();
+            $user->login($_POST['email'], $_POST['password']);
+        } else {
+            $this->loadView('pages', 'login');
+        }
     }
 
     // unistavamo sesiju i vracamo se na login nakon toga
