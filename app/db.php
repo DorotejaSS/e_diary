@@ -1,3 +1,9 @@
 <?php
 
-$db = new mysqli('127.0.0.1', 'root', '', 'e_diary');
+$conn = new mysqli('localhost', 'root', '', 'e_diary');
+
+if ($conn->connect_error) {
+    echo'failed';
+    die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully";

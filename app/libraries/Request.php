@@ -28,7 +28,7 @@ class Request
         unset($_GET['path']);
         $this->get_params = $_GET;
     }
-
+    // sve sto dobijamo postom stavljamo u array post_params
     private function extractPostParams()
     {
         $this->post_params = $_POST;
