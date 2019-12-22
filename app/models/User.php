@@ -53,7 +53,7 @@ class User extends BaseModel
             $user_check = $_SESSION['login_user'];
             var_dump($user_check);
    
-            $ses_sql = mysqli_query($conn, "select email from users where email = '$user_check' ");
+            $ses_sql = mysqli_query($conn, "select email from users where email = '$user_check'");
             var_dump($ses_sql);
             
             $row = mysqli_fetch_array($ses_sql, MYSQLI_ASSOC);
@@ -64,6 +64,7 @@ class User extends BaseModel
             
             if(!isset($_SESSION['login_user'])){
                 $view->loadPage('pages', 'login');
+                die;
             }
 
 

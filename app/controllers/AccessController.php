@@ -10,13 +10,15 @@ class AccessController extends BaseController
         $user->login($_POST['email'], $_POST['password']);
     }
 
-    // unistavamo sesiju i pozivamo view da se vratimo nazad na login stranu
+    // unistavamo sesiju i vracamo se na login nakon toga
     public function logout()
-    {
-        if(session_destroy()) {
-           $view = new View();
-           $view->loadPage('pages', 'login');
-        }
+    {   
+        unset($_SESSION["email"]);
+        unset($_SESSION["password"]);
+        
+        echo 'You have cleaned session';
+        header('Refresh: 2; URL = /login');
+
     }
 
 }
