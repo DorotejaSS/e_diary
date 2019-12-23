@@ -1,6 +1,6 @@
 <?php
 // DB Params
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_DATABASE', 'e_diary');
+$server_name = 'localhost';
+$user = 'root';
+$password = '';
+$db_name = 'e_diary';

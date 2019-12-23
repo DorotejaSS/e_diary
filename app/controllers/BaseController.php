@@ -7,7 +7,7 @@ class BaseController
     public function __construct($request)
     {
         $this->request = $request;
-        var_dump($this->request->post_params);
+        // var_dump($this->request->post_params);
     }
 
     public function loadView($dir_name, $partial_name)
