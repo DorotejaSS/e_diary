@@ -25,7 +25,7 @@ class User extends BaseModel
 
             $result = $conn->query($sql);
             $user_data = $result->fetch_assoc();
-            var_dump($user_data);
+            // var_dump($user_data);
             
 
             // Ako se poklapaju sa podacima iz baze num_rows ce biti 1 
@@ -62,7 +62,7 @@ class User extends BaseModel
 
                 $view = new View();
                 $view->loadPage('pages', 'welcome');
-                
+
             } else {
                 $error = "Your Email or Password is invalid";
                 echo $error;
@@ -70,15 +70,11 @@ class User extends BaseModel
 
     
             $user_check = $_SESSION['login_user_email'];
-            var_dump($user_check);
-   
-            $ses_sql = mysqli_query($conn, "select * from users where email = '$user_check'");
+            $ses_sql = mysqli_query($conn, "select email from users where email = '$user_check'");
             
-            $row = mysqli_fetch_array($ses_sql, MYSQLI_ASSOC);
-
-            var_dump($_SESSION);         
+            $row = mysqli_fetch_array($ses_sql, MYSQLI_ASSOC);                    
             $login_session['email'] = $row['email'];
-            var_dump($login_session);
+        
             
             if(!isset($_SESSION['login_user_email'])){
                 $view->loadPage('pages', 'login');
