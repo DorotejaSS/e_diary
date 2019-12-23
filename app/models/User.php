@@ -14,7 +14,6 @@ class User extends BaseModel
 	{   
         // db.php je konekcija sa bazom
         require('./app/db.php');
-        // var_dump($conn);
         // ako je request method post , udji u if
         if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -27,9 +26,8 @@ class User extends BaseModel
             $user_data = $result->fetch_assoc();
             // var_dump($user_data);
             
-
             // Ako se poklapaju sa podacima iz baze num_rows ce biti 1 
-            // ako je 1, upisi email u Sesiju[login user] i pozovi view za korisnika (za sad je obican view koji pokazuje da si ulogovan)
+            // ako je 1, upisi email u Sesiju[login user email] i pozovi view za korisnika (za sad je obican view koji pokazuje da si ulogovan po roli)
             if ($result->num_rows == 1) {
                 $_SESSION['login_user_email'] = $email;
 
@@ -56,7 +54,8 @@ class User extends BaseModel
                         break;
                     
                     default:
-                        echo '<h1>STRANA NIJE PRONADJENA</h1>';
+                        $view = new View();
+                        $view->loadPage('pages', '404');
                         break;
                 }
 
@@ -67,21 +66,17 @@ class User extends BaseModel
                 $error = "Your Email or Password is invalid";
                 echo $error;
             }
-
     
             $user_check = $_SESSION['login_user_email'];
             $ses_sql = mysqli_query($conn, "select email from users where email = '$user_check'");
             
             $row = mysqli_fetch_array($ses_sql, MYSQLI_ASSOC);                    
             $login_session['email'] = $row['email'];
-        
             
             if(!isset($_SESSION['login_user_email'])){
                 $view->loadPage('pages', 'login');
                 die;
             }
-
-
         }
     }
 }
