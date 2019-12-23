@@ -21,7 +21,7 @@ class User extends BaseModel
             var_dump($_SERVER['REQUEST_METHOD']);
 
             $email = $conn->escape_string($_POST['email']);
-            var_dump($email);
+            var_export($email);
             $password = $conn->escape_string($_POST['password']);
             var_dump($password);
 
