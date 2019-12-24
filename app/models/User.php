@@ -28,6 +28,7 @@ class User extends BaseModel
             // Ako se poklapaju sa podacima iz baze num_rows ce biti 1 
             if ($result->num_rows === 1) {
                 $_SESSION['login_user_email'] = $email;
+                $_SESSION['user_id'] = $user_data['id'];
 
                 switch ($user_data['role_id']) {
                     case '1':
