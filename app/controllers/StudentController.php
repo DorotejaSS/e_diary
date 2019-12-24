@@ -11,4 +11,9 @@ class StudentController
     {
         var_dump('prikazujem sve studente');
     }
+
+    public function getOne()
+    {
+        var_dump('get One metoda');
+    }
 }
