@@ -16,5 +16,10 @@ class BaseController
         $view->loadPage($dir_name, $partial_name);
     }
 
+    public function loadHomePage()
+    {
+        
+    }
+
     
 }
