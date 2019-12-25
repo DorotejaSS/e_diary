@@ -6,5 +6,7 @@ $routes = array(
     '/reset-password' => 'AccessController@resetPassword',
     '/students' => 'StudentController@showAll',
     '/students/:id' => 'StudentController@getOne',
-    '/admin' => 'AdminController@homePage'
+    '/admin' => 'AdminController@homePage',
+    '/users' => 'UserController@showAll',
+    '/users/:id' => 'UserController@getOne'
 );

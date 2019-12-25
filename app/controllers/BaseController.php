@@ -7,7 +7,8 @@ class BaseController
     public function __construct($request)
     {
         $this->request = $request;
-        // var_dump($this->request->post_params);
+        var_dump($this->request);
+        // TODO: proveri iz sesije ko je ulogovan i koje su mu permisije
     }
 
     public function loadView($dir_name, $partial_name)

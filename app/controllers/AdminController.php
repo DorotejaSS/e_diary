@@ -9,7 +9,8 @@
 
         public function homePage()
         {
-            var_dump('u home page admina');
+            $view = new View();
+            $view->loadPage('admin', 'index');
         }
 
         

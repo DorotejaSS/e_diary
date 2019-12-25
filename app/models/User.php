@@ -1,12 +1,12 @@
 <?php
-
-// require('./app/db.php');
+// require ('./app/db.php');
 
 class User extends BaseModel
 {
+    private $result;
+
     public function __construct()
     {
-
     }
 
     public function login($email, $password)
@@ -21,24 +21,29 @@ class User extends BaseModel
 
             $sql = 'select * from users where email = "'.$email.'" and password = "'.$password.'"';
 
-            $result = $conn->query($sql);
-            $user_data = $result->fetch_assoc();
-            // var_dump($user_data);
+            $this->result = $conn->query($sql);
+            $user_data = $this->result->fetch_assoc();
+            $_SESSION['user_data'] = $user_data;
             
-            // Ako se poklapaju sa podacima iz baze num_rows ce biti 1 
-            if ($result->num_rows === 1) {
-                $_SESSION['login_user_email'] = $email;
-                
-                switch ($user_data['role_id']) {
+            $this->checkCredentials($user_data['role_id']);
+            
+            if(!isset($_SESSION['user_data']['email'])){
+                $view = new View();
+                $view->loadPage('pages', 'login');
+                die;
+            }
+        }
+    }
+
+    public function checkCredentials($role_id)
+    {
+        // Ako se poklapaju sa podacima iz baze num_rows ce biti 1 
+            if ($this->result->num_rows === 1) {
+                $this->role_id = $_SESSION['user_data']['role_id'];
+
+                switch ($this->role_id) {
                     case '1':
-                        // $_REQUEST['path'] //login
-                        // $view = new View();
-                        // $view->loadPage('admin', 'index');
-                        if (isset($_SESSION['login_user_email'])) {
-                            header('Location: /admin');
-                        } else {
-                            echo 'nisi ulogovan';
-                        }
+                        header('Location: /admin');
                         //url je i dalje /login
                         break;
                      case '2':
@@ -71,12 +76,5 @@ class User extends BaseModel
                 $error = "Your Email or Password is invalid";
                 echo $error;
             }
-
-            
-            if(!isset($_SESSION['login_user_email'])){
-                $view->loadPage('pages', 'login');
-                die;
-            }
-        }
     }
 }
