@@ -13,6 +13,5 @@
             $view->loadPage('admin', 'index');
         }
 
-
-
+        
     }

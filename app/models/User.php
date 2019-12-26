@@ -15,19 +15,19 @@ class User extends BaseModel
         require('./app/db.php');
        
         if($_SERVER["REQUEST_METHOD"] == "POST") {
-
+            
             $email = $conn->escape_string($_POST['email']);
             $password = $conn->escape_string($_POST['password']);
-
+            
             $sql = 'select * from users where email = "'.$email.'" and password = "'.$password.'"';
-
+            
             $this->result = $conn->query($sql);
             $user_data = $this->result->fetch_assoc();
             $_SESSION['user_data'] = $user_data;
             
             $this->checkCredentials($user_data['role_id']);
+            var_dump('u modelu si');
             
-           
         }
     }
 
@@ -40,7 +40,6 @@ class User extends BaseModel
                 switch ($this->role_id) {
                     case '1':
                         header('Location: /admin');
-                        //url je i dalje /login
                         break;
                      case '2':
                         $view = new View();
@@ -72,6 +71,5 @@ class User extends BaseModel
                 $error = "Your Email or Password is invalid";
                 echo $error;
             }
-
     }
 }
