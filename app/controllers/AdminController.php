@@ -11,6 +11,7 @@
         {
             $view = new View();
             $view->loadPage('admin', 'index');
+             $view->loadPage('pages', 'welcome');
         }
 
         

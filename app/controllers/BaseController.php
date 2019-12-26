@@ -25,8 +25,7 @@ class BaseController
     public function checkSession()
     {
         if(!isset($_SESSION['user_data']['email'])){
-            $view = new View();
-            $view->loadPage('pages', 'login');
+            header('Location:/login');
             die;
         }
     }

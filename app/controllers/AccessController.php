@@ -17,8 +17,7 @@ class AccessController extends BaseController
     // unistavamo sesiju i vracamo se na login nakon toga
     public function logout()
     {   
-        unset($_SESSION["email"]);
-        unset($_SESSION["password"]);
+        unset($_SESSION["user_data"]);
         
         echo 'You have cleaned session';
         header('Refresh: 2; URL = /login');
