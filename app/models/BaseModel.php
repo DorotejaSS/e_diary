@@ -52,6 +52,8 @@ class BaseModel
         var_dump($_GET);
         $sql = 'select * from '.$table. ' where id ="'.$id.'"';
         $result = $conn->query($sql);
+        $row = $result->fetch_array(MYSQLI_BOTH);
+        var_dump($row);
         
     }
 }
