@@ -35,7 +35,7 @@ class UserController extends BaseController
 
     public function delete()
     {
-
+        var_dump('deletujem');
     }
 
     public function add()

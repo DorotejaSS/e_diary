@@ -34,11 +34,16 @@ class Router
                     return true;
                 }
             } else {
-                $pattern = '/^\/[a-z]{2,}\/[0-9]\/s+$/';
-                var_dump($this->request->request_uri);
+                $pattern = '/^\/[a-z]{2,}\/[0-9]\/[a-z]{2,}+$/';
                 preg_match($pattern, $this->request->request_uri, $matches);
                 if (count($matches) === 1) {
-                    var_dump($this->request->url_parts[0]);
+                    $resolver_key = sprintf('/%s/:id/%s', $this->request->url_parts[0], $this->request->url_parts[2]);
+                    var_dump($resolver_key);
+                    if (array_key_exists($resolver_key, $routes)) {
+                        var_dump($this->request->request_uri);
+                        $this->request->request_uri = $resolver_key;
+                    }
+                    return true;
                 }
             }
         }

@@ -26,7 +26,6 @@ class User extends BaseModel
             $_SESSION['user_data'] = $user_data;
             
             $this->checkCredentials($user_data['role_id']);
-            var_dump('u modelu si');
             
         }
     }

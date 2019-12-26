@@ -2,7 +2,7 @@
 
     class AdminController extends BaseController {
 
-        private $role_id='1';
+        private $role_id = '1';
 
         public function __construct()
         {
