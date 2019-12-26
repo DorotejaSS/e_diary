@@ -12,5 +12,6 @@ class PrincipalController extends BaseController
         $view = new View();
         $view->loadPage('principal', 'index');
         $view->loadPage('pages', 'welcome');
+        
     }
 }

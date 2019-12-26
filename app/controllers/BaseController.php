@@ -24,9 +24,17 @@ class BaseController
 
     public function checkSession()
     {
-        if(!isset($_SESSION['user_data']['email'])){
+        if (!isset($_SESSION['user_data']['email'])){
             header('Location:/login');
             die;
         }
-    }    
+    }
+
+    public function checkRole($role_id)
+    {
+        if ($_SESSION['user_data']['role_id'] != $role_id)
+            return false;
+    }
+
+    
 }

@@ -11,4 +11,5 @@ $routes = array(
     '/users/:id' => 'UserController@getOne',
     '/users/:id/edit' => 'UserController@edit',
     '/principal' => 'PrincipalController@homePage'
+    '/parents' => 'ParentController@showChild'
 );
