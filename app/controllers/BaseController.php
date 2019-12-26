@@ -28,7 +28,5 @@ class BaseController
             header('Location:/login');
             die;
         }
-    }
-
-    
+    }    
 }

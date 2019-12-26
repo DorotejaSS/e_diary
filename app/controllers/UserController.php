@@ -2,6 +2,12 @@
 
 class UserController extends BaseController
 {
+    public $name;
+    public $last_name;
+    public $email;
+    public $role_id;
+    public $password;
+
     public function __construct()
     {
         $this->checkSession();
@@ -24,7 +30,7 @@ class UserController extends BaseController
 
     public function edit()
     {
-
+        var_dump('editujemo');
     }
 
     public function delete()
