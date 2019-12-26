@@ -27,8 +27,14 @@ class BaseController
         if(!isset($_SESSION['user_data']['email'])){
             $view = new View();
             $view->loadPage('pages', 'login');
+<<<<<<< HEAD
         }
     }
 
     
+=======
+            die;
+        }
+    }
+>>>>>>> aca86017b8f8b551aae802054a462b58903042a4
 }

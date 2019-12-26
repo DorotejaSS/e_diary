@@ -26,8 +26,11 @@ class User extends BaseModel
             $_SESSION['user_data'] = $user_data;
             
             $this->checkCredentials($user_data['role_id']);
+<<<<<<< HEAD
             
            
+=======
+>>>>>>> aca86017b8f8b551aae802054a462b58903042a4
         }
     }
 
