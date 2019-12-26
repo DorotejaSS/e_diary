@@ -8,5 +8,6 @@ $routes = array(
     '/students/:id' => 'StudentController@getOne',
     '/admin' => 'AdminController@homePage',
     '/users' => 'UserController@showAll',
-    '/users/:id' => 'UserController@getOne'
+    '/users/:id' => 'UserController@getOne',
+    '/parents' => 'ParentController@showChild'
 );

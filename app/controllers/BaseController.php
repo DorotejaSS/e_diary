@@ -24,7 +24,7 @@ class BaseController
 
     public function checkSession()
     {
-        if(!isset($_SESSION['user_data']['email'])){
+        if(!isset($_SESSION['user_data'])){
             $view = new View();
             $view->loadPage('pages', 'login');
             die;

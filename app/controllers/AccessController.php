@@ -4,7 +4,7 @@ class AccessController extends BaseController
 {
     public function __construct()
         {
-           $this->checkSession();
+            
         }
 
     // pozivamo view za login i zovemo model User kome prosledjujemo ono sto smo dobili iz post-a
