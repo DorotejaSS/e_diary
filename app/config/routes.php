@@ -9,5 +9,6 @@ $routes = array(
     '/admin' => 'AdminController@homePage',
     '/users' => 'UserController@showAll',
     '/users/:id' => 'UserController@getOne',
-    '/parents' => 'ParentController@showChild'
+    '/parents' => 'ParentController@showChild',
+    '/proffesor' => 'ProffesorController@homePage',
 );
