@@ -4,7 +4,7 @@
 
         public function __construct()
         {
-           var_dump($_SESSION);
+           $this->checkSession();
         }
 
         public function homePage()
@@ -13,5 +13,6 @@
             $view->loadPage('admin', 'index');
         }
 
-        
+
+
     }

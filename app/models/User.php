@@ -27,11 +27,7 @@ class User extends BaseModel
             
             $this->checkCredentials($user_data['role_id']);
             
-            if(!isset($_SESSION['user_data']['email'])){
-                $view = new View();
-                $view->loadPage('pages', 'login');
-                die;
-            }
+           
         }
     }
 
@@ -75,6 +71,11 @@ class User extends BaseModel
             } else {
                 $error = "Your Email or Password is invalid";
                 echo $error;
+            }
+
+             if(!isset($_SESSION['user_data'])){
+                $view = new View();
+                $view->loadPage('pages', 'login');
             }
     }
 }
