@@ -34,7 +34,12 @@ class Router
                     return true;
                 }
             } else {
-                var_dump('nema poklapanja');
+                $pattern = '/^\/[a-z]{2,}\/[0-9]\/s+$/';
+                var_dump($this->request->request_uri);
+                preg_match($pattern, $this->request->request_uri, $matches);
+                if (count($matches) === 1) {
+                    var_dump($this->request->url_parts[0]);
+                }
             }
         }
         // die;

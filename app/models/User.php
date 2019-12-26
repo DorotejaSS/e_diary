@@ -42,8 +42,7 @@ class User extends BaseModel
                         header('Location: /admin');
                         break;
                      case '2':
-                        $view = new View();
-                        $view->loadPage('principal', 'index');
+                        header('Location: /principal');
                         break;
                      case '3':
                         $view = new View();
