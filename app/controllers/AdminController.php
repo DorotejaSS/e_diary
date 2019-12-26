@@ -4,7 +4,8 @@
 
         public function __construct()
         {
-           var_dump($_SESSION);
+           $this->checkSession();
+            var_dump($_SESSION);
         }
 
         public function homePage()

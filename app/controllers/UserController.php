@@ -1,10 +1,10 @@
 <?php
 
-class UserController
+class UserController extends BaseController
 {
     public function __construct()
     {
-
+        $this->checkSession();
     }
 
     public function showAll()

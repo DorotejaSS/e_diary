@@ -26,12 +26,6 @@ class User extends BaseModel
             $_SESSION['user_data'] = $user_data;
             
             $this->checkCredentials($user_data['role_id']);
-            
-            if(!isset($_SESSION['user_data']['email'])){
-                $view = new View();
-                $view->loadPage('pages', 'login');
-                die;
-            }
         }
     }
 
