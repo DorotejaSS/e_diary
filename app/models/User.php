@@ -26,11 +26,8 @@ class User extends BaseModel
             $_SESSION['user_data'] = $user_data;
             
             $this->checkCredentials($user_data['role_id']);
-<<<<<<< HEAD
             
            
-=======
->>>>>>> aca86017b8f8b551aae802054a462b58903042a4
         }
     }
 
@@ -76,9 +73,5 @@ class User extends BaseModel
                 echo $error;
             }
 
-             if(!isset($_SESSION['user_data'])){
-                $view = new View();
-                $view->loadPage('pages', 'login');
-            }
     }
 }
