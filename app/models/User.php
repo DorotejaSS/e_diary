@@ -70,6 +70,8 @@ class User extends BaseModel
             } else {
                 $error = "Your Email or Password is invalid";
                 echo $error;
+                $view = new View();
+                $view->loadPage('pages', 'login');
             }
     }
 }
