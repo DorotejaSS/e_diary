@@ -10,6 +10,6 @@ $routes = array(
     '/users' => 'UserController@showAll',
     '/users/:id' => 'UserController@getOne',
     '/users/:id/edit' => 'UserController@edit',
-    '/principal' => 'PrincipalController@homePage'
+    '/principal' => 'PrincipalController@homePage',
     '/parents' => 'ParentController@showChild'
 );
