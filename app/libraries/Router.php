@@ -7,7 +7,7 @@ class Router
     public function __construct()
     {   //instanciramo klasu Request
         $this->request = new Request();
-
+        
         // ako ruta postoji (/config/routes.php) instanciraj kontroler
         if ($this->routeExists()) {
             $this->instantiateController();

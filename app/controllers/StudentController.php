@@ -1,10 +1,10 @@
 <?php
 
-class StudentController extends BaseController
+class StudentController
 {
     public function __construct()
     {
-        $this->checkSession();
+    
     }
 
     public function showAll()

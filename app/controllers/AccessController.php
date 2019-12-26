@@ -2,15 +2,11 @@
 // preko ovog kontrolera cemo se logovati i komunicirati sa modelom oko toga
 class AccessController extends BaseController
 {
-    public function __construct()
-        {
-            
-        }
-
     // pozivamo view za login i zovemo model User kome prosledjujemo ono sto smo dobili iz post-a
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            var_dump('login');
             $user = new User();
             $user->login($_POST['email'], $_POST['password']);
         } else {

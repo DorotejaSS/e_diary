@@ -21,4 +21,19 @@ class UserController extends BaseController
         $user = new User();
         $user->getOne('users', $id);
     }
+
+    public function edit()
+    {
+
+    }
+
+    public function delete()
+    {
+
+    }
+
+    public function add()
+    {
+
+    }
 }
