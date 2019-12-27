@@ -16,6 +16,6 @@ class ParentController extends BaseController
 
     public function showChild()
     {
-        
+        $this->loadView('parent', 'index');
     }
 }
