@@ -3,7 +3,6 @@
 class ParentController extends BaseController
 {
     private $role_id = '5';
-    private $child_id;
 
     public function __construct()
     {
@@ -17,6 +16,8 @@ class ParentController extends BaseController
 
     public function showChild()
     {
+        $model = new Parents();
+        $model->getGrades();
         $this->loadView('parent', 'index');
     }
 }

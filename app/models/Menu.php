@@ -25,7 +25,7 @@ class Menu extends BaseModel
             SELECT menu.title, menu.url 
             FROM menu INNER JOIN role_menu 
             ON menu.id = role_menu.menu_id 
-            WHERE role_menu.role_id = '.$this->role_id.'';
+            WHERE role_menu.role_id = '.$this->role_id;
             
             $this->result = $conn->query($sql);
             
