@@ -80,16 +80,14 @@ class User extends BaseModel
                         header('Location: /principal');
                         break;
                      case '3':
-                        $view = new View();
-                        $view->loadPage('professor', 'index');
+                        header('Location: /proffesor');
                         break;
                      case '4':
                         $view = new View();
                         $view->loadPage('teacher', 'index');
                         break;
                      case '5':
-                        $view = new View();
-                        $view->loadPage('parent', 'index');
+                        header('Location: /parents');
                         break;
                     
                     default:
