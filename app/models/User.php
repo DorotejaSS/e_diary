@@ -62,6 +62,8 @@ class User extends BaseModel
             where id = "'.$id.'"';
         
             $this->result = $conn->query($sql);
+            var_dump($this->result);
+        return $this->result;
 
 
     }

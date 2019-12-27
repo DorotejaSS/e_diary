@@ -31,12 +31,11 @@ class UserController extends BaseController
     
         $view = new View();
         $view->loadPage('admin', 'edit');
-
-        if (!isset($_POST['submit'])) {
+       // zasto ne ulazi u ovaj blok klikom na submit
+       if (isset($_POST['submit'])) {
             $user = new User();
             $user->update($id);
         }
-        // var_dump($_POST);
     }
 
     public function delete()

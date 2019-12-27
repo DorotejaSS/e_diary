@@ -1,21 +1,21 @@
 <?php 
 
-function generatePassword($length = 10)
-{   
-    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    $password = substr(str_shuffle($chars), 0, $length);
-    return $password;
-}
+// function generatePassword($length = 10)
+// {   
+//     $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+//     $password = substr(str_shuffle($chars), 0, $length);
+//     return $password;
+// }
 
-if (isset($_POST['submit'])) {
-    generatePassword();
-}
-$password = generatePassword();
+// if (isset($_POST['submit'])) {
+//     generatePassword();
+// }
+// $password = generatePassword();
 
-function selectedRole()
-{
+// function selectedRole()
+// {
 
-}
+// }
 ?>  
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@ function selectedRole()
         <title>Edit User</title>
     </head>
     <body>
-        <form action="" method="POST" >
+        <form action="" method="post">
             <div>
                 <label>Name</label>
                 <input type="name" value="<?php echo $_SESSION['user_data']['first_name'];?>" name="first_name" value="">
@@ -59,7 +59,7 @@ function selectedRole()
                     <option value="5">Parent</option>
                 </select>
             </div>
-            <input type="submit" value="Update">
+            <input type="submit" name="submit" value="Submit">
         </form>
     </body>
 </html>
