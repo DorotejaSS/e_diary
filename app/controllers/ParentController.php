@@ -3,6 +3,7 @@
 class ParentController extends BaseController
 {
     private $role_id = '5';
+    private $child_id;
 
     public function __construct()
     {
