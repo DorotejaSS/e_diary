@@ -22,7 +22,7 @@ class Router
             var_dump('imamo rutu, slucaj 1, basic');
             return true;
         } else {
-            $pattern = '/^\/[a-z]{2,}\/[0-9]+$/';
+            $pattern = '/^\/[a-z]{2,}\/[0-9]{1,}+$/';
             preg_match($pattern, $this->request->request_uri, $matches);
             if (count($matches) === 1){
                 var_dump($matches);
@@ -34,7 +34,7 @@ class Router
                     return true;
                 }
             } else {
-                $pattern = '/^\/[a-z]{2,}\/[0-9]\/[a-z]{2,}+$/';
+                $pattern = '/^\/[a-z]{2,}\/[0-9]{1,}\/[a-z]{2,}+$/';
                 preg_match($pattern, $this->request->request_uri, $matches);
                 if (count($matches) === 1) {
                     $resolver_key = sprintf('/%s/:id/%s', $this->request->url_parts[0], $this->request->url_parts[2]);

@@ -4,14 +4,29 @@
 class User extends BaseModel
 {
     private $result;
-
+    public $first_name;
+    public $last_name;
+    public $email;
+    public $password;
+    public $role_id;
+    
     public function __construct()
     {
+        // var_dump($_POST);
+        // if (!empty($_POST)) {
+        //     $this->first_name = $_POST['first_name'];
+        //     $this->last_name = $_POST['last_name'];
+        //     $this->email = $_POST['email'];
+        //     $this->password = $_POST['password'];
+        //     $this->role_id = $_POST['role_id'];
+        // }
     }
 
     public function login($email, $password)
 	{   
-        // db.php je konekcija sa bazom
+        // db.php je konekcija sa bazom - ne bi trebala da stoji ovde vec izvan klase 
+        //ali je problem sa autoloaderima koji ucitavaju klasu od linije gde se klasa definise
+        //TODO: popraviti
         require('./app/db.php');
        
         if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -26,13 +41,34 @@ class User extends BaseModel
             $_SESSION['user_data'] = $user_data;
             
             $this->checkCredentials($user_data['role_id']);
-            
         }
     }
 
+    public function delete($id)
+    {
+        require('./app/db.php');
+    }
+
+    public function update($id)
+    {
+        require('./app/db.php');
+         $sql = 'update users set 
+            first_name = "'.$_POST['first_name'].'",
+            last_name = "'.$_POST['last_name'].'",
+            password = "'.$_POST['password'].'",
+            email = "'.$_POST['email'].'",
+            password = "'.$_POST['password'].'",
+            role_id = "'.$_POST['role_id'].'"
+            where id = "'.$id.'"';
+        
+            $this->result = $conn->query($sql);
+
+
+    }
+    
     public function checkCredentials($role_id)
     {
-        // Ako se poklapaju sa podacima iz baze num_rows ce biti 1 
+            // Ako se poklapaju sa podacima iz baze num_rows ce biti 1 
             if ($this->result->num_rows === 1) {
                 $this->role_id = $_SESSION['user_data']['role_id'];
 

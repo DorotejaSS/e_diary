@@ -45,14 +45,13 @@ class BaseModel
     }
 
     public function getOne($table, $id)
-    {
-        var_dump('u modelu si');
+    {        
+        require('./app/db.php');
         
-         require('./app/db.php');
-        var_dump($_GET);
         $sql = 'select * from '.$table. ' where id ="'.$id.'"';
         $result = $conn->query($sql);
         $row = $result->fetch_array(MYSQLI_BOTH);
+        $_SESSION['user_data'] = $row;
         
         print "
             <table border=\"5\" cellpadding=\"5\" cellspacing=\"0\" style=\"border-  collapse: collapse\" bordercolor=\"#808080\" width=\"100&#37;\" bgcolor=\"#C0C0C0\">

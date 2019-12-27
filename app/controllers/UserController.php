@@ -2,11 +2,6 @@
 
 class UserController extends BaseController
 {
-    public $name;
-    public $last_name;
-    public $email;
-    public $role_id;
-    public $password;
 
     public function __construct()
     {
@@ -29,8 +24,19 @@ class UserController extends BaseController
     }
 
     public function edit()
-    {
-        var_dump('editujemo');
+    {   
+        $id = explode('/',$_REQUEST['path']);
+        $id = $id[1];
+        $this->getOne('users', $id);
+    
+        $view = new View();
+        $view->loadPage('admin', 'edit');
+
+        if (!isset($_POST['submit'])) {
+            $user = new User();
+            $user->update($id);
+        }
+        // var_dump($_POST);
     }
 
     public function delete()
@@ -42,4 +48,5 @@ class UserController extends BaseController
     {
 
     }
+
 }

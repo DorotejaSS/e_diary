@@ -2,7 +2,7 @@
 
     class ProffesorController extends BaseController {
 
-        private $role_id='3';
+        private $role_id = '3';
 
         public function __construct()
         {
