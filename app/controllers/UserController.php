@@ -10,8 +10,12 @@ class UserController extends BaseController
 
     public function showAll()
     {
-       $user = new User();
-       $user->showAll('users');
+        $user = new User();
+        $user->showAll('users');
+       
+        $view = new View();
+        $view->data = $_SESSION['users'];
+        $view->loadPage('admin','showall');
     }
 
     public function getOne()
@@ -21,6 +25,10 @@ class UserController extends BaseController
 
         $user = new User();
         $user->getOne('users', $id);
+
+        $view = new View();
+        $view->data = $_SESSION['user_data'];
+        $view->loadPage('admin', 'showone');
     }
 
     public function edit()
@@ -31,10 +39,11 @@ class UserController extends BaseController
     
         $view = new View();
         $view->loadPage('admin', 'edit');
-       // zasto ne ulazi u ovaj blok klikom na submit
+     
        if (isset($_POST['submit'])) {
             $user = new User();
             $user->update($id);
+            header('Location: /users');
         }
     }
 
