@@ -49,7 +49,11 @@ class UserController extends BaseController
 
     public function delete()
     {
-        var_dump('deletujem');
+        $id = explode('/',$_REQUEST['path']);
+        $id = $id[1];
+        $user = new User();
+        $user->delete($id);
+        header('Location: /users');
     }
 
     public function add()

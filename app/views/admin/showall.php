@@ -20,7 +20,7 @@
                     <td width=100>Updated at</td> 
                     <td width=100>Created at</td> 
                     <td width=100>Last Login at</td> 
-                </tr>; 
+                </tr>
        
         
                 <?php foreach ($this->data as $key => $value) : ?>
@@ -37,6 +37,6 @@
                             <td> <?php echo $value['last_login_at']; ?> </td> 
                         </tr>
                 <?php endforeach; ?>
-            </table>; 
+            </table> 
     </body>
 </html>
