@@ -1,6 +1,6 @@
 <?php
 
-    class ProffesorController extends BaseController {
+    class ProfessorController extends BaseController {
 
         private $role_id = '3';
 
@@ -17,7 +17,7 @@
         public function homePage()
         {
             $view = new View();
-            $view->loadPage('proffesor', 'index');
+            $view->loadPage('professor', 'index');
              $view->loadPage('pages', 'welcome');
         }
 

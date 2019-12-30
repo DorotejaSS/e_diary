@@ -8,11 +8,12 @@ $routes = array(
     '/students/:id' => 'StudentController@getOne',
     '/admin' => 'AdminController@homePage',
     '/users' => 'UserController@showAll',
+    '/users/add' => 'UserController@add',
     '/users/:id' => 'UserController@getOne',
     '/parents' => 'ParentController@showChild',
-    '/proffesor' => 'ProffesorController@homePage',
+    '/professor' => 'ProfessorController@homePage',
     '/users/:id/edit' => 'UserController@edit',
     '/users/:id/delete' => 'UserController@delete',
     '/principal' => 'PrincipalController@homePage',
-    '/parents' => 'ParentController@showChild'
+    '/teacher' => 'TeacherController@studentGroup'
 );

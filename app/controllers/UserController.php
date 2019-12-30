@@ -37,14 +37,13 @@ class UserController extends BaseController
         $id = $id[1];
         $this->getOne('users', $id);
     
-        $view = new View();
-        $view->loadPage('admin', 'edit');
+        $this->loadView('admin', 'edit');
      
        if (isset($_POST['submit'])) {
             $user = new User();
             $user->update($id);
-            header('Location: /users');
         }
+        header('Location: /users');
     }
 
     public function delete()
@@ -58,7 +57,13 @@ class UserController extends BaseController
 
     public function add()
     {
+        $this->loadView('admin', 'add');
 
+        if (isset($_POST['submit'])) {
+            $user = new User();
+            $user->add();
+        }
+        header('Location: /users');
     }
 
 }

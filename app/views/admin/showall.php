@@ -7,6 +7,7 @@
         <title>Users</title>
     </head>
     <body>
+            <button><a href="users/add">ADD NEW USER</a></button>
             <table border=5 cellpadding=5 cellspacing=0 
             style=border-  collapse: collapse bordercolor=#808080 
             width=100&#37; bgcolor=#C0C0C0>

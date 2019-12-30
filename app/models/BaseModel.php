@@ -34,4 +34,5 @@ class BaseModel
         $_SESSION['user_data'] = $row;
     
     }
+
 }

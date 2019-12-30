@@ -6,7 +6,6 @@ class AccessController extends BaseController
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            var_dump('login');
             $user = new User();
             $user->login($_POST['email'], $_POST['password']);
         } else {
