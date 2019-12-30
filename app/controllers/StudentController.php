@@ -9,8 +9,8 @@ class StudentController
 
     public function showAll()
     {
-        // $user = new User();
-        // $user->showAll();
+        $user = new User();
+        $user->showAll('students');
     }
 
     public function getOne()

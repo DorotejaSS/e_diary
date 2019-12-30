@@ -21,7 +21,7 @@ class BaseModel
         foreach ($result as $key => $value) {
             $row[] = $value;
         }
-        $_SESSION['users'] = $row;
+        $_SESSION[$table] = $row;
     }
 
     public function getOne($table, $id)

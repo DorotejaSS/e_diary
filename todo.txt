@@ -1,0 +1,3 @@
+    - premestiti proveravanje sesije i role u bazni kontroler
+    - ruta /users mora da se nalazi iza /admin zbog pristupa (mozemo joj pristupiti nezavisno ko je ulogovan)
+    - 
