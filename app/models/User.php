@@ -47,9 +47,8 @@ class User extends BaseModel
     public function delete($id)
     {
         require('./app/db.php');
-        var_dump($id);
+       
         $sql = 'delete from users where id = "'.$id.'"';
-        var_dump($sql);
         $this->result = $conn->query($sql);
     }
 

@@ -7,42 +7,25 @@
         <title>Permissions</title>
     </head>
     <body>
-        <button><a href="/permissions/add">Add Permission</a></button>
-        <div>
-            <h3>Users</h3>
-            <button><a href="/permissions/edit">Edit</a></button>
-            <button><a href="/permissions/delete">Delete</a></button>
-            <hr>
-        </div>
-        <div>
-            <h3>Students</h3>
-            <button><a href="/permissions/edit">Edit</a></button>
-            <button><a href="/permissions/delete">Delete</a></button>
-            <hr>
-        </div>
-        <div>
-            <h3>Subjects</h3>
-            <button><a href="/permissions/edit">Edit</a></button>
-            <button><a href="/permissions/delete">Delete</a></button>
-            <hr>
-        </div>
-        <div>
-            <h3>Student Groups</h3>
-            <button><a href="/permissions/edit">Edit</a></button>
-            <button><a href="/permissions/delete">Delete</a></button>
-            <hr>
-        </div>
-        <div>
-            <h3>Schedules</h3>
-            <button><a href="/permissions/edit">Edit</a></button>
-            <button><a href="/permissions/delete">Delete</a></button>
-            <hr>
-        </div>
-        <div>
-            <h3>Notifications</h3>
-            <button><a href="/permissions/edit">Edit</a></button>
-            <button><a href="/permissions/delete">Delete</a></button>
-            <hr>
-        </div>
+        <button><a href="/permissions/add">ADD PERMISSION</a></button>
+        <table border=5 cellpadding=5 cellspacing=0 
+                style=border-  collapse: collapse bordercolor=#808080 
+                width=100&#37; bgcolor=#C0C0C0>
+                <tr>
+                    <td width=100>ID</td> 
+                    <td width=100>Permission Name</td>
+                </tr>
+               
+                <?php foreach ($this->data as $index => $innerarray) : ?>
+                    <?php $id = $innerarray['id']; ?>
+                    <tr>
+                        <td><?= $id; ?></td>
+                        <td><?= $innerarray['title']; ?></td>
+                        <td><a href="/permissions/<?= $id; ?>/edit">Edit</a></td>
+                        <td><a href="/permissions/<?= $id; ?>/delete">Delete</a></td>
+                    </tr>
+                <?php endforeach; ?>
+        </table>
+
     </body>
 </html>

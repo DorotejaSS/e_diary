@@ -15,7 +15,7 @@ class UserController extends BaseController
        
         $view = new View();
         $view->data = $_SESSION['users'];
-        $view->loadPage('admin','showall');
+        $view->loadPage('admin','showallusers');
     }
 
     public function getOne()
@@ -28,7 +28,7 @@ class UserController extends BaseController
 
         $view = new View();
         $view->data = $_SESSION['user_data'];
-        $view->loadPage('admin', 'showone');
+        $view->loadPage('admin', 'showoneuser');
     }
 
     public function edit()
@@ -37,7 +37,7 @@ class UserController extends BaseController
         $id = $id[1];
         $this->getOne('users', $id);
     
-        $this->loadView('admin', 'edit');
+        $this->loadView('admin', 'edituser');
      
        if (isset($_POST['submit'])) {
             $user = new User();
@@ -57,7 +57,7 @@ class UserController extends BaseController
 
     public function add()
     {
-        $this->loadView('admin', 'add');
+        $this->loadView('admin', 'adduser');
 
         if (isset($_POST['submit'])) {
             $user = new User();

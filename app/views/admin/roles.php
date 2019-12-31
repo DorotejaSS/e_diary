@@ -8,19 +8,27 @@
     </head>
     <body>
         <button><a href="/roles/add">ADD ROLE</a></button>
-        <button><a href="/permissions">PERMISSIONS</a></button>
+        <button><a href="/permissions">LIST OF PERMISSIONS</a></button>
+        <table border=5 cellpadding=5 cellspacing=0 
+            style=border-  collapse: collapse bordercolor=#808080 
+            width=100&#37; bgcolor=#C0C0C0>
+            <tr>
+                <td width=100>ID:</td> 
+                <td width=100>Role Name</td>
+            </tr>
         
         <?php foreach ($this->data as $index => $innerarray) : ?>
-
-                <div>
-                    <h3><?= $innerarray['id'] ?></h3>
-                    <h3><a href=""><?= $innerarray['title'] ?></a></h3>
-                    <button><a href="/roles/edit">Edit</a></button>
-                    <button><a href="/roles/delete">Delete</a></button>
-                    <hr>
-                </div>
+            <?php $id = $innerarray['id']; ?>
+          
+                <tr>
+                    <td><?= $id; ?></td>
+                    <td><a href="/permissions/<?= $id; ?>"><?= $innerarray['title'] ?></a></td>
+                    <td><button><a href="/roles/<?= $id; ?>/edit">Edit</a></button></td>
+                    <td><button><a href="/roles/<?= $id; ?>/delete">Delete</a></button></td>
+                </tr>            
 
         <?php endforeach; ?>
+        </table>
 
     </body>
 </html>
