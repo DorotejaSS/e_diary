@@ -1,11 +1,10 @@
 <?php
-// Load Config
+// Load Config with params for DB
 require_once 'config/config.php';   // TODO: change variables into constants
 // Load routes which are allowed
 require_once 'config/routes.php';
 //Load autoloaders
-require_once './app/helpers/autoloaders.php';
-
+require_once './app/config/autoloaders.php';
 
 
 spl_autoload_register('autoloadLibs');

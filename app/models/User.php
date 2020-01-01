@@ -12,21 +12,25 @@ class User extends BaseModel
     
     public function __construct()
     {
-        // var_dump($_POST);
-        // if (!empty($_POST)) {
-        //     $this->first_name = $_POST['first_name'];
-        //     $this->last_name = $_POST['last_name'];
-        //     $this->email = $_POST['email'];
-        //     $this->password = $_POST['password'];
-        //     $this->role_id = $_POST['role_id'];
-        // }
+        if (isset($_POST['first_name'])) {
+            $this->first_name = $_POST['first_name'];
+        } 
+        if (isset($_POST['last_name'])) {
+            $this->last_name = $_POST['last_name'];
+        } 
+        if (isset($_POST['email'])) {
+            $this->email = $_POST['email'];
+        } 
+        if (isset($_POST['password'])) {
+            $this->password = $_POST['password'];
+        } 
+        if (isset($_POST['role_id'])) {
+            $this->role_id = $_POST['role_id'];
+        } 
     }
 
     public function login($email, $password)
 	{   
-        // db.php je konekcija sa bazom - ne bi trebala da stoji ovde vec izvan klase 
-        //ali je problem sa autoloaderima koji ucitavaju klasu od linije gde se klasa definise
-        //TODO: popraviti
         require('./app/db.php');
        
         if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -34,10 +38,11 @@ class User extends BaseModel
             $email = $conn->escape_string($_POST['email']);
             $password = $conn->escape_string($_POST['password']);
             
-            $sql = 'select * from users where email = "'.$email.'" and password = "'.$password.'"';
+            $sql = 'SELECT * FROM users WHERE email = "'.$email.'" and password = "'.$password.'"';
             
             $this->result = $conn->query($sql);
             $user_data = $this->result->fetch_assoc();
+        
             $_SESSION['user_data'] = $user_data;
             
             $this->checkCredentials($user_data['role_id']);
@@ -48,21 +53,21 @@ class User extends BaseModel
     {
         require('./app/db.php');
        
-        $sql = 'delete from users where id = "'.$id.'"';
+        $sql = 'DELETE FROM users WHERE id = "'.$id.'"';
         $this->result = $conn->query($sql);
     }
 
     public function update($id)
     {
         require('./app/db.php');
-         $sql = 'update users set 
-            first_name = "'.$_POST['first_name'].'",
-            last_name = "'.$_POST['last_name'].'",
-            password = "'.$_POST['password'].'",
-            email = "'.$_POST['email'].'",
-            password = "'.$_POST['password'].'",
-            role_id = "'.$_POST['role_id'].'"
-            where id = "'.$id.'"';
+
+         $sql = 'UPDATE users SET 
+            first_name = "'.$this->first_name.'",
+            last_name = "'.$this->last_name.'",
+            email = "'.$this->email.'",
+            password = "'.$this->password.'",
+            role_id = "'.$this->role_id.'"
+            WHERE id = "'.$id.'"';
         
         $this->result = $conn->query($sql);
         return $this->result;
@@ -71,6 +76,7 @@ class User extends BaseModel
     public function add()
     {
         require('./app/db.php');
+
         if (!empty($_POST['first_name'])) {
             $this->first_name = $_POST['first_name'];
         } 
@@ -126,7 +132,7 @@ class User extends BaseModel
             $view->loadPage('pages', 'welcome');
 
         } else {
-            $error = "Your Email or Password is invalid";
+            $error = 'Your Email or Password is invalid';
             echo $error;
             $view = new View();
             $view->loadPage('pages', 'login');

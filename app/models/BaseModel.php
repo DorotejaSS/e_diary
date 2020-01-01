@@ -14,25 +14,25 @@ class BaseModel
         $result = $conn->query($sql);
         
         $results = [];
-        while($row = $result->fetch_array(MYSQLI_BOTH)) {
+        while($row = $result->fetch_assoc()) {
            $results[] = $row;
         }
-        $row = [];
-        foreach ($result as $key => $value) {
-            $row[] = $value;
-        }
-        $_SESSION[$table] = $row;
+        // $_SESSION[$table] = $results;
+        return $results;
     }
-
+ 
     public function getOne($table, $id)
     {        
         require('./app/db.php');
         
         $sql = 'select * from '.$table. ' where id ="'.$id.'"';
         $result = $conn->query($sql);
-        $row = $result->fetch_array(MYSQLI_BOTH);
-        $_SESSION['user_data'] = $row;
-    
+        
+        $data = [];
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
     }
 
 }

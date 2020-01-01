@@ -14,7 +14,7 @@ class UserController extends BaseController
         $user->showAll('users');
        
         $view = new View();
-        $view->data = $_SESSION['users'];
+        $view->data = $user->showAll('users');
         $view->loadPage('admin','showallusers');
     }
 
@@ -24,10 +24,10 @@ class UserController extends BaseController
         $id = $id[1];
 
         $user = new User();
-        $user->getOne('users', $id);
+        $get_one_user = $user->getOne('users', $id);
 
         $view = new View();
-        $view->data = $_SESSION['user_data'];
+        $view->data = $get_one_user[0];
         $view->loadPage('admin', 'showoneuser');
     }
 
@@ -35,15 +35,20 @@ class UserController extends BaseController
     {   
         $id = explode('/',$_REQUEST['path']);
         $id = $id[1];
-        $this->getOne('users', $id);
-    
-        $this->loadView('admin', 'edituser');
+
+        $user = new User();
+        $get_one_user = $user->getOne('users', $id);
+
+        $view = new View();
+        $view->data = $get_one_user[0];
+        $view->loadPage('admin', 'showoneuser');
+        $view->loadPage('admin', 'edituser');
      
-       if (isset($_POST['submit'])) {
+        if (isset($_POST['submit'])) {
             $user = new User();
             $user->update($id);
+            header('Location: /users');
         }
-        header('Location: /users');
     }
 
     public function delete()
@@ -57,13 +62,26 @@ class UserController extends BaseController
 
     public function add()
     {
-        $this->loadView('admin', 'adduser');
-
+        $view = new View();
+        
+        if (isset($_POST['hash'])) {
+            $this->generatePassword();
+            $password = $this->generatePassword();
+        }
+        $view->data['password'] = $password;
+        $view->loadPage('admin', 'adduser');
+        
         if (isset($_POST['submit'])) {
             $user = new User();
             $user->add();
+            header('Location: /users');
         }
-        header('Location: /users');
     }
 
+    public function generatePassword($length = 10)
+    {   
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        $password = substr(str_shuffle($chars), 0, $length);
+        return $password;
+    }
 }

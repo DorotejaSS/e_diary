@@ -13,7 +13,7 @@ class RoleController extends BaseController
         $base_model->showAll('roles');
 
         $view = new View();
-        $view->data = $_SESSION['roles'];
+        $view->data = $base_model->showAll('roles');
         $view->loadPage('admin', 'roles');
     }
 
@@ -32,11 +32,11 @@ class RoleController extends BaseController
         $id = explode('/',$_REQUEST['path']);
         $id = $id[1];
 
-        $user = new User();
-        $user->getOne('roles', $id);
+        $base_model = new BaseModel();
+        $base_model->getOne('roles', $id);
 
         $view = new View();
-        $view->data = $_SESSION['user_data'];
+        $view->data = $base_model->getOne('roles', $id)[0];
         $view->loadPage('admin', 'showonerole');
     }
 
@@ -44,12 +44,12 @@ class RoleController extends BaseController
     {
         $id = explode('/',$_REQUEST['path']);
         $id = $id[1];
-        var_dump($id);
+        
         $base_model = new BaseModel();
         $base_model->getOne('roles', $id);
 
         $view = new View();
-        $view->data = $_SESSION['user_data'];
+        $view->data = $base_model->getOne('roles', $id)[0];
         $view->loadPage('admin', 'roleedit');
 
         if (isset($_POST['submit'])) {

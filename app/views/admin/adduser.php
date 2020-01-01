@@ -22,7 +22,8 @@
             </div>
             <div>
                 <label>Password</label>
-                <input type="text" name="password">
+                <input type="text" name="password" value="<?php echo $this->data['password']; ?>">
+                <input type="submit" name="hash" value="rand password">
             </div>
             <div>
                 <label>Role</label>

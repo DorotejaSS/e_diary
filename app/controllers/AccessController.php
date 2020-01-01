@@ -10,6 +10,7 @@ class AccessController extends BaseController
         } else {
             $this->loadView('pages', 'login');
         }
+        //users data are saved in $_SESSION['user_data]
     }
 
     public function logout()

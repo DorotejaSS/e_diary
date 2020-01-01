@@ -1,3 +1,4 @@
     - u add role dodati opciju za cekiranje permisija koje dodeljujemo roli
     - u edit role ubaciti cekirana polja sa permisijama koje su dozvoljene i necekirana za nedozvoljene trenutne
     - edit permisije menja ime permisije samo
+    - klikom na rolu se samo ispisuju permisije za tu rolu bez mogucnosti izmene na tom mestu

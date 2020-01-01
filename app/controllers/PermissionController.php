@@ -13,7 +13,7 @@ class PermissionController extends BaseController
         $base_model->showAll('permissions');
         
         $view = new View();
-        $view->data = $_SESSION['permissions'];
+        $view->data =  $base_model->showAll('permissions')[0];
         $view->loadPage('admin', 'permissions');
     }
 
@@ -29,7 +29,15 @@ class PermissionController extends BaseController
 
     public function getOne()
     {
-        echo 'permisije ove role';   
+        $id = explode('/',$_REQUEST['path']);
+        $id = $id[1];
+
+        $permission = new Permission();
+        $permissions_for_role = $permission->permissionsForRole($id);
+
+        $view = new View();
+        $view->data =  $permissions_for_role;
+        $view->loadPage('admin', 'showrolepermissions');
     }
 
     public function editPermission()
@@ -41,7 +49,7 @@ class PermissionController extends BaseController
         $base_model->getOne('permissions', $id);
 
         $view = new View();
-        $view->data = $_SESSION['user_data'];
+        $view->data = $base_model->getOne('permissions', $id)[0];
         $view->loadPage('admin', 'permissionedit');
 
         if (isset($_POST['submit'])) {
