@@ -39,14 +39,26 @@ class Permission extends BaseModel
                 on rp.role_id = '.$id.' and rp.access = 1 and rp.permission_id = p.id';
 
         $this->result = $conn->query($sql);
-        var_dump($this->result);
         $permissions = [];
         while ($row = $this->result->fetch_assoc()) {
             $permissions[] = $row;    
         }
         return $permissions;
-        
+    }
 
-       
+    public function editPermissions($id)
+    {
+        require('./app/db.php');
+        $sql = 'SELECT p.title, rp.access
+        FROM role_permissions as rp
+        inner join  permissions as p 
+        on rp.role_id = '.$id.' and rp.permission_id = p.id';
+
+        $this->result = $conn->query($sql);
+        $permissions_for_role = [];
+        while ($row = $this->result->fetch_assoc()) {
+            $permissions_for_role[] = $row;    
+        }
+        return $permissions_for_role;
     }
 }

@@ -22,7 +22,7 @@ $routes = array(
     '/permissions/:id/edit' => 'PermissionController@editPermission',
     '/permissions/:id/delete' => 'PermissionController@deletePermission',
 
-    '/role-permissions/edit' => 'AdminController@rolePermissionEdit',
+    '/rolepermissions/:id/edit' => 'PermissionController@rolePermissionsEdit',
 
     '/users' => 'UserController@showAll',
     '/users/add' => 'UserController@add',

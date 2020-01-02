@@ -4,10 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Role Permissions</title>
+        <title>Edit Permissions for <?= $this->data['role'][0]['title']; ?></title>
     </head>
     <body>
-        <button><a href="/rolepermissions/<?= $this->data['role'][0]['id']; ?>/edit">EDIT PERMISSIONS</a></button>
         <table border=5 cellpadding=5 cellspacing=0 
             style=border-  collapse: collapse bordercolor=#808080 
             width=100&#37; bgcolor=#C0C0C0>
@@ -20,8 +19,14 @@
                 <td><?php echo $this->data['role'][0]['title'];?></td>
             </tr>
         </table>
-            <?php foreach ($this->data['permissions'] as $key => $value) : ?>
-                <h4>-   <?= $value['title'];?></h4> 
-            <?php endforeach; ?>
+        
+        <?php foreach ($this->data['permissions'] as $key => $value) : ?>
+                <?php if ($value['access'] === '1') : ?>
+                    <input type="checkbox" name="permissions" value="<?= $value['title']; ?>"checked><?= $value['title'];?>
+                <?php else : ?>
+                    <input type="checkbox" name="permissions" value="<?= $value['title']; ?>"><?= $value['title'];?>
+                <?php endif; ?>
+                <br>
+        <?php endforeach; ?>
     </body>
 </html>

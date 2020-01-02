@@ -14,7 +14,6 @@
                 <td>Title</td>
             </tr>
             <tr>
-            <?php var_dump($this->data);?>
                 <td><?php echo $this->data['id'];?></td>
                 <td><?php echo $this->data['title'];?></td>
                 <td><a href="/permissions/<?= $this->data['id']; ?>">Permissions</a></td>

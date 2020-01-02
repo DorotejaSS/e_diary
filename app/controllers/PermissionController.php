@@ -34,9 +34,11 @@ class PermissionController extends BaseController
 
         $permission = new Permission();
         $permissions_for_role = $permission->permissionsForRole($id);
+        $role = $permission->getOne('roles', $id);
 
         $view = new View();
-        $view->data =  $permissions_for_role;
+        $view->data['permissions'] = $permissions_for_role;
+        $view->data['role'] = $role;
         $view->loadPage('admin', 'showrolepermissions');
     }
 
@@ -67,5 +69,20 @@ class PermissionController extends BaseController
         $permission = new Permission();
         $permission->delete($id);
         header('Location: /permissions');
+    }
+
+    public function rolePermissionsEdit()
+    {   
+        $id = explode('/',$_REQUEST['path']);
+        $id = $id[1];
+
+        $permissions = new Permission();
+        $permissions->editPermissions($id);
+        $permissions->getOne('roles', $id);
+
+        $view = new View();
+        $view->data['permissions'] = $permissions->editPermissions($id);
+        $view->data['role'] = $permissions->getOne('roles', $id);
+        $view->loadPage('admin', 'rolepermissionsedit');
     }
 }
