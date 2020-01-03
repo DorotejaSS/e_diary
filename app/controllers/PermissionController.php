@@ -33,7 +33,7 @@ class PermissionController extends BaseController
         $id = $id[1];
 
         $permission = new Permission();
-        $permissions_for_role = $permission->permissionsForRole($id);
+        $permissions_for_role = $permission->allowedPermissionsForRole($id);
         $role = $permission->getOne('roles', $id);
 
         $view = new View();
@@ -77,12 +77,19 @@ class PermissionController extends BaseController
         $id = $id[1];
 
         $permissions = new Permission();
-        $permissions->editPermissions($id);
+        $permissions->selectPermissions($id);
         $permissions->getOne('roles', $id);
 
         $view = new View();
-        $view->data['permissions'] = $permissions->editPermissions($id);
+        $view->data['permissions'] = $permissions->selectPermissions($id);
         $view->data['role'] = $permissions->getOne('roles', $id);
         $view->loadPage('admin', 'rolepermissionsedit');
+       
+        $allowed_permissions = $_POST['allowed'];
+
+        if (isset($_POST['submit'])) {
+            $permissions->updatePermissions($allowed_permissions);
+            $view->loadPage('admin', 'showrolepermissions');
+        }
     }
 }

@@ -30,7 +30,7 @@ class Permission extends BaseModel
         return $this->result;
     }
 
-    public function permissionsForRole($id)
+    public function allowedPermissionsForRole($id)
     {
         require('./app/db.php');
         $sql = 'SELECT p.title 
@@ -46,10 +46,10 @@ class Permission extends BaseModel
         return $permissions;
     }
 
-    public function editPermissions($id)
+    public function selectPermissions($id)
     {
         require('./app/db.php');
-        $sql = 'SELECT p.title, rp.access
+        $sql = 'SELECT p.id, p.title, rp.access
         FROM role_permissions as rp
         inner join  permissions as p 
         on rp.role_id = '.$id.' and rp.permission_id = p.id';
@@ -60,5 +60,19 @@ class Permission extends BaseModel
             $permissions_for_role[] = $row;    
         }
         return $permissions_for_role;
+    }
+
+    public function updatePermissions($allowed_permissions)
+    {
+        require('./app/db.php');
+        foreach ($allowed_permissions as $allowed_permission) {
+            $sql = 'update permissions
+            left join role_permissions on permissions.id = role_permissions.permission_id
+            set role_permissions.access = 1
+            where permissions.title = ".$allowed_permission."';
+            
+        }
+        $this->result = $conn->query($sql);
+        return $this->result;
     }
 }

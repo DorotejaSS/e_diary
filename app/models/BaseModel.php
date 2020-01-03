@@ -1,5 +1,5 @@
 <?php
-// TODO : PDO
+
 class BaseModel
 {
 
@@ -17,7 +17,6 @@ class BaseModel
         while($row = $result->fetch_assoc()) {
            $results[] = $row;
         }
-        // $_SESSION[$table] = $results;
         return $results;
     }
  

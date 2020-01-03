@@ -19,14 +19,19 @@
                 <td><?php echo $this->data['role'][0]['title'];?></td>
             </tr>
         </table>
-        
-        <?php foreach ($this->data['permissions'] as $key => $value) : ?>
-                <?php if ($value['access'] === '1') : ?>
-                    <input type="checkbox" name="permissions" value="<?= $value['title']; ?>"checked><?= $value['title'];?>
-                <?php else : ?>
-                    <input type="checkbox" name="permissions" value="<?= $value['title']; ?>"><?= $value['title'];?>
-                <?php endif; ?>
-                <br>
-        <?php endforeach; ?>
+        <form action="" method="post">
+
+            <?php foreach ($this->data['permissions'] as $key => $value) : ?>
+                        <label name ="id[]"><?= $value['id'];?></label>
+                    <?php if ($value['access'] === '1') : ?>
+                        <input type="checkbox" name="allowed[]" value="<?= $value['title']; ?>"checked><?= $value['title'];?>
+                    <?php else : ?>
+                        <input type="checkbox" name="allowed[]" value="<?= $value['title']; ?>"><?= $value['title'];?>
+                    <?php endif; ?>
+                    <br>
+            <?php endforeach; ?>
+
+            <input type="submit" name="submit" value="save">
+        </form>
     </body>
 </html>
