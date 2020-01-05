@@ -10,20 +10,21 @@ class PermissionController extends BaseController
 
     public function permissions()
     {
+        $view = new View();
+
         $base_model = new BaseModel();
         $base_model->showAll('permissions');
-        
-        $view = new View();
-        $view->data =  $base_model->showAll('permissions')[0];
+    
+        $view->data = $base_model->showAll('permissions');
         $view->loadPage('admin', 'permissions');
     }
 
     public function addPermission()
     {
         $this->loadView('admin', 'permissionadd');
-        if (!empty($_POST['permission']) && isset($_POST['submit'])) {
+        if (!empty($this->request->post_params['permission']) && isset($this->request->post_params['submit'])) {
             $permission = new Permission();
-            $permission->addPermission($_POST['permission']);
+            $permission->addPermission($this->request->post_params['permission']);
             header('Location: /permissions');
         }   
     }
@@ -43,15 +44,16 @@ class PermissionController extends BaseController
 
     public function editPermission()
     {
+        $view = new View();
         $id = $this->request->url_parts[1];
+
         $base_model = new BaseModel();
         $base_model->getOne('permissions', $id);
 
-        $view = new View();
         $view->data = $base_model->getOne('permissions', $id)[0];
         $view->loadPage('admin', 'permissionedit');
 
-        if (isset($_POST['submit'])) {
+        if (isset($this->request->post_params['submit'])) {
             $permission = new Permission();
             $permission->edit($id);
             header('Location: /permissions');
@@ -69,18 +71,20 @@ class PermissionController extends BaseController
     public function rolePermissionsEdit()
     {   
         $id = $this->request->url_parts[1];
+        $view = new View();
+       
         $permissions = new Permission();
         $permissions->selectPermissions($id);
         $permissions->getOne('roles', $id);
 
-        $view = new View();
         $view->data['permissions'] = $permissions->selectPermissions($id);
         $view->data['role'] = $permissions->getOne('roles', $id);
         $view->loadPage('admin', 'rolepermissionsedit');
        
-        if (isset($_POST['submit'])) {
-            $allowed_permissions = $_POST['allowed'];
-            $permissions->updatePermissions($allowed_permissions);
+        if (isset($this->request->post_params['submit'])) { 
+            $allowed_permissions = $this->request->post_params['allowed'];
+            $permissions->updatePermissions($allowed_permissions); 
+            die;
             $permissions->allowedPermissionsForRole($id);
             var_dump($permissions->allowedPermissionsForRole($id));
             // $view->loadPage('admin', 'showrolepermissions');

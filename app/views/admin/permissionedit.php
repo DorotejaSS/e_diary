@@ -9,6 +9,7 @@
     <body>
         <form action="" method="post">
             <label>Permission Name: </label>
+           
             <input type="text" name="permission" value="<?php echo $this->data['title']; ?>">
             <input type="submit" name="submit" value="Save">
         </form>

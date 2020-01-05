@@ -22,13 +22,12 @@
         <form action="" method="post">
 
             <?php foreach ($this->data['permissions'] as $key => $value) : ?>
-                        <label name ="id[]"><?= $value['id'];?></label>
-                    <?php if ($value['access'] === '1') : ?>
-                        <input type="checkbox" name="allowed[]" value="<?= $value['title']; ?>"checked><?= $value['title'];?>
-                    <?php else : ?>
-                        <input type="checkbox" name="allowed[]" value="<?= $value['title']; ?>"><?= $value['title'];?>
-                    <?php endif; ?>
-                    <br>
+           
+                <label>
+                    <input type="checkbox" name="allowed[]" value="<?= $value['title']; ?>"
+                    <?php echo ($value['access'] === '1') ? 'checked' : '' ?>>
+                    <span><?= $value['title']; ?></span><br>
+                </label>
             <?php endforeach; ?>
 
             <input type="submit" name="submit" value="save">

@@ -24,7 +24,7 @@ class Router
             preg_match($pattern, $this->request->request_uri, $matches);
             if (count($matches) === 1){
                 $resolver_key = sprintf('/%s/:id', $this->request->url_parts[0]);
-                var_dump($resolver_key);
+                // var_dump($resolver_key);
                 if (array_key_exists($resolver_key, $routes)) {
                    $this->request->request_uri = $resolver_key;
                     return true;

@@ -15,15 +15,16 @@
                     <td width=100>ID</td> 
                     <td width=100>Permission Name</td>
                 </tr>
-                
-                    <?php $id = $this->data['id']; ?>
+                <?php foreach ($this->data as $key => $value) : ?>
+                    <?php $id = $value['id']; ?>
+                        <tr>
+                            <td><?= $id; ?></td>
+                            <td><?= $value['title']; ?></td>
+                            <td><a href="/permissions/<?= $id; ?>/edit">Edit</a></td>
+                            <td><a href="/permissions/<?= $id; ?>/delete">Delete</a></td>
+                        </tr>
+                <?php endforeach; ?>
 
-                    <tr>
-                        <td><?= $id; ?></td>
-                        <td><?= $this->data['title']; ?></td>
-                        <td><a href="/permissions/<?= $id; ?>/edit">Edit</a></td>
-                        <td><a href="/permissions/<?= $id; ?>/delete">Delete</a></td>
-                    </tr>
         </table>
 
     </body>
