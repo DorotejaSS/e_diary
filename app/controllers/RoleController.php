@@ -2,9 +2,10 @@
 
 class RoleController extends BaseController
 {
-    public function __construct()
-    {
 
+    public function __construct($request)
+    {
+        $this->request = $request;
     }
 
     public function roles()
@@ -20,18 +21,16 @@ class RoleController extends BaseController
     public function roleAdd()
     {
         $this->loadView('admin', 'roleadd');
-        if (!empty($_POST['role']) && isset($_POST['submit'])) {
+        if (!empty($this->request->post_params['role']) && isset($this->request->post_params['submit'])) {
             $role = new Role();
-            $role->addRole($_POST['role']);
+            $role->addRole($this->request->post_params['role']);
             header('Location: /roles');
         }   
     }
 
     public function getOne()
     {
-        $id = explode('/',$_REQUEST['path']);
-        $id = $id[1];
-
+        $id = $this->request->url_parts[1];
         $base_model = new BaseModel();
         $base_model->getOne('roles', $id);
 
@@ -42,9 +41,7 @@ class RoleController extends BaseController
 
     public function roleEdit()
     {
-        $id = explode('/',$_REQUEST['path']);
-        $id = $id[1];
-        
+        $id = $this->request->url_parts[1];
         $base_model = new BaseModel();
         $base_model->getOne('roles', $id);
 
@@ -52,7 +49,7 @@ class RoleController extends BaseController
         $view->data = $base_model->getOne('roles', $id)[0];
         $view->loadPage('admin', 'roleedit');
 
-        if (isset($_POST['submit'])) {
+        if (isset($this->request->post_params['submit'])) {
             $role = new Role();
             $role->edit($id);
             header('Location: /roles');
@@ -60,10 +57,8 @@ class RoleController extends BaseController
     }
 
     public function roleDelete()
-    {  
-        $id = explode('/',$_REQUEST['path']);
-        $id = $id[1];
-      
+    {
+        $id = $this->request->url_parts[1];
         $role = new Role();
         $role->delete($id);
         header('Location: /roles');

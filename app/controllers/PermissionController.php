@@ -2,9 +2,10 @@
 
 class PermissionController extends BaseController
 {
-    public function __construct()
+   
+    public function __construct($request)
     {
-
+        $this->request = $request;
     }
 
     public function permissions()
@@ -28,10 +29,8 @@ class PermissionController extends BaseController
     }
 
     public function getOne()
-    {
-        $id = explode('/',$_REQUEST['path']);
-        $id = $id[1];
-
+    {   
+        $id = $this->request->url_parts[1];
         $permission = new Permission();
         $permissions_for_role = $permission->allowedPermissionsForRole($id);
         $role = $permission->getOne('roles', $id);
@@ -44,9 +43,7 @@ class PermissionController extends BaseController
 
     public function editPermission()
     {
-        $id = explode('/',$_REQUEST['path']);
-        $id = $id[1];
-       
+        $id = $this->request->url_parts[1];
         $base_model = new BaseModel();
         $base_model->getOne('permissions', $id);
 
@@ -63,9 +60,7 @@ class PermissionController extends BaseController
 
     public function deletePermission()
     {
-        $id = explode('/',$_REQUEST['path']);
-        $id = $id[1];
-      
+        $id = $this->request->url_parts[1];
         $permission = new Permission();
         $permission->delete($id);
         header('Location: /permissions');
@@ -73,9 +68,7 @@ class PermissionController extends BaseController
 
     public function rolePermissionsEdit()
     {   
-        $id = explode('/',$_REQUEST['path']);
-        $id = $id[1];
-
+        $id = $this->request->url_parts[1];
         $permissions = new Permission();
         $permissions->selectPermissions($id);
         $permissions->getOne('roles', $id);
@@ -85,11 +78,13 @@ class PermissionController extends BaseController
         $view->data['role'] = $permissions->getOne('roles', $id);
         $view->loadPage('admin', 'rolepermissionsedit');
        
-        $allowed_permissions = $_POST['allowed'];
-
         if (isset($_POST['submit'])) {
+            $allowed_permissions = $_POST['allowed'];
             $permissions->updatePermissions($allowed_permissions);
-            $view->loadPage('admin', 'showrolepermissions');
+            $permissions->allowedPermissionsForRole($id);
+            var_dump($permissions->allowedPermissionsForRole($id));
+            // $view->loadPage('admin', 'showrolepermissions');
         }
+        // $all_permissions = $view->data['permissions'];
     }
 }

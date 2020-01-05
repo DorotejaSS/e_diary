@@ -2,12 +2,11 @@
 // bazni kontroler koji nasledjuju ostali, iz njega pozivamo view izmedju ostalog za sad
 class BaseController
 {
-    private $request;
+    protected $request;
 
     public function __construct($request)
     {
         $this->request = $request;
-        var_dump($this->request);
     }
 
     public function loadView($dir_name, $partial_name)
@@ -29,6 +28,4 @@ class BaseController
         if ($_SESSION['user_data']['role_id'] !== $role_id)
             return false;
     }
-
-    
 }

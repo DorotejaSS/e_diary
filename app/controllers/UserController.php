@@ -3,8 +3,9 @@
 class UserController extends BaseController
 {
 
-    public function __construct()
+    public function __construct($request)
     {
+        $this->request = $request;
         $this->checkSession();
     }
 
@@ -20,9 +21,7 @@ class UserController extends BaseController
 
     public function getOne()
     {
-        $id = explode('/',$_REQUEST['path']);
-        $id = $id[1];
-
+        $id = $this->request->url_parts[1];
         $user = new User();
         $get_one_user = $user->getOne('users', $id);
 
@@ -33,9 +32,7 @@ class UserController extends BaseController
 
     public function edit()
     {   
-        $id = explode('/',$_REQUEST['path']);
-        $id = $id[1];
-
+        $id = $this->request->url_parts[1];
         $user = new User();
         $get_one_user = $user->getOne('users', $id);
 
@@ -53,8 +50,7 @@ class UserController extends BaseController
 
     public function delete()
     {
-        $id = explode('/',$_REQUEST['path']);
-        $id = $id[1];
+        $id = $this->request->url_parts[1];
         $user = new User();
         $user->delete($id);
         header('Location: /users');
@@ -65,9 +61,10 @@ class UserController extends BaseController
         $view = new View();
         
         if (isset($_POST['hash'])) {
-            $this->generatePassword();
             $password = $this->generatePassword();
+            $this->generatePassword();
         }
+        
         $view->data['password'] = $password;
         $view->loadPage('admin', 'adduser');
         

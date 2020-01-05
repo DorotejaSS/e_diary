@@ -7,7 +7,6 @@ class Router
     public function __construct()
     {   
         $this->request = new Request();
-        
         // if route exists (config/routes.php) instatiate controller
         if ($this->routeExists()) {
             $this->instantiateController();
@@ -35,9 +34,9 @@ class Router
                 preg_match($pattern, $this->request->request_uri, $matches);
                 if (count($matches) === 1) {
                     $resolver_key = sprintf('/%s/:id/%s', $this->request->url_parts[0], $this->request->url_parts[2]);
-                    var_dump($resolver_key);
+                    // var_dump($resolver_key);
                     if (array_key_exists($resolver_key, $routes)) {
-                        var_dump($this->request->request_uri);
+                        // var_dump($this->request->request_uri);
                         $this->request->request_uri = $resolver_key;
                     }
                     return true;
@@ -53,6 +52,5 @@ class Router
         list($controller_name, $method_name) = explode('@', $resolver_string);
         $controller = new $controller_name($this->request);
         $controller->$method_name();
-
     }
 }

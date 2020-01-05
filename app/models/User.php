@@ -76,7 +76,7 @@ class User extends BaseModel
     public function add()
     {
         require('./app/db.php');
-
+        
         if (!empty($_POST['first_name'])) {
             $this->first_name = $_POST['first_name'];
         } 

@@ -21,7 +21,8 @@
             </tr>
         </table>
             <?php foreach ($this->data['permissions'] as $key => $value) : ?>
-                <h4>-   <?= $value['title'];?></h4> 
+                        <?= $value['title']; ?> <br>
+                        
             <?php endforeach; ?>
     </body>
 </html>

@@ -2,8 +2,10 @@
 
 class Role extends BaseModel
 {
+
     public function edit($id)
     {
+
         require('./app/db.php');
 
         $sql = 'update roles set 
