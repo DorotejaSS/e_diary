@@ -82,13 +82,12 @@ class PermissionController extends BaseController
         $view->loadPage('admin', 'rolepermissionsedit');
        
         if (isset($this->request->post_params['submit'])) { 
+            $permissions->zeroAll($id);
+            
             $allowed_permissions = $this->request->post_params['allowed'];
             $permissions->updatePermissions($allowed_permissions); 
-            die;
-            $permissions->allowedPermissionsForRole($id);
-            var_dump($permissions->allowedPermissionsForRole($id));
-            // $view->loadPage('admin', 'showrolepermissions');
+            $this->getOne();
         }
-        // $all_permissions = $view->data['permissions'];
+        
     }
 }

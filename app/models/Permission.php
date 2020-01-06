@@ -64,29 +64,32 @@ class Permission extends BaseModel
         return $permissions_for_role;
     }
 
+    public function zeroAll($id)
+    {
+        require('./app/db.php');
+
+        $sql = 'update role_permissions
+                left join permissions on permissions.id = role_permissions.permission_id
+                set role_permissions.access = 0
+                where role_permissions.role_id = "'.$id.'"';
+
+        $this->result = $conn->query($sql);
+        return $this->result;
+    }
+
     public function updatePermissions($allowed_permissions)
     {
         require('./app/db.php');
 
         foreach ($allowed_permissions as $allowed_permission) {
-            var_dump($allowed_permission);
             $sql = 'update role_permissions
             left join permissions on permissions.id = role_permissions.permission_id
             set role_permissions.access = 1
             where permissions.title = "'.$allowed_permission.'"';
-
-            $sqlq = 'update role_permissions
-            left join permissions on permissions.id = role_permissions.permission_id
-            set role_permissions.access = 0
-            except
-            where permissions.title = "'.$allowed_permission.'"';
-            // var_dump($sqlq); 
             
-            $this->result = $conn->query($sqlq);
-
+            $this->result = $conn->query($sql);
         }
-        die;
-        return $this->result;
+        
     }
 
 
