@@ -77,9 +77,8 @@ class PermissionController extends BaseController
             
             // forbidden_permissions su permisije koje nisu dozvoljene ili su unchecked, dobijamo ih 
             //diferencijom SVIH(available_permissions) i ONIH koje su checkirane(allowed_permissions)
-            $forbidden_permissions = array_diff($available_permissions, $allowed_permissions);          
-            $permissions->updatePermissions($id, $allowed_permissions, $forbidden_permissions); 
-
+            $forbidden_permissions = array_diff($available_permissions, $allowed_permissions);         
+            $permissions->updatePermissions($id, $allowed_permissions, $forbidden_permissions);
         }
         
         $permissions->selectPermissions($id);

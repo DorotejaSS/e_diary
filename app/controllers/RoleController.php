@@ -28,17 +28,6 @@ class RoleController extends BaseController
         }   
     }
 
-    // public function getOne()
-    // {
-    //     $id = $this->request->url_parts[1];
-    //     $base_model = new BaseModel();
-    //     $base_model->getOne('roles', $id);
-
-    //     $view = new View();
-    //     $view->data = $base_model->getOne('roles', $id)[0];
-    //     $view->loadPage('admin', 'showonerole');
-    // }
-
     public function roleEdit()
     {
         $id = $this->request->url_parts[1];
