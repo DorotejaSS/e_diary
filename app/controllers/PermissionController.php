@@ -29,19 +29,6 @@ class PermissionController extends BaseController
         }   
     }
 
-    public function getOne()
-    {   
-        $id = $this->request->url_parts[1];
-        $permission = new Permission();
-        $permissions_for_role = $permission->allowedPermissionsForRole($id);
-        $role = $permission->getOne('roles', $id);
-
-        $view = new View();
-        $view->data['permissions'] = $permissions_for_role;
-        $view->data['role'] = $role;
-        $view->loadPage('admin', 'showrolepermissions');
-    }
-
     public function editPermission()
     {
         $view = new View();
@@ -72,22 +59,35 @@ class PermissionController extends BaseController
     {   
         $id = $this->request->url_parts[1];
         $view = new View();
-       
         $permissions = new Permission();
+       
+        if (isset($this->request->post_params['submit'])) {
+            //null coalescing operator (??)
+            // It is used to replace the ternary operation in conjunction with isset() function. 
+            //The Null coalescing operator returns its first operand if it exists and is not NULL; 
+            //otherwise it returns its second operand.
+            $allowed_permissions = $this->request->post_params['allowed'] ?? array();
+            //allowed_permissions su permisije koje su dozvoljene(checkirane)
+
+            $available_permissions_raw = $permissions->selectPermissions($id);
+            $available_permissions = array_map(function($permission_row){
+                return $permission_row['id'];
+            }, $available_permissions_raw);
+           // available_permissions su sve permisije koje postoje
+            
+            // forbidden_permissions su permisije koje nisu dozvoljene ili su unchecked, dobijamo ih 
+            //diferencijom SVIH(available_permissions) i ONIH koje su checkirane(allowed_permissions)
+            $forbidden_permissions = array_diff($available_permissions, $allowed_permissions);          
+            $permissions->updatePermissions($id, $allowed_permissions, $forbidden_permissions); 
+
+        }
+        
         $permissions->selectPermissions($id);
         $permissions->getOne('roles', $id);
 
         $view->data['permissions'] = $permissions->selectPermissions($id);
         $view->data['role'] = $permissions->getOne('roles', $id);
         $view->loadPage('admin', 'rolepermissionsedit');
-       
-        if (isset($this->request->post_params['submit'])) { 
-            $permissions->zeroAll($id);
-            
-            $allowed_permissions = $this->request->post_params['allowed'];
-            $permissions->updatePermissions($allowed_permissions); 
-            $this->getOne();
-        }
         
     }
 }

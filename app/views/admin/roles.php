@@ -22,7 +22,7 @@
           
                 <tr>
                     <td><?= $id; ?></td>
-                    <td><a href="/roles/<?= $id; ?>"><?= $innerarray['title'] ?></a></td>
+                    <td><a href="/rolepermissions/<?= $id; ?>/edit"><?= $innerarray['title'] ?></a></td>
                     <td><button><a href="/roles/<?= $id; ?>/edit">Edit</a></button></td>
                     <td><button><a href="/roles/<?= $id; ?>/delete">Delete</a></button></td>
                 </tr>            

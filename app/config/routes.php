@@ -12,7 +12,7 @@ $routes = array(
 
     '/roles' => 'RoleController@roles',
     '/roles/add' => 'RoleController@roleAdd',
-    '/roles/:id' => 'RoleController@getOne',
+    // '/roles/:id' => 'RoleController@getOne',
     '/roles/:id/edit' => 'RoleController@roleEdit',
     '/roles/:id/delete' => 'RoleController@roleDelete',
 

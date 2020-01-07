@@ -26,8 +26,13 @@ class Permission extends BaseModel
     {
         require('./app/db.php');
         $sql = "insert into permissions (title) values ('$permission')";
-
         $this->result = $conn->query($sql);
+        $inserted_permission_id = $conn->insert_id;
+
+        //todo:
+        // 1. pokupi IDjeve svih rola (role model get all)
+        // 2. za svaki role_id napravi insert u role_permission role_id, $inserted_permission_id
+
         return $this->result;
     }
 
@@ -64,32 +69,26 @@ class Permission extends BaseModel
         return $permissions_for_role;
     }
 
-    public function zeroAll($id)
+    
+    public function updatePermissions($role_id, $allowed_permissions, $forbidden_permissions)
     {
+        $allowed_permissions_sql_prep = array_map(function($permission_id){
+            return array($permission_id, 1);
+        }, $allowed_permissions);
+        
+        $forbidden_permissions_sql_prep = array_map(function($permission_id){
+            return array($permission_id, 0);
+        }, $forbidden_permissions);
+
+        //ids permisija, dozvoljene imaju access = 1 , a nedozvoljene = 0
+        $permissions_map = array_merge($allowed_permissions_sql_prep, $forbidden_permissions_sql_prep);
+
         require('./app/db.php');
-
-        $sql = 'update role_permissions
-                left join permissions on permissions.id = role_permissions.permission_id
-                set role_permissions.access = 0
-                where role_permissions.role_id = "'.$id.'"';
-
-        $this->result = $conn->query($sql);
-        return $this->result;
-    }
-
-    public function updatePermissions($allowed_permissions)
-    {
-        require('./app/db.php');
-
-        foreach ($allowed_permissions as $allowed_permission) {
-            $sql = 'update role_permissions
-            left join permissions on permissions.id = role_permissions.permission_id
-            set role_permissions.access = 1
-            where permissions.title = "'.$allowed_permission.'"';
-            
+        foreach ($permissions_map as $permission_role_access_pair) {
+            $sql = 'update role_permissions set access = '.$permission_role_access_pair[1].'
+                    where role_id = '.$role_id.' and permission_id = '. $permission_role_access_pair[0];
             $this->result = $conn->query($sql);
         }
-        
     }
 
 

@@ -24,9 +24,9 @@
             <?php foreach ($this->data['permissions'] as $key => $value) : ?>
            
                 <label>
-                    <input type="checkbox" name="allowed[]" value="<?= $value['title']; ?>"
+                    <input type="checkbox" name="allowed[]" value="<?php echo $value['id']; ?>"
                     <?php echo ($value['access'] === '1') ? 'checked' : '' ?>>
-                    <span><?= $value['title']; ?></span><br>
+                    <span><?php echo $value['title']; ?></span><br>
                 </label>
             <?php endforeach; ?>
 
