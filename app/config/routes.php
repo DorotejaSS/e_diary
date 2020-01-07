@@ -18,7 +18,7 @@ $routes = array(
 
     '/permissions' => 'PermissionController@permissions',
     '/permissions/add' => 'PermissionController@addPermission',
-    '/permissions/:id' => 'PermissionController@getOne',
+    // '/permissions/:id' => 'PermissionController@getOne',
     '/permissions/:id/edit' => 'PermissionController@editPermission',
     '/permissions/:id/delete' => 'PermissionController@deletePermission',
 
