@@ -65,7 +65,7 @@ class UserController extends BaseController
             $this->generatePassword();
         }
         
-        $view->data['password'] = $password;
+        $view->data['password'] = $password ?? false;
         $view->loadPage('admin', 'adduser');
         
         if (isset($_POST['submit'])) {

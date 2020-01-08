@@ -1,9 +1,8 @@
 <?php
-// require ('./app/db.php');
 
 class User extends BaseModel
 {
-    private $result;
+    private $row_count;
     public $first_name;
     public $last_name;
     public $email;
@@ -34,17 +33,15 @@ class User extends BaseModel
         require('./app/db.php');
        
         if($_SERVER["REQUEST_METHOD"] == "POST") {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            $sql = $conn->prepare('select * from users where email = ? and password = ?');
+            $sql->execute(array($email, $password));
+            $user_data = $sql->fetch(PDO::FETCH_ASSOC);
             
-            $email = $conn->escape_string($_POST['email']);
-            $password = $conn->escape_string($_POST['password']);
-            
-            $sql = 'SELECT * FROM users WHERE email = "'.$email.'" and password = "'.$password.'"';
-            
-            $this->result = $conn->query($sql);
-            $user_data = $this->result->fetch_assoc();
-        
             $_SESSION['user_data'] = $user_data;
-            
+            $this->row_count = $sql->rowCount();
             $this->checkCredentials($user_data['role_id']);
         }
     }
@@ -52,25 +49,24 @@ class User extends BaseModel
     public function delete($id)
     {
         require('./app/db.php');
-       
-        $sql = 'DELETE FROM users WHERE id = "'.$id.'"';
-        $this->result = $conn->query($sql);
+
+        $sql = $conn->prepare('delete from users where id = ?');
+        $sql->execute(array($id));
     }
 
     public function update($id)
     {
         require('./app/db.php');
 
-         $sql = 'UPDATE users SET 
-            first_name = "'.$this->first_name.'",
-            last_name = "'.$this->last_name.'",
-            email = "'.$this->email.'",
-            password = "'.$this->password.'",
-            role_id = "'.$this->role_id.'"
-            WHERE id = "'.$id.'"';
-        
-        $this->result = $conn->query($sql);
-        return $this->result;
+        $sql = $conn->prepare('update users set 
+                                first_name = "'.$this->first_name.'",
+                                last_name = "'.$this->last_name.'",
+                                email = "'.$this->email.'",
+                                password = "'.$this->password.'",
+                                role_id = "'.$this->role_id.'"
+                                WHERE id = "'.$id.'"');
+
+        $sql->execute();
     }
 
     public function add()
@@ -93,16 +89,14 @@ class User extends BaseModel
             $this->role_id = $_POST['role_id'];
         }
         
-        $sql = "insert into users (first_name, last_name, email, password, role_id)
-                values ('$this->first_name', '$this->last_name', '$this->email', '$this->password', '$this->role_id')";
-       
-        $this->result = $conn->query($sql);
-        return $this->result;
+        $sql = $conn->prepare('insert into users (first_name, last_name, email, password, role_id)
+                                 values (?, ?, ?, ?, ?)');
+        $sql->execute(array($this->first_name, $this->last_name, $this->email, $this->password, $this->role_id));
     }
     
     public function checkCredentials($role_id)
     {
-        if ($this->result->num_rows === 1) {
+        if ($this->row_count === 1) {
             $this->role_id = $_SESSION['user_data']['role_id'];
 
             switch ($this->role_id) {
