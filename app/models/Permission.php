@@ -25,10 +25,34 @@ class Permission extends BaseModel
         $sql = $conn->prepare('insert into permissions (title) values (?)');
         $sql->execute(array($permission));
         $inserted_permission_id = $conn->lastInsertId();
+        return $inserted_permission_id;
         
         //todo:
         // 1. pokupi IDjeve svih rola (role model get all)
         // 2. za svaki role_id napravi insert u role_permission role_id, $inserted_permission_id
+    }
+
+    public function updateRolePermissions($inserted_permission_id, $role_ids)
+    {
+        require('./app/db.php');
+        foreach ($role_ids as $role_id) {
+            var_dump($role_id);
+            $sql = $conn->prepare('insert into role_permissions (permission_id, role_id) values (?, ?)');
+            $sql->execute(array($inserted_permission_id, $role_id));
+        }
+    }
+
+    public function asignRolePermission($role_ids, $inserted_permission_id)
+    {
+        require('./app/db.php');
+
+        foreach($role_ids as $role_id) {
+            $sql = $conn->prepare('update role_permissions 
+                                    set role_permissions.access = 1
+                                    where
+                                    role_id = '.$role_id.' and permission_id = '.$inserted_permission_id);
+            $sql->execute();
+        }
     }
 
 

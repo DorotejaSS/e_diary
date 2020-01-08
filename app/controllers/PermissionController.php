@@ -21,10 +21,23 @@ class PermissionController extends BaseController
 
     public function addPermission()
     {
-        $this->loadView('admin', 'permissionadd');
-        if (!empty($this->request->post_params['permission']) && isset($this->request->post_params['submit'])) {
-            $permission = new Permission();
-            $permission->addPermission($this->request->post_params['permission']);
+        $view = new View();
+        $permission = new Permission();
+        $role_data = [];
+        foreach ($permission->showAll('roles') as $value) {
+            $role_data[] = $value;
+        }
+        $view->data['role_data'] = $role_data;
+        $view->loadPage('admin', 'permissionadd');
+        
+        $permission_param = $this->request->post_params['permission'] ?? array();
+        $role_param = $this->request->post_params['roles'] ?? array();
+        $submit = $this->request->post_params['submit'] ?? array();
+
+        if (!empty($permission_param) && !empty($role_param) && isset($submit)) {
+            $inserted_permission_id = $permission->addPermission($permission_param);
+            $permission->updateRolePermissions($inserted_permission_id, $role_param);
+            $asign_role_permission = $permission->asignRolePermission($role_param, $inserted_permission_id);
             header('Location: /permissions');
         }   
     }
