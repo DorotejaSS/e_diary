@@ -4,8 +4,10 @@ class ParentController extends BaseController
 {
     private $role_id = '5';
 
-    public function __construct()
+    public function __construct($request)
     {
+        $this->request = $request;
+
         $this->checkSession();
         if ($this->checkRole($this->role_id) === false)
         {
@@ -14,10 +16,21 @@ class ParentController extends BaseController
         }
     }
 
-    public function showChild()
+    public function index()
     {
-        $model = new Parents();
-        $model->getGrades();
-        $this->loadView('parent', 'index');
+        $model = new Parents;
+
+        $view = new View();
+        $view->data = $model->child_data;
+        $view->loadPage('parent', 'index');
+    }
+
+    public function showGrades()
+    {
+        $model = new Parents;
+
+        $view = new View();
+        $view->data = $model->grades_data;
+        $view->loadPage('parent', 'grades');
     }
 }

@@ -30,7 +30,9 @@ $routes = array(
     '/users/:id/edit' => 'UserController@edit',
     '/users/:id/delete' => 'UserController@delete',
 
-    '/parents' => 'ParentController@showChild',
+    '/parents' => 'ParentController@index',
+    '/parents/:id' => 'ParentController@showGrades',
+
     '/professor' => 'ProfessorController@homePage',
     '/principal' => 'PrincipalController@homePage',
     '/teacher' => 'TeacherController@studentGroup'
