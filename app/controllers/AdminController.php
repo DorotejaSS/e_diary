@@ -1,7 +1,7 @@
 <?php
 
-    class AdminController extends BaseController {
-
+    class AdminController extends BaseController 
+    {
         private $role_id = '1';
 
         public function __construct()
@@ -16,10 +16,8 @@
 
         public function homePage()
         {
-            $view = new View();
-            $view->loadPage('admin', 'index');
-            $view->loadPage('pages', 'welcome');
+            $this->loadView('admin', 'index');
+            $this->loadView('pages', 'welcome');
         }
-
         
     }
