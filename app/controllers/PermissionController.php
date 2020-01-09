@@ -2,10 +2,17 @@
 
 class PermissionController extends BaseController
 {
-   
+    protected $role_id = '1';
+
     public function __construct($request)
     {
         $this->request = $request;
+        $this->checkSession();
+        if ($this->checkRole($this->role_id) === false)
+        {
+            echo 'NEMAS PRISTUP!';
+            exit;
+        }
     }
 
     public function permissions()

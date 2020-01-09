@@ -2,7 +2,7 @@
 
 class ParentController extends BaseController
 {
-    private $role_id = '5';
+    protected $role_id = '5';
 
     public function __construct()
     {

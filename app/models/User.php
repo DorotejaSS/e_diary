@@ -39,11 +39,12 @@ class User extends BaseModel
             $sql = $conn->prepare('select * from users where email = ? and password = ?');
             $sql->execute(array($email, $password));
             $user_data = $sql->fetch(PDO::FETCH_ASSOC);
-            
+            var_dump($user_data);
             $_SESSION['user_data'] = $user_data;
             $this->row_count = $sql->rowCount();
             $this->role_id = $user_data['role_id'];
             $this->checkCredentials($this->role_id);
+            var_dump($this->checkCredentials($this->role_id));
         }
     }
 
@@ -113,44 +114,43 @@ class User extends BaseModel
     public function checkCredentials($role_id)
     {
         $perm_titles = $this->permissionTitles($role_id);
-        return $perm_titles;
-
-        die;
+        
         if ($this->row_count === 1) {
             
             $this->role_id = $_SESSION['user_data']['role_id'];
-
+            
             switch ($this->role_id) {
                 case '1':
-                    header('Location: /admin');
-                    break;
-                    case '2':
-                    header('Location: /principal');
-                    break;
-                    case '3':
-                    header('Location: /professor');
-                    break;
-                    case '4':
-                    header('Location: /teacher');
-                    break;
-                    case '5':
-                    header('Location: /parents');
-                    break;
+                header('Location: /admin');
+                break;
+                case '2':
+                header('Location: /principal');
+                break;
+                case '3':
+                header('Location: /professor');
+                break;
+                case '4':
+                header('Location: /teacher');
+                break;
+                case '5':
+                header('Location: /parents');
+                break;
                 
                 default:
-                    $view = new View();
-                    $view->loadPage('pages', '404');
-                    break;
+                $view = new View();
+                $view->loadPage('pages', '404');
+                break;
             }
-
+            
             $view = new View();
             $view->loadPage('pages', 'welcome');
-
+            
         } else {
             $error = 'Your Email or Password is invalid';
             echo $error;
             $view = new View();
             $view->loadPage('pages', 'login');
         }
+        return $perm_titles;
     }
 }

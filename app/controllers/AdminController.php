@@ -2,7 +2,7 @@
 
     class AdminController extends BaseController 
     {
-        private $role_id = '1';
+        protected $role_id = '1';
 
         public function __construct()
         {
@@ -12,6 +12,7 @@
                 echo 'NEMAS PRISTUP!';
                 exit;
             }
+            var_dump(1);
         }
 
         public function homePage()
