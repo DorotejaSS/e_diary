@@ -19,8 +19,10 @@ class RoleController extends BaseController
     }
 
     public function roleAdd()
-    {
-        $this->loadView('admin', 'roleadd');
+    {   
+        $view = new View();
+        $view->loadPage('admin', 'roleadd');
+    
         if (!empty($this->request->post_params['role']) && isset($this->request->post_params['submit'])) {
             $role = new Role();
             $role->addRole($this->request->post_params['role']);

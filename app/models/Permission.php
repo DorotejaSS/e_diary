@@ -14,9 +14,19 @@ class Permission extends BaseModel
     public function delete($id)
     {
         require('./app/db.php');
-       
-        $sql = $conn->prepare('delete from permissions where id = ?');
-        $sql->execute(array($id));
+    
+        $sql = 'delete from role_permissions where permission_id = '.$id.';
+                delete from permissions where id = '.$id.';';
+
+            try {
+                $stmt = $conn->prepare($sql);
+                $stmt->execute();
+            }
+            catch (PDOException $e)
+            {
+                echo $e->getMessage();
+                die();
+             }
     }
 
     public function addPermission($permission)
@@ -26,34 +36,30 @@ class Permission extends BaseModel
         $sql->execute(array($permission));
         $inserted_permission_id = $conn->lastInsertId();
         return $inserted_permission_id;
-        
-        //todo:
-        // 1. pokupi IDjeve svih rola (role model get all)
-        // 2. za svaki role_id napravi insert u role_permission role_id, $inserted_permission_id
     }
 
     public function updateRolePermissions($inserted_permission_id, $role_ids)
     {
         require('./app/db.php');
+
         foreach ($role_ids as $role_id) {
-            var_dump($role_id);
-            $sql = $conn->prepare('insert into role_permissions (permission_id, role_id) values (?, ?)');
-            $sql->execute(array($inserted_permission_id, $role_id));
+            $sql = $conn->prepare('insert into role_permissions (permission_id, role_id, access) values (?, ?, ?)');
+            $sql->execute(array($inserted_permission_id, $role_id, '1'));
         }
     }
+    // DA LI TI OVO TREBA???
+    // public function asignRolePermission($role_ids, $inserted_permission_id)
+    // {
+    //     require('./app/db.php');
 
-    public function asignRolePermission($role_ids, $inserted_permission_id)
-    {
-        require('./app/db.php');
-
-        foreach($role_ids as $role_id) {
-            $sql = $conn->prepare('update role_permissions 
-                                    set role_permissions.access = 1
-                                    where
-                                    role_id = '.$role_id.' and permission_id = '.$inserted_permission_id);
-            $sql->execute();
-        }
-    }
+    //     foreach($role_ids as $role_id) {
+    //         $sql = $conn->prepare('update role_permissions 
+    //                                 set role_permissions.access = 1
+    //                                 where
+    //                                 role_id = '.$role_id.' and permission_id = '.$inserted_permission_id);
+    //         $sql->execute();
+    //     }
+    // }
 
 
     public function selectPermissions($id)
@@ -82,16 +88,25 @@ class Permission extends BaseModel
         $forbidden_permissions_sql_prep = array_map(function($permission_id){
             return array($permission_id, 0);
         }, $forbidden_permissions);
-
+        
         //ids permisija, dozvoljene imaju access = 1 , a nedozvoljene = 0
         $permissions_map = array_merge($allowed_permissions_sql_prep, $forbidden_permissions_sql_prep);
 
         require('./app/db.php');
 
         foreach ($permissions_map as $permission_role_access_pair) {
-            $sql = $conn->prepare('update role_permissions set access = '.$permission_role_access_pair[1].'
-                    where role_id = '.$role_id.' and permission_id = '. $permission_role_access_pair[0]);
-            $sql->execute();
+
+            $sql = 'update role_permissions set access = '.$permission_role_access_pair[1].'
+                    where role_id = '.$role_id.' and permission_id = '. $permission_role_access_pair[0].';';
+            try {
+                $stmt = $conn->prepare($sql);
+                $stmt->execute();
+            }
+            catch (PDOException $e)
+            {
+                echo $e->getMessage();
+                die();
+             }
         }
     }
 
