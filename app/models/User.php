@@ -42,7 +42,8 @@ class User extends BaseModel
             
             $_SESSION['user_data'] = $user_data;
             $this->row_count = $sql->rowCount();
-            $this->checkCredentials($user_data['role_id']);
+            $this->role_id = $user_data['role_id'];
+            $this->checkCredentials($this->role_id);
         }
     }
 
@@ -93,10 +94,30 @@ class User extends BaseModel
                                  values (?, ?, ?, ?, ?)');
         $sql->execute(array($this->first_name, $this->last_name, $this->email, $this->password, $this->role_id));
     }
+
+    public function permissionTitles($role_id)
+    {
+        require('./app/db.php');
+        
+        $sql = 'select permissions.title, role_permissions.* from permissions 
+                inner join role_permissions 
+                on permissions.id = role_permissions.permission_id
+                where role_permissions.role_id = ?';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(array($role_id));
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    }
     
     public function checkCredentials($role_id)
     {
+        $perm_titles = $this->permissionTitles($role_id);
+        return $perm_titles;
+
+        die;
         if ($this->row_count === 1) {
+            
             $this->role_id = $_SESSION['user_data']['role_id'];
 
             switch ($this->role_id) {
