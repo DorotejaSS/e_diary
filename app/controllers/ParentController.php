@@ -18,7 +18,7 @@ class ParentController extends BaseController
 
     public function index()
     {
-        $model = new Parents;
+        $model = new Parents($this->request);
 
         $view = new View();
         $view->data = $model->child_data;
@@ -27,7 +27,8 @@ class ParentController extends BaseController
 
     public function showGrades()
     {
-        $model = new Parents;
+        
+        $model = new Parents($this->request);
 
         $view = new View();
         $view->data = $model->grades_data;

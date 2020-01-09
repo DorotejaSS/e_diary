@@ -9,7 +9,9 @@
 <body>
     <?php include './app/views/inc/header.php'; ?>
 
-    <?php var_dump($this->data); ?>
+    <?php
+    var_dump($this->data);
+    ?>
 
     <?php include './app/views/inc/footer.php'; ?>
 </body>

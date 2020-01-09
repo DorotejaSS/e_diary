@@ -2,19 +2,20 @@
 
 class Parents extends BaseModel
 {
+    public $request;
     private $parent_id;
     public $child_data = array();
     public $grades_data = array();
 
-    public function __construct()
+    public function __construct($request)
     {
+        $this->request = $request;
         if (isset($_SESSION['user_data']))
         {
             $this->parent_id = $_SESSION['user_data']['id'];
             $this->getChild();
-            $this->getGrades();
+            $this->getGrades($this->request->url_parts[1]);
         }
-        var_dump($_REQUEST);
     }
 
     public function getChild()
@@ -34,14 +35,12 @@ class Parents extends BaseModel
     {
         require('./app/db.php');
 
-        $sql = $connn->prepare ('   SELECT grades.grade, grades.created_at, grades.semestar, grades.closing, users.first_name, users.last_name 
-                                    FROM grades INNER JOIN users ON grades.lecturer_id = users.id  
-                                    WHERE grades.student_id = :id');
+        $sql = $connn->prepare ('SELECT grades.lecturer_id, grades.grade, grades.closing, users.first_name, users.last_name, subjects.title 
+                                 FROM grades INNER JOIN users ON grades.lecturer_id = users.id INNER JOIN subjects ON grades.lecturer_id = subjects.lecturer_id
+                                 WHERE grades.student_id = :id');
 
         $sql->execute (array(':id' => $child_id));
 
-        $this->grades_data = $sql->fetchAll();
-        
-        var_dump($this->grades_data);
+        $this->grades_data = $sql->fetchAll(PDO::FETCH_GROUP);
     }
 }
