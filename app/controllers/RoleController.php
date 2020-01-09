@@ -2,10 +2,17 @@
 
 class RoleController extends BaseController
 {
-
+    protected $role_id = '1';
+    
     public function __construct($request)
     {
         $this->request = $request;
+        $this->checkSession();
+        if ($this->checkRole($this->role_id) === false)
+        {
+            echo 'NEMAS PRISTUP!';
+            exit;
+        }
     }
 
     public function roles()
@@ -19,8 +26,10 @@ class RoleController extends BaseController
     }
 
     public function roleAdd()
-    {
-        $this->loadView('admin', 'roleadd');
+    {   
+        $view = new View();
+        $view->loadPage('admin', 'roleadd');
+    
         if (!empty($this->request->post_params['role']) && isset($this->request->post_params['submit'])) {
             $role = new Role();
             $role->addRole($this->request->post_params['role']);

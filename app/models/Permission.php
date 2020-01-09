@@ -41,22 +41,10 @@ class Permission extends BaseModel
     public function updateRolePermissions($inserted_permission_id, $role_ids)
     {
         require('./app/db.php');
+
         foreach ($role_ids as $role_id) {
             $sql = $conn->prepare('insert into role_permissions (permission_id, role_id, access) values (?, ?, ?)');
-            $sql->execute(array($inserted_permission_id, $role_id, '0'));
-        }
-    }
-
-    public function asignRolePermission($role_ids, $inserted_permission_id)
-    {
-        require('./app/db.php');
-
-        foreach($role_ids as $role_id) {
-            $sql = $conn->prepare('update role_permissions 
-                                    set role_permissions.access = 1
-                                    where
-                                    role_id = '.$role_id.' and permission_id = '.$inserted_permission_id);
-            $sql->execute();
+            $sql->execute(array($inserted_permission_id, $role_id, '1'));
         }
     }
 
@@ -86,32 +74,18 @@ class Permission extends BaseModel
         $forbidden_permissions_sql_prep = array_map(function($permission_id){
             return array($permission_id, 0);
         }, $forbidden_permissions);
-
+        
         //ids permisija, dozvoljene imaju access = 1 , a nedozvoljene = 0
         $permissions_map = array_merge($allowed_permissions_sql_prep, $forbidden_permissions_sql_prep);
-        // var_dump($permissions_map);
-
+        
         require('./app/db.php');
-
+    
         foreach ($permissions_map as $permission_role_access_pair) {
-            $sql = 'insert into role_permissions (permission_id, role_id, access) 
-                    values ('. $permission_role_access_pair[0].','. $role_id.', 0);
-                    update role_permissions set access = '.$permission_role_access_pair[1].'
-                    where role_id = '.$role_id.' and permission_id = '. $permission_role_access_pair[0];
-                    try {
-                        $stmt = $conn->prepare($sql);
-                        $stmt->execute();
-                    }
-                    catch (PDOException $e)
-                    {
-                        echo $e->getMessage();
-                        die();
-                    }
+
+            $sql = $conn->prepare('update role_permissions set access = "'.$permission_role_access_pair[1].'"
+                                    where role_id = '.$role_id.' 
+                                    and permission_id = '. $permission_role_access_pair[0].';');
+            $sql->execute();
         }
     }
 }
-
-// var_dump('gotovo'); die;
-// $sql = $conn->prepare('update role_permissions set access = '.$permission_role_access_pair[1].'
-//         where role_id = '.$role_id.' and permission_id = '. $permission_role_access_pair[0]);
-//         $sql->execute();

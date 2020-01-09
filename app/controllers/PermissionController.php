@@ -2,10 +2,17 @@
 
 class PermissionController extends BaseController
 {
-   
+    protected $role_id = '1';
+
     public function __construct($request)
     {
         $this->request = $request;
+        $this->checkSession();
+        if ($this->checkRole($this->role_id) === false)
+        {
+            echo 'NEMAS PRISTUP!';
+            exit;
+        }
     }
 
     public function permissions()
@@ -36,8 +43,7 @@ class PermissionController extends BaseController
 
         if (!empty($permission_param) && !empty($role_param) && isset($submit)) {
             $inserted_permission_id = $permission->addPermission($permission_param);
-            $permission->updateRolePermissions($inserted_permission_id, $role_param);
-            $asign_role_permission = $permission->asignRolePermission($role_param, $inserted_permission_id);
+            $permission->updateRolePermissions($inserted_permission_id, $role_param);   
             header('Location: /permissions');
         }   
     }
@@ -81,8 +87,7 @@ class PermissionController extends BaseController
             //otherwise it returns its second operand.
             $allowed_permissions = $this->request->post_params['allowed'] ?? array();
             //allowed_permissions su permisije koje su dozvoljene(checkirane)
-            // var_dump('DA');
-            // var_dump($allowed_permissions);
+            
             $available_permissions_raw = $permissions->selectPermissions($id);
             $available_permissions = array_map(function($permission_row){
                 return $permission_row['id'];
@@ -92,9 +97,6 @@ class PermissionController extends BaseController
             // forbidden_permissions su permisije koje nisu dozvoljene ili su unchecked, dobijamo ih 
             //diferencijom SVIH(available_permissions) i ONIH koje su checkirane(allowed_permissions)
             $forbidden_permissions = array_diff($available_permissions, $allowed_permissions);         
-            // var_dump('NE');
-            // var_dump($forbidden_permissions);
-            // var_dump($id);
             $permissions->updatePermissions($id, $allowed_permissions, $forbidden_permissions);
         }
         

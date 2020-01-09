@@ -1,12 +1,18 @@
 <?php
-
-class UserController extends BaseController
+//user nasledjuje admina, a admin bazni kontroler
+class UserController extends AdminController
 {
+    protected $role_id = '1';
 
     public function __construct($request)
     {
         $this->request = $request;
         $this->checkSession();
+        if ($this->checkRole($this->role_id) === false)
+        {
+            echo 'NEMAS PRISTUP!';
+            exit;
+        }
     }
 
     public function showAll()

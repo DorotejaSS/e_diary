@@ -2,7 +2,7 @@
 
 class PrincipalController extends BaseController
 {
-    private $role_id = '2';
+    protected $role_id = '2';
 
     public function __construct()
     {
@@ -13,6 +13,7 @@ class PrincipalController extends BaseController
             echo 'NEMAS PRISTUP!';
             exit;
         }
+        var_dump(2);
     }
 
     public function homePage()
