@@ -81,16 +81,20 @@ class PermissionController extends BaseController
             //otherwise it returns its second operand.
             $allowed_permissions = $this->request->post_params['allowed'] ?? array();
             //allowed_permissions su permisije koje su dozvoljene(checkirane)
-
+            // var_dump('DA');
+            // var_dump($allowed_permissions);
             $available_permissions_raw = $permissions->selectPermissions($id);
             $available_permissions = array_map(function($permission_row){
                 return $permission_row['id'];
             }, $available_permissions_raw);
-           // available_permissions su sve permisije koje postoje
+            // available_permissions su sve permisije koje postoje
             
             // forbidden_permissions su permisije koje nisu dozvoljene ili su unchecked, dobijamo ih 
             //diferencijom SVIH(available_permissions) i ONIH koje su checkirane(allowed_permissions)
             $forbidden_permissions = array_diff($available_permissions, $allowed_permissions);         
+            // var_dump('NE');
+            // var_dump($forbidden_permissions);
+            // var_dump($id);
             $permissions->updatePermissions($id, $allowed_permissions, $forbidden_permissions);
         }
         
