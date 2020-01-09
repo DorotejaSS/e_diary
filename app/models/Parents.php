@@ -41,6 +41,8 @@ class Parents extends BaseModel
 
         $sql->execute (array(':id' => $child_id));
 
-        $this->grades_data = $sql->fetchAll(PDO::FETCH_GROUP);
+        //$result = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        $this->grades_data = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 }
