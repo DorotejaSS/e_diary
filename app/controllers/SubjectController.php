@@ -11,7 +11,7 @@ class SubjectController extends AdminController
     {   
         var_dump('PREDMETI');
         $subject = new Subject();
-        $subject_data = $subject->lecturerSubject('subjects', 'users', '3');
+        $subject_data = $subject->lecturerSubject();
 
         $view = new View();
         $view->data = $subject_data;

@@ -2,7 +2,7 @@
 
 class Subject extends BaseModel
 {
-    public function lecturerSubject($table1, $table2, $role_id)
+    public function lecturerSubject()
     {
         require('./app/db.php');
         //table 1 subjects
@@ -12,9 +12,9 @@ class Subject extends BaseModel
         //select users.id, users.first_name, users.last_name, subjects.* 
         //from subjects right join users on role_id = 3
 
-        $sql = $conn->prepare('select '.$table2.'.first_name, '.$table2.'.last_name, 
-                                '.$table1.'.title, '.$table1.'.lecturer_id 
-                                from '.$table1.' right join '.$table2.' on role_id = '.$role_id.'');
+        $sql = $conn->prepare('select users.first_name, users.last_name, 
+                                users.title, .subjects.lecturer_id 
+                                from subjects inner join users on subject.lecturer_id = users.id');
                                 var_dump($sql);
         $sql->execute();
         $data = [];
