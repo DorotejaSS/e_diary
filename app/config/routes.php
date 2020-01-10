@@ -32,9 +32,8 @@ $routes = array(
 
     '/subjects' => 'SubjectController@showAll',
 
-    '/parents' => 'ParentController@showChild',
-
-
+    '/parents' => 'ParentController@index',
+    '/parents/:id' => 'ParentController@showGrades',
 
     '/professor' => 'ProfessorController@homePage',
 
