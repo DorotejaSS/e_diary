@@ -3,8 +3,12 @@
 class BaseModel
 {
 
-    public function __construct()
-    {   
+    protected $request;
+
+    public function __construct($request)
+    {
+        $this->request = $request;
+        var_dump($this->request); die;
     }
 
     public function showAll($table)

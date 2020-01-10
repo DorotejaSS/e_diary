@@ -33,18 +33,12 @@ $routes = array(
     '/subjects' => 'SubjectController@showAll',
     '/subjects/add' => 'SubjectController@addSubject',
 
-    '/parents' => 'ParentController@showChild',
-
-
+    '/parents' => 'ParentController@index',
+    '/parents/:id' => 'ParentController@showGrades',
 
     '/professor' => 'ProfessorController@homePage',
 
-    '/grades' => 'GradesController@Grades',
-    '/grades/:id/addgrades' => 'ProfessorController@addGrades',
-    '/grades/:id/editgrades' => 'ProfessorController@editGrades',
-    '/grades/:id/concludegrades' => 'ProfessorController@concludeGrades',
-
-
+    
     '/principal' => 'PrincipalController@homePage',
     '/teacher' => 'TeacherController@studentGroup'
 );
