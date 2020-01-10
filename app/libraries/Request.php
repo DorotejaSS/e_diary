@@ -15,20 +15,20 @@ class Request
         $this->extractGetParams();
         $this->extractPostParams();
     }
-    // razdvajamo url parts 
+   
     private function extractUrl()
     {
         $url = explode('?', $_SERVER['REQUEST_URI']);
         $url = explode('/', substr($url[0], 1));
         $this->url_parts = $url;
     }
-    // i drugi deo koji je get parts, ovo path ce vam biti jasno kada pogledate htaccess ,trazi deo 'path'
+
     private function extractGetParams()
     {
         unset($_GET['path']);
         $this->get_params = $_GET;
     }
-    // sve sto dobijamo postom stavljamo u array post_params
+   
     private function extractPostParams()
     {
         $this->post_params = $_POST;
