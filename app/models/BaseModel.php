@@ -11,7 +11,21 @@ class BaseModel
     {
         require('./app/db.php');
 
-        $sql = $conn->prepare('select * from '.$table.'');
+        $sql = $conn->prepare('select *  from '.$table.'');
+        $sql->execute();
+
+        $results = [];
+        while ($row = $sql->fetchAll()) {
+            $results = $row;
+        }
+        return $results;
+    }
+
+     public function distinctShowAll($table)
+    {
+        require('./app/db.php');
+
+        $sql = $conn->prepare('select distinct title from '.$table.'');
         $sql->execute();
 
         $results = [];
@@ -36,12 +50,12 @@ class BaseModel
         return $data;
     }
 
-    public function getByRoleId($table, $role_id)
+    public function getByRoleId($id)
     {        
         require('./app/db.php');
 
-        $sql = $conn->prepare('select * from '.$table. ' where role_id ='.$role_id.'');
-        
+        $sql = $conn->prepare('select subjects.title, users.first_name, users.last_name from subjects 
+                                join users where users.role_id = 3 and users.id = '.$id.' and subjects.lecturer_id = users.id');
         $sql->execute();
 
         $data = [];

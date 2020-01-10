@@ -30,9 +30,13 @@ class UserController extends AdminController
         $id = $this->request->url_parts[1];
         $user = new User();
         $get_one_user = $user->getOne('users', $id);
-
         $view = new View();
-        $view->data = $get_one_user[0];
+        
+        if ($get_one_user[0]['role_id'] === '3') {
+            $get_by_role_id = $user->getByRoleId($id);
+        }
+        $view->data['prof_data'] = $get_by_role_id  ?? array();
+        $view->data['user'] = $get_one_user[0];
         $view->loadPage('admin', 'showoneuser');
     }
 
@@ -41,17 +45,33 @@ class UserController extends AdminController
         $id = $this->request->url_parts[1];
         $user = new User();
         $get_one_user = $user->getOne('users', $id);
-
+        $show_all_subj = $user->distinctShowAll('subjects');
+        
         $view = new View();
-        $view->data = $get_one_user[0];
-        $view->loadPage('admin', 'showoneuser');
+        $view->data['subjects'] = $show_all_subj;
+       
+        if ($get_one_user[0]['role_id'] === '3') {
+            $get_by_role_id = $user->getByRoleId($id);
+            
+        }
+        $view->data['prof_data'] = $get_by_role_id  ?? array();
+        $view->data['user'] = $get_one_user[0];
         $view->loadPage('admin', 'edituser');
+
+         if ($get_one_user[0]['role_id'] === '3' && isset($this->request->post_params['submit'])) {
+             $user = new User();
+             $user->update($id);
+             var_dump($user->update($id));
+             $subject = new Subject();
+             $subject->update($id);
+             header('Location: /users');
+         }
      
-        if (isset($_POST['submit'])) {
+        if (isset($this->request->post_params['submit'])) {
             $user = new User();
             $user->update($id);
-            header('Location: /users');
         }
+    
     }
 
     public function delete()

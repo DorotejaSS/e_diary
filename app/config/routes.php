@@ -31,6 +31,7 @@ $routes = array(
     '/users/:id/delete' => 'UserController@delete',
 
     '/subjects' => 'SubjectController@showAll',
+    '/subjects/add' => 'SubjectController@addSubject',
 
     '/parents' => 'ParentController@showChild',
 

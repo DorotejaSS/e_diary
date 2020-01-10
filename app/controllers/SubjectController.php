@@ -15,7 +15,24 @@ class SubjectController extends AdminController
 
         $view = new View();
         $view->data = $subject_data;
-        var_dump($view->data);
         $view->loadPage('admin', 'subjects');
     }
+
+    public function addSubject()
+    {
+        echo 'ovde dodajemo novi predmet';
+        $view = new View();
+        $view->loadPage('admin', 'addsubject');
+        die;
+        if (isset($_POST['submit'])) {
+            $user = new User();
+            $user->add();
+            header('Location: /users');
+        }
+    }
 }
+    
+        
+        
+        
+    
