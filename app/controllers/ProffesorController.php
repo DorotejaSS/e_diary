@@ -1,6 +1,6 @@
 <?php
 
-    class ProffesorController extends BaseController 
+    class ProfessorController extends BaseController 
     {
         protected $role_id = '3';
 
@@ -21,7 +21,7 @@
             $user = new User();
             $user->permissionTitles($this->role_id);
             var_dump($user->permissionTitles($this->role_id));
-            $this->loadView('proffesor', 'index');
+            $this->loadView('professor', 'index');
             $this->loadView('pages', 'welcome');
         }
         
