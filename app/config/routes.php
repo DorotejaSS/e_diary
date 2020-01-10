@@ -37,12 +37,7 @@ $routes = array(
 
     '/professor' => 'ProfessorController@homePage',
 
-    '/grades' => 'GradesController@Grades',
-    '/grades/:id/addgrades' => 'ProfessorController@addGrades',
-    '/grades/:id/editgrades' => 'ProfessorController@editGrades',
-    '/grades/:id/concludegrades' => 'ProfessorController@concludeGrades',
-
-
+    
     '/principal' => 'PrincipalController@homePage',
     '/teacher' => 'TeacherController@studentGroup'
 );
