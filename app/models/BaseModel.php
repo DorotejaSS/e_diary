@@ -5,10 +5,10 @@ class BaseModel
 
     protected $request;
 
-    public function __construct($request)
+    public function __construct()
     {
-        $this->request = $request;
-        var_dump($this->request); die;
+        // $this->request = $request;
+        // var_dump($this->request); die;
     }
 
     public function showAll($table)
@@ -60,6 +60,20 @@ class BaseModel
 
         $sql = $conn->prepare('select subjects.title, users.first_name, users.last_name from subjects 
                                 join users where users.role_id = 3 and users.id = '.$id.' and subjects.lecturer_id = users.id');
+        $sql->execute();
+
+        $data = [];
+        while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    public function getUsersByRoleId($role_id)
+    {
+        require('./app/db.php');
+
+        $sql = $conn->prepare('select * from users where role_id = '.$role_id.'');
         $sql->execute();
 
         $data = [];

@@ -58,14 +58,15 @@ class UserController extends AdminController
         $view->data['user'] = $get_one_user[0];
         $view->loadPage('admin', 'edituser');
 
-         if ($get_one_user[0]['role_id'] === '3' && isset($this->request->post_params['submit'])) {
-             $user = new User();
-             $user->update($id);
-             var_dump($user->update($id));
-             $subject = new Subject();
-             $subject->update($id);
-             header('Location: /users');
-         }
+        if ($get_one_user[0]['role_id'] === '3' && isset($this->request->post_params['submit'])) {
+            $user = new User();
+            $user->update($id);
+            var_dump($user->update($id));
+            $subject = new Subject();
+            $subject->update($id);
+    
+            // header('Location: /users');
+        }
      
         if (isset($this->request->post_params['submit'])) {
             $user = new User();

@@ -7,6 +7,7 @@
     <title>User</title>
 </head>
 <body>
+    <?php var_dump($this->data);?>
     <?php $id = $this->data['user']['id'];?>
     <?php var_dump($id);?>
 

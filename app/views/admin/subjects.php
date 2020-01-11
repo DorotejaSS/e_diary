@@ -19,12 +19,14 @@
                 <th width=100>Role ID</th>
             </tr>
             <?php foreach ($this->data as $key => $value) : ?>
-                <?php $id = $value['lecturer_id']; ?>
+                <?php $lecturer_id = $value['lecturer_id']; ?>
+                <?php $subject_id = $value['id']; ?>
+                
                     <tr> 
-                        <td> <?php echo $value['title']; ?> </td>
-                        <td> <?php echo $id; ?> </td>
-                        <td><a href="/users/<?= $id ?>"> <?php echo $value['first_name']; ?></a></td>
-                        <td><a href="/users/<?= $id ?>"> <?php echo $value['last_name']; ?></a></td>
+                        <td><a href="/subjects/<?= $subject_id ?>"> <?php echo $value['title']; ?> </td>
+                        <td> <?php echo $lecturer_id; ?> </td>
+                        <td><a href="/users/<?= $lecturer_id ?>"> <?php echo $value['first_name']; ?></a></td>
+                        <td><a href="/users/<?= $lecturer_id ?>"> <?php echo $value['last_name']; ?></a></td>
                         <td> <?php echo $value['role_id']; ?> </td>
                     </tr>
             <?php endforeach; ?>

@@ -32,6 +32,9 @@ $routes = array(
 
     '/subjects' => 'SubjectController@showAll',
     '/subjects/add' => 'SubjectController@addSubject',
+    '/subjects/:id' => 'SubjectController@getOne',
+    '/subjects/:id/edit' => 'SubjectController@edit',
+    '/subjects/:id/delete' => 'SubjectController@delete',
 
     '/parents' => 'ParentController@index',
     '/parents/:id' => 'ParentController@showGrades',
