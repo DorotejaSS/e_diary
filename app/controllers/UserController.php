@@ -64,8 +64,8 @@ class UserController extends AdminController
             var_dump($user->update($id));
             $subject = new Subject();
             $subject->update($id);
-    
             // header('Location: /users');
+    
         }
      
         if (isset($this->request->post_params['submit'])) {
@@ -78,8 +78,8 @@ class UserController extends AdminController
     public function delete()
     {
         $id = $this->request->url_parts[1];
-        $user = new User();
-        $user->delete($id);
+        $base_model = new BaseModel();
+        $base_model->delete('users', $id);
         header('Location: /users');
     }
 

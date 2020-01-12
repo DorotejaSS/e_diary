@@ -83,6 +83,22 @@ class BaseModel
         return $data;
     }
 
+    public function edit($table, $content, $id)
+    {
+        require('./app/db.php');
+        $sql = $conn->prepare('update '.$table.' set title = "'.$content.'" where id = "'.$id.'"');
+        
+        $sql->execute();
+    }
+
+    public function delete($table, $id)
+    {
+        require('./app/db.php');
+       
+        $sql = $conn->prepare('delete from '.$table.' where id = ?');
+        $sql->execute(array($id));
+    }
+
 
 
 

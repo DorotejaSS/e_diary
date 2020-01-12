@@ -57,17 +57,22 @@ class SubjectController extends AdminController
     
         $base_model = new BaseModel();
         $base_model->getOne('subjects', $id);
-        $base_model->getUsersByRoleId('3');
 
         $view->data['subject_data'] = $base_model->getOne('subjects', $id)[0];
-        $view->data['lecturers'] = $base_model->getUsersByRoleId('3');
-        $view->loadPage('admin', 'editsubject'); die;
+        $view->loadPage('admin', 'editsubject'); 
 
-        if (isset($this->request->post_params['submit'])) {
-            $permission = new Permission();
-            $permission->edit($id);
-            header('Location: /permissions');
+        if (!empty($this->request->post_params['subject']) && isset($this->request->post_params['submit'])) {
+            $base_model->edit('subjects',$this->request->post_params['subject'], $id);
+            header('Location: /subjects');
         }
+    }
+
+    public function delete()
+    {
+        $id = $this->request->url_parts[1];
+        $base_model = new BaseModel();
+        $base_model->delete('subjects', $id);
+        header('Location: /subjects');
     }
 }
     

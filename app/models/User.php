@@ -47,14 +47,6 @@ class User extends BaseModel
         $this->checkCredentials($this->role_id);
     }
 
-    public function delete($id)
-    {
-        require('./app/db.php');
-
-        $sql = $conn->prepare('delete from users where id = ?');
-        $sql->execute(array($id));
-    }
-
     public function update($id)
     {
         require('./app/db.php');

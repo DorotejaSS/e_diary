@@ -12,14 +12,6 @@ class Role extends BaseModel
         $sql->execute();
     }
 
-    public function delete($id)
-    {
-        require('./app/db.php');
-       
-        $sql = $conn->prepare('delete from roles where id = ?');
-        $sql->execute(array($id));
-    }
-
     public function addRole($role)
     {
         require('./app/db.php');
