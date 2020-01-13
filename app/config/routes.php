@@ -33,6 +33,7 @@ $routes = array(
     '/subjects' => 'SubjectController@showAll',
 
     '/schedule' => 'ScheduleController@index',
+    '/ajax' => 'ScheduleController@ajax',
 
     '/parents' => 'ParentController@index',
     '/parents/:id' => 'ParentController@showGrades',

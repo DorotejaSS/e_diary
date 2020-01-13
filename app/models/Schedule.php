@@ -2,21 +2,11 @@
 
 class Schedule extends BaseModel
 {
+    public $result;
+
     public function __construct()
     {
-        if (isset($_POST['func']))
-        {
-            switch ($_POST['func'])
-            {
-                case 'getSubGroup':
-                    $this->getSubGroup();
-                break;
-                
-                default:
-                    echo 'Nista!';
-
-            }
-        }
+       
     }
 
     public function getSubGroup()
@@ -27,8 +17,10 @@ class Schedule extends BaseModel
 
         $sql->execute ();
 
-        $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+        $this->result = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-        echo json_encode($result, 256);
+        //var_dump($this->result);
+
+        //echo json_encode($result, 256);
     }
 }
