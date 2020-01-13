@@ -27,6 +27,10 @@
       <li class="nav-item">
         <a class="nav-link"  href="/subjects">Subjects</a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link"  href="/students">Students</a>
+      </li>
     </ul>
 
       <ul class="navbar-nav ml-auto">
@@ -48,10 +52,3 @@
 
 <?php include './app/views/inc/footer.php'; ?>
 
-<<<<<<< HEAD
-=======
-<button><a href="/users">USERS</a></button>
-<button><a href="/roles">ROLES</a></button>
-<button><a href="/subjects">SUBJECTS</a></button>
-<button><a href="/students">STUDENTS</a></button>
->>>>>>> ace92c36213e55a9906fd764726b6438465259ba
