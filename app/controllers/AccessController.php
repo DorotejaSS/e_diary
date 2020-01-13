@@ -8,7 +8,8 @@ class AccessController extends BaseController
     public function __construct($request)
     {
         $this->request = $request;
-        var_dump($this->request);
+        //čišćene ekrana
+        /*var_dump($this->request);*/
     }
     
     public function login()
