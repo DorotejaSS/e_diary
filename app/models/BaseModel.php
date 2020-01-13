@@ -2,13 +2,8 @@
 
 class BaseModel
 {
-
-    protected $request;
-
     public function __construct()
     {
-        // $this->request = $request;
-        // var_dump($this->request); die;
     }
 
     public function showAll($table)
@@ -98,9 +93,5 @@ class BaseModel
         $sql = $conn->prepare('delete from '.$table.' where id = ?');
         $sql->execute(array($id));
     }
-
-
-
-
 
 }
