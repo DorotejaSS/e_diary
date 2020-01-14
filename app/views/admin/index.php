@@ -13,34 +13,30 @@
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item">
-        <a class="nav-link"  href="/admin">Admin page</a>
+        <a class="nav-link" href="/admin">Admin page</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link"  href="/users">Users</a>
+        <a class="nav-link" href="/users">Users</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link"  href="/roles">Roles</a>
+        <a class="nav-link" href="/roles">Roles</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link"  href="/subjects">Subjects</a>
+        <a class="nav-link" href="/subjects">Subjects</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link"  href="/students">Students</a>
+        <a class="nav-link" href="/students">Students</a>
       </li>
-<<<<<<< HEAD
-
-=======
->>>>>>> f660d2f734532bb70b4297b62efdb8fb547467f5
     </ul>
 
       <ul class="navbar-nav ml-auto">
         
         <li class="nav-item">
-            <a class="btn btn-success btn-block"  href="logout">Sign Out</a>
+            <a class="btn btn-success btn-block" href="logout">Sign Out</a>
         </li>
     </ul>
 

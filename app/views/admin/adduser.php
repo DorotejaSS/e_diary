@@ -31,13 +31,17 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link"  href="/admin">Admin page</a>
+        <a class="nav-link" href="/admin">Admin page</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/users">Users</a>
       </li>
     </ul>
 
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="btn btn-success btn-block"  href="logout">Sign Out</a>
+            <a class="btn btn-success btn-block" href="logout">Sign Out</a>
         </li>
     </ul>
 </div>
@@ -45,7 +49,7 @@
 
 <div class="row">
 <div class="col-md-6 mx-auto">
-<div class="card card-body bg-light mt-5">
+<div class="card card-body bg-light mt-5" style="box-shadow: 10px 10px 5px grey; border-radius: 0 0 0 0;">
 
 <h2>New user</h2>
 <p>Please fill the data for new user</p>
