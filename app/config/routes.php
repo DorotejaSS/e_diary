@@ -7,6 +7,8 @@ $routes = array(
 
     '/students' => 'StudentController@showAll',
     '/students/:id' => 'StudentController@getOne',
+    '/students/:id/edit' => 'StudentController@edit',
+    '/students/:id/delete' => 'StudentController@delete',
 
     '/admin' => 'AdminController@homePage',
 

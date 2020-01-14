@@ -28,13 +28,17 @@ class UserController extends AdminController
     public function getOne()
     {
         $id = $this->request->url_parts[1];
-        $user = new User();
-        $get_one_user = $user->getOne('users', $id);
+        $base_model = new BaseModel();
+        $get_one_user = $base_model->getOne('users', $id);
         $view = new View();
         
         if ($get_one_user[0]['role_id'] === '3') {
-            $get_by_role_id = $user->getByRoleId($id);
+            $get_by_role_id = $base_model->getByRoleId($id);
+        } else if($get_one_user[0]['role_id'] === '5') {
+            var_dump('roditelj');
+            $bring_the_child = $base_model->usersChild($id);
         }
+        $view->data['child_data'] = $bring_the_child ?? array();
         $view->data['prof_data'] = $get_by_role_id  ?? array();
         $view->data['user'] = $get_one_user[0];
         $view->loadPage('admin', 'showoneuser');
@@ -49,11 +53,10 @@ class UserController extends AdminController
         
         $view = new View();
         $view->data['subjects'] = $show_all_subj;
-       
         if ($get_one_user[0]['role_id'] === '3') {
             $get_by_role_id = $user->getByRoleId($id);
-            
-        }
+        } 
+
         $view->data['prof_data'] = $get_by_role_id  ?? array();
         $view->data['user'] = $get_one_user[0];
         $view->loadPage('admin', 'edituser');
@@ -61,7 +64,6 @@ class UserController extends AdminController
         if ($get_one_user[0]['role_id'] === '3' && isset($this->request->post_params['submit'])) {
             $user = new User();
             $user->update($id);
-            var_dump($user->update($id));
             $subject = new Subject();
             $subject->update($id);
             // header('Location: /users');
