@@ -19,36 +19,43 @@ class StudentController
 
     public function getOne()
     {
-        $this->getParents(); die;
+        $id = $this->request->url_parts[1];
+        $parent = new Parents($this->request);
+        $parent_data = $parent->parentStudentCollation($id);
+        $base_model = new BaseModel();
+        $get_one_student = $base_model->getOne('students', $id);
+
+        $view = new View();
+        $view->data['parent_data'] = $parent_data[0];
+        $view->data['student_data'] = $get_one_student[0];
+        $view->loadPage('admin', 'onestudent');
+    }
+
+    public function edit()
+    {
         $id = $this->request->url_parts[1];
         $base_model = new BaseModel();
         $get_one_student = $base_model->getOne('students', $id);
 
         $view = new View();
-        $view->data['prof_data'] = $get_by_role_id  ?? array();
-        $view->data['user'] = $get_one_user[0];
-        $view->loadPage('admin', 'showoneuser');
+        $view->data['student'] = $get_one_student[0];
+        $view->loadPage('admin', 'editstudent'); 
+
+         if (isset($this->request->post_params['submit'])) {
+            $student = new Student($this->request);
+            $student->update($id);
+            header('Location: /students');
+        }
     }
 
-    public function getParents()
+    public function delete()
     {
+        $id = $this->request->url_parts[1];
         $base_model = new BaseModel();
-        $parents = $base_model->getUsersByRoleId('5');
-        $students = $base_model->showAll('students');
-        
-        $student_ids = [];
-        foreach ($students as $key => $student) {
-            $student_ids['student_id'][] = $student['id'];
-        }
-        
-        $parent_ids = [];
-        foreach ($parents as $key => $parent) {
-            $parent_ids['parent_id'][] = $parent['id']; 
-        }
-        var_dump($parent_ids);
-        $parent = new Parents($this->request);
-        $parent->asignParentsToStudent($parent_ids, $student_ids);
+        $base_model->delete('students', $id);
+        header('Location: /students');
     }
+    
 
 
 }

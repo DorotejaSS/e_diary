@@ -45,4 +45,21 @@ class Parents extends BaseModel
 
         $this->grades_data = $sql->fetchAll(PDO::FETCH_ASSOC);           
     }
+
+    public function parentStudentCollation($id)
+    {
+         require('./app/db.php');
+
+        $sql = $conn->prepare('select u.id, u.first_name, u.last_name, u.email, u.last_login_at
+                                from users as u 
+                                join students as s 
+                                where s.parent_id = u.id and s.id = '.$id.'');
+        $sql->execute();
+
+        $data = [];
+        while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+            $data[] = $row;
+        }
+        return $data;
+    }
 }
