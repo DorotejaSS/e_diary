@@ -1,8 +1,10 @@
 html,body {
     margin: 0 auto;
-   }
+}
    
-   body {
+body {
     background: url(../img/dnevnik.jpg) no-repeat fixed;
     background-size: cover;
-   }
+}
+
+

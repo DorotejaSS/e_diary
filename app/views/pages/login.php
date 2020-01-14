@@ -11,8 +11,6 @@
 <p>Please fill in your credentials to log in</p>
 <form action="" method="post" autocomplete="on">
 <div class="form-group">
-
-<!--<label for="email"> Email: <sup>*</sup></label>-->
 <img src="public/img/email.png" alt="email" width="20" height="20"><label for="email"> Email:<span class="req"> *</span></label>
 <input type="email" name="email" class="form-control form-control-lg">
 </div>
