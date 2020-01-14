@@ -6,7 +6,7 @@
         <meta charset=UTF-8>
         <meta name=viewport content=width=device-width, initial-scale=1.0>
         <meta http-equiv=X-UA-Compatible content=ie=edge>
-        <title>User</title>
+            <title>User</title>
         <style>
 #myTable {
     position:	relative;
@@ -22,6 +22,11 @@
 	padding-top: 30px;
     margin-bottom: 60px;
     margin-top: 80px;
+}
+
+.subject, .child{
+   margin-top: 100px;
+   color: white;
 }
 
 th, td {
@@ -58,31 +63,26 @@ th {
                     <li class="nav-item">
                         <a class="nav-link" href="/admin">Admin page</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="/users">Users</a>
                     </li>
-
                     <li class="nav-item mr-2">
                         <a class="btn btn-success btn-block" href="/users/<?= $id ?>/edit">Edit</a>
                     </li>
-                    </br>
                     <li class="nav-item">
                         <a class="btn btn-success btn-block" href="/users/<?= $id; ?>/delete">Delete</a>
                     </li>
-
                 </ul>
-
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="btn btn-success btn-block" href="logout">Sign Out</a>
                     </li>
                 </ul>
             </div>
-        
         </nav>
-
-        <h3><?php echo $this->data['prof_data'][0]['title'] ?? false; ?></h3>
+        <div class="subject">
+            <h3><?php echo $this->data['prof_data'][0]['title'] ?? false; ?></h3>
+        </div>
         
         <table id="myTable">
             <tr>
@@ -109,15 +109,11 @@ th {
                 <td><?php echo $this->data['user']['last_login_at']; ?></td> 
             </tr>  
         </table> 
-    </body>
-</html>
-
-
     
         <?php if (isset($this->data['child_data'])) : ?>
             
             <?php foreach ($this->data['child_data'] as $key => $child) : ?>
-                <h3>Child</h3>
+                <h3 class="child">Child</h3>
 
                 <table id="myTable">
                     <tr>
@@ -142,7 +138,6 @@ th {
         <?php endif; ?>
     </body>
 </html>
-<body>
 
 
 <?php include './app/views/inc/footer.php'; ?>
