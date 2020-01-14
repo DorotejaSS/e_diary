@@ -1,4 +1,3 @@
-<?php include './app/views/inc/header.php'; ?>
 <!DOCTYPE html>
 <html lang=en>
     <head>
