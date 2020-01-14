@@ -108,4 +108,11 @@ class BaseModel
         $sql->execute(array($id));
     }
 
+    public function deleteParent($id)
+    {
+        require('./app/db.php');
+        $sql = $conn->prepare('update students set parent_id = null where parent_id = '.$id.'');
+        $sql->execute();
+    }
+
 }

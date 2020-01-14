@@ -26,7 +26,7 @@ class StudentController
         $get_one_student = $base_model->getOne('students', $id);
 
         $view = new View();
-        $view->data['parent_data'] = $parent_data[0];
+        $view->data['parent_data'] = $parent_data[0] ?? array();
         $view->data['student_data'] = $get_one_student[0];
         $view->loadPage('admin', 'onestudent');
     }

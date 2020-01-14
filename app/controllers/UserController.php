@@ -81,6 +81,7 @@ class UserController extends AdminController
     {
         $id = $this->request->url_parts[1];
         $base_model = new BaseModel();
+        $base_model->deleteParent($id);
         $base_model->delete('users', $id);
         header('Location: /users');
     }
