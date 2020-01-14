@@ -45,6 +45,7 @@ class StudentController
         foreach ($parents as $key => $parent) {
             $parent_ids['parent_id'][] = $parent['id']; 
         }
+        var_dump($parent_ids);
         $parent = new Parents($this->request);
         $parent->asignParentsToStudent($parent_ids, $student_ids);
     }

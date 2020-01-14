@@ -31,7 +31,10 @@
       <li class="nav-item">
         <a class="nav-link"  href="/students">Students</a>
       </li>
+<<<<<<< HEAD
 
+=======
+>>>>>>> f660d2f734532bb70b4297b62efdb8fb547467f5
     </ul>
 
       <ul class="navbar-nav ml-auto">

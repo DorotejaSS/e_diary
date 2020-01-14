@@ -43,24 +43,6 @@ class Parents extends BaseModel
 
         //$result = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-        $this->grades_data = $sql->fetchAll(PDO::FETCH_ASSOC);
-    }
-// luka mi kaze da mi ovo ne treba.s :)
-    public function asignParentsToStudent($parent_ids, $student_ids)
-    {
-        require('./app/db.php');
-
-        $parent_student_ids = array_merge($parent_ids, $student_ids);
-
-            foreach ($parent_ids as $p_id_array) {
-                foreach ($p_id_array as $p_id) {
-                    $sql = $conn->prepare('update students set parent_id = '.$p_id.'');
-                    $sql->execute();
-                    var_dump($sql->execute());
-
-                }
-                
-            }
-             
+        $this->grades_data = $sql->fetchAll(PDO::FETCH_ASSOC);           
     }
 }
