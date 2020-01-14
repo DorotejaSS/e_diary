@@ -5,10 +5,10 @@
         <meta charset=UTF-8>
         <meta name=viewport content=width=device-width, initial-scale=1.0>
         <meta http-equiv=X-UA-Compatible content=ie=edge>
-        <title>Users</title>
+        <title>All Users</title>
         <style>
 #myTable {
-    position:	relative;
+    position: relative;
     border-collapse: collapse;
 	width: 100%;
     height: auto;
@@ -55,17 +55,17 @@ th {
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link"  href="/admin">Admin page</a>
+        <a class="nav-link" href="/admin">Admin page</a>
       </li>
 
       <li class="nav-item">
-        <a class="btn btn-success btn-block"  href="users/add">Add new user</a>
+        <a class="btn btn-success btn-block" href="users/add">Add new user</a>
       </li>
     </ul>
 
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="btn btn-success btn-block"  href="logout">Sign Out</a>
+            <a class="btn btn-success btn-block" href="logout">Sign Out</a>
         </li>
     </ul>
     </div>
