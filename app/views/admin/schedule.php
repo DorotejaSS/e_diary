@@ -17,7 +17,7 @@
         <?php include './app/views/inc/header.php'; ?>
 
         <select id="select">
-            <option selected value="0">--- Chose student group ---</option>
+            <option selected value="0">--- Choose student group ---</option>
         </select>
         <br><br>
 
@@ -33,69 +33,70 @@
             </tr>
             <tr>
                 <td width=100>1.</td>
-                <td width=100><input hidden type="text" name="mon1" id="mon1"></td>
-                <td width=100><input hidden type="text" name="tue1" id="tue1"></td>
-                <td width=100><input hidden type="text" name="wed1" id="wed1"></td>
-                <td width=100><input hidden type="text" name="thr1" id="thr1"></td>
-                <td width=100><input hidden type="text" name="fri1" id="fri1"></td>
-                <td width=100><input hidden type="text" name="sat1" id="sat1"></td>
+                <td width=100 id="mon1"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="tue1"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="wed1"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="thr1"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="fri1"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="sat1"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
             </tr>
             <tr>
                 <td width=100>2.</td>
-                <td width=100><input hidden type="text" name="mon2" id="mon2"></td>
-                <td width=100><input hidden type="text" name="tue2" id="tue2"></td>
-                <td width=100><input hidden type="text" name="wed2" id="wed2"></td>
-                <td width=100><input hidden type="text" name="thr2" id="thr2"></td>
-                <td width=100><input hidden type="text" name="fri2" id="fri2"></td>
-                <td width=100><input hidden type="text" name="sat2" id="sat2"></td>
+                <td width=100 id="mon2"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="tue2"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="wed2"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="thr2"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="fri2"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="sat2"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
             </tr>
             <tr>
                 <td width=100>3.</td>
-                <td width=100><input hidden type="text" name="mon3" id="mon3"></td>
-                <td width=100><input hidden type="text" name="tue3" id="tue3"></td>
-                <td width=100><input hidden type="text" name="wed3" id="wed3"></td>
-                <td width=100><input hidden type="text" name="thr3" id="thr3"></td>
-                <td width=100><input hidden type="text" name="fri3" id="fri3"></td>
-                <td width=100><input hidden type="text" name="sat3" id="sat3"></td>
+                <td width=100 id="mon3"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="tue3"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="wed3"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="thr3"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="fri3"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="sat3"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
             </tr>
             <tr>
                 <td width=100>4.</td>
-                <td width=100><input hidden type="text" name="mon4" id="mon4"></td>
-                <td width=100><input hidden type="text" name="tue4" id="tue4"></td>
-                <td width=100><input hidden type="text" name="wed4" id="wed4"></td>
-                <td width=100><input hidden type="text" name="thr4" id="thr4"></td>
-                <td width=100><input hidden type="text" name="fri4" id="fri4"></td>
-                <td width=100><input hidden type="text" name="sat4" id="sat4"></td>
+                <td width=100 id="mon4"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select> </td>
+                <td width=100 id="tue4"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="wed4"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="thr4"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="fri4"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="sat4"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
             </tr>
             <tr>
                 <td width=100>5.</td>
-                <td width=100><input hidden hidden type="text" name="mon5" id="mon5"></td>
-                <td width=100><input hidden type="text" name="tue5" id="tue5"></td>
-                <td width=100><input hidden type="text" name="wed5" id="wed5"></td>
-                <td width=100><input hidden type="text" name="thr5" id="thr5"></td>
-                <td width=100><input hidden type="text" name="fri5" id="fri5"></td>
-                <td width=100><input hidden type="text" name="sat5" id="sat5"></td>
+                <td width=100 id="mon5"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="tue5"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="wed5"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="thr5"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="fri5"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="sat5"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
             </tr>
             <tr>
                 <td width=100>6.</td>
-                <td width=100><input hidden type="text" name="mon6" id="mon6"></td>
-                <td width=100><input hidden type="text" name="tue6" id="tue6"></td>
-                <td width=100><input hidden type="text" name="wed6" id="wed6"></td>
-                <td width=100><input hidden type="text" name="thr6" id="thr6"></td>
-                <td width=100><input hidden type="text" name="fri6" id="fri6"></td>
-                <td width=100><input hidden type="text" name="sat6" id="sat6"></td>
+                <td width=100 id="mon6"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="tue6"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="wed6"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="thr6"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="fri6"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="sat6"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
             </tr>
             <tr>
                 <td width=100>7.</td>
-                <td width=100><input hidden type="text" name="mon7" id="mon7"></td>
-                <td width=100><input hidden type="text" name="tue7" id="tue7"></td>
-                <td width=100><input hidden type="text" name="wed7" id="wed7"></td>
-                <td width=100><input hidden type="text" name="thr7" id="thr7"></td>
-                <td width=100><input hidden type="text" name="fri7" id="fri7"></td>
-                <td width=100><input hidden type="text" name="sat7" id="sat7"></td>
+                <td width=100 id="mon7"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="tue7"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="wed7"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="thr7"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="fri7"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
+                <td width=100 id="sat7"> <select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select></td>
             </tr>
-        </table> 
-        <button id="editBttn">Edit</button>
+        </table>
+        <br>
+        <button hidden id="editBttn">Edit</button> <button hidden id="cancelBttn">Cancel</button> <button hidden id="saveBttn">Save</button>
 
         <?php include './app/views/inc/footer.php'; ?>
 
