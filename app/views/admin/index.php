@@ -23,15 +23,21 @@
 				<li class="nav-item">
 					<a class="nav-link" href="/students">Students</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/studentgroup">Student Groups</a>
+				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-					<a class="btn btn-success btn-block" href="logout">Sign Out</a>
+					<a class="btn btn-success btn-block" href="/logout">Sign Out</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
 
 
+<<<<<<< HEAD
 	
 
+=======
+>>>>>>> 0a10ded05efd76a8ca445bca20c5bc99dbd59cfe

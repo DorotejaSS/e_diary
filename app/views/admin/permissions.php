@@ -8,6 +8,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
+<<<<<<< HEAD
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
@@ -47,3 +48,6 @@
             <?php endforeach; ?>
 
 </table>
+=======
+        </table>
+>>>>>>> 0a10ded05efd76a8ca445bca20c5bc99dbd59cfe

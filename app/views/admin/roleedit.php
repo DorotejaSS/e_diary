@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <title>Role Edit</title>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
     <button class="navbar-toggler" type="button" 
@@ -40,3 +41,19 @@
         </div>
     </div>
 </div>
+=======
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Role Edit</title>
+    </head>
+    <body>
+        <form action="" method="post">
+            <label>Role Name: </label>
+            <input type="text" name="role" value="<?php echo $this->data['title']; ?>">
+            <input type="submit" name="submit" value="Save">
+        </form>
+>>>>>>> 0a10ded05efd76a8ca445bca20c5bc99dbd59cfe

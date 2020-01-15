@@ -10,8 +10,8 @@ class Parents extends BaseModel
     public function __construct($request)
     {
         $this->request = $request;
-        if (isset($_SESSION['user_data']))
-        {
+        
+        if (isset($_SESSION['user_data']) && isset($this->request->url_parts[1])) {
             $this->parent_id = $_SESSION['user_data']['id'];
             $this->getChild();
             $this->getGrades($this->request->url_parts[1]);

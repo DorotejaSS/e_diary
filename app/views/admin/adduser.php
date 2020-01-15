@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <title>Add new user</title> 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
     <button class="navbar-toggler" type="button" 
@@ -38,6 +39,40 @@
                 <div class="form-group">
                     <label>Last name:</label>
                     <input type="text" name="last_name" class="form-control form-control">
+=======
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Add new user</title>
+    </head>
+        <body>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
+                <button class="navbar-toggler" type="button" 
+                data-toggle="collapse" 
+                data-target="#navbarsExampleDefault" 
+                aria-controls="navbarsExampleDefault" 
+                aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin">Admin page</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/users">Users</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="btn btn-success btn-block" href="href="/logout">Sign Out</a>
+                        </li>
+                    </ul>
+>>>>>>> 0a10ded05efd76a8ca445bca20c5bc99dbd59cfe
                 </div>
                 <div class="form-group">
                     <label>Email address:</label>
@@ -54,6 +89,7 @@
                 <div class="randpass" align=center>
                     <input type="submit" name="hash" value="Random Password" class="btn btn-success">
                 </div>
+<<<<<<< HEAD
                 </div>
                 <div class="form-group">
                     <label>Role:</label>
@@ -72,3 +108,7 @@
     </div>
 </div>
     
+=======
+            </div>
+        </div>
+>>>>>>> 0a10ded05efd76a8ca445bca20c5bc99dbd59cfe

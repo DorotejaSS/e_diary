@@ -11,7 +11,7 @@ class StudentController
     {
         $base_model = new BaseModel();
         $base_model->showAll('students');
-
+    
         $view = new View();
         $view->data = $base_model->showAll('students');
         $view->loadPage('admin', 'students');
@@ -46,6 +46,8 @@ class StudentController
             $student->update($id);
             header('Location: /students');
         }
+        var_dump($parent_ids);
+        $parent = new Parents($this->request);
     }
 
     public function delete()
