@@ -60,5 +60,3 @@
                 </tr>  
             </table> 
         <?php endif;?>
-    </body>
-</html>

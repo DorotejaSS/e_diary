@@ -1,5 +1,3 @@
-
-<?php include './app/views/inc/header.php'; ?><!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -7,16 +5,6 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Add new user</title>
     </head>
-
-    <style>
-        .row{
-            margin: auto;  
-            margin-top: 80px;
-            margin-bottom: 60px;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
         <body>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
                 <button class="navbar-toggler" type="button" 
@@ -39,7 +27,7 @@
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="btn btn-success btn-block" href="logout">Sign Out</a>
+                            <a class="btn btn-success btn-block" href="href="/logout">Sign Out</a>
                         </li>
                     </ul>
                 </div>
@@ -103,7 +91,3 @@
                 </div>
             </div>
         </div>
-    </body>
-</html>
-
-<?php include './app/views/inc/footer.php'; ?>

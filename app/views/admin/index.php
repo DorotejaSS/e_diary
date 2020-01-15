@@ -1,5 +1,3 @@
-	<?php include './app/views/inc/header.php'; ?>
-
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
 		<button class="navbar-toggler" type="button" 
 				data-toggle="collapse" 
@@ -29,7 +27,7 @@
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-					<a class="btn btn-success btn-block" href="logout">Sign Out</a>
+					<a class="btn btn-success btn-block" href="/logout">Sign Out</a>
 				</li>
 			</ul>
 		</div>
@@ -39,6 +37,4 @@
 		<div class="container">
 
 		</div>
-
-	<?php include './app/views/inc/footer.php'; ?>
 

@@ -32,5 +32,3 @@
 
             <input type="submit" name="submit" value="save">
         </form>
-    </body>
-</html>
