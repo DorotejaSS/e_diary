@@ -35,7 +35,7 @@ class Student
 
         require('./app/db.php');
         $student_group_datas = $this->studentGroupId();
-        var_dump($students_data);
+        var_dump($student_group_datas);
                 
                     // $id = $student_data[1];
                     // $start_year = $student_data[2];
@@ -60,7 +60,7 @@ class Student
     {
          require('./app/db.php');
 
-         $sql = $conn->prepare('select id from student_group');
+         $sql = $conn->prepare('select * from students join student_group on student_group.id = students.student_group_id');
          $sql->execute();
         $data = [];
         while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
