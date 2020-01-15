@@ -1,1 +1,1 @@
-- students c r u d
+- SREDI BRISANJE STUDENATA, PRAVI GRESKU ZBOG FOREIGH KEY-A, napravi dva upita bazi

@@ -6,19 +6,17 @@
 </div>
 <div class="row">
 <div class="col-md-6 mx-auto">
-<div class="card card-body bg-light mt-5">
+<div class="card card-body bg-light mt-5" style="box-shadow: 10px 10px 5px grey; border-radius: 0 0 0 0;">
 <h2>Login</h2>
 <p>Please fill in your credentials to log in</p>
 <form action="" method="post" autocomplete="on">
 <div class="form-group">
-
-<!--<label for="email"> Email: <sup>*</sup></label>-->
-<img src="public/img/email.png" alt="email" width="20" height="20"><label for="email"> Email:<span class="req"> *</span></label>
+<label>Email address:<span class="req"> *</span></label>
 <input type="email" name="email" class="form-control form-control-lg">
 </div>
 
 <div class="form-group">
-<img src="public/img/password.png" alt="password" width="20" height="20"><label for="password"> Password: <span class="req"> *</span></label>
+<label>Password:<span class="req"> *</span></label>
 <input type="password" name="password" class="form-control form-control-lg">
 </div>
 

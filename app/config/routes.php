@@ -7,6 +7,13 @@ $routes = array(
 
     '/students' => 'StudentController@showAll',
     '/students/:id' => 'StudentController@getOne',
+    '/students/:id/edit' => 'StudentController@edit',
+    '/students/:id/delete' => 'StudentController@delete',
+
+    '/studentgroup' => 'StudentGroupController@showAll',
+    '/studentgroup/:id' => 'StudentGroupController@index',
+    '/studentgroup/:id/students' => 'StudentGroupController@students',
+    '/studentgroup/:id/schedule' => 'StudentGroupController@schedule',
 
     '/admin' => 'AdminController@homePage',
 

@@ -12,5 +12,3 @@
             <input type="text" name="role" value="<?php echo $this->data['title']; ?>">
             <input type="submit" name="submit" value="Save">
         </form>
-    </body>
-</html>

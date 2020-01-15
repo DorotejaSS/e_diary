@@ -69,7 +69,7 @@ class PermissionController extends BaseController
     {
         $id = $this->request->url_parts[1];
         $permission = new Permission();
-        $permission->delete($id);
+        $permission->delete('permissions', $id);
         header('Location: /permissions');
     }
 

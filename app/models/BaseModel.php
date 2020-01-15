@@ -78,6 +78,20 @@ class BaseModel
         return $data;
     }
 
+    public function usersChild($id)
+    {
+         require('./app/db.php');
+
+        $sql = $conn->prepare('select * from students where parent_id = '.$id.'');
+        $sql->execute();
+
+        $data = [];
+        while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
     public function edit($table, $content, $id)
     {
         require('./app/db.php');
@@ -92,6 +106,13 @@ class BaseModel
        
         $sql = $conn->prepare('delete from '.$table.' where id = ?');
         $sql->execute(array($id));
+    }
+
+    public function deleteParent($id)
+    {
+        require('./app/db.php');
+        $sql = $conn->prepare('update students set parent_id = null where parent_id = '.$id.'');
+        $sql->execute();
     }
 
 }

@@ -1,8 +1,52 @@
 html,body {
     margin: 0 auto;
-   }
+    }
    
 body {
-    background: url(../img/dnevnik.jpg) no-repeat fixed;
+    background: url(../img/siva.jpg) no-repeat fixed;
     background-size: cover;
     }
+
+.subject{
+    margin-top: 100px;
+}
+
+.row{
+        margin: auto;  
+        margin-top: 80px;
+        margin-bottom: 60px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #myTable {
+    position: relative;
+    border-collapse: collapse;
+	width: 100%;
+    height: auto;
+    background-color: #dddddd;
+    table-layout: auto;
+    box-shadow: 10px 10px 5px grey;
+    margin: auto;
+    font-size: 12px;
+	font-weight: bold;
+	padding-top: 30px;
+    margin-bottom: 60px;
+    margin-top: 80px;
+}
+
+th, td {
+    text-align: center;
+    padding: 12px;
+
+}
+
+tr:nth-child(even){background-color: white;}
+
+th {
+	
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+}
