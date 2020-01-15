@@ -1,5 +1,3 @@
-	<?php include './app/views/inc/header.php'; ?>
-
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
 		<button class="navbar-toggler" type="button" 
 				data-toggle="collapse" 
@@ -8,7 +6,6 @@
 				aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-
 		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
@@ -35,10 +32,6 @@
 		</div>
 	</nav>
 
-	<div class="jumbotrone jumbotrone-fluid text-center">
-		<div class="container">
 
-		</div>
-
-	<?php include './app/views/inc/footer.php'; ?>
+	
 
