@@ -45,8 +45,8 @@ class ScheduleController extends BaseController
                     echo json_encode($this->model->result, 256);
                     break;
 
-                case 'getData':
-                    $this->model->getData($_POST['subject_data'], $_POST['position_data']);
+                case 'saveData':
+                    $this->model->saveData($_POST['subject_data'], $_POST['position_data'], $_POST['id']);
                     echo json_encode($this->model->result, 256);
                     break;
                 

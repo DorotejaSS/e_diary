@@ -4,6 +4,7 @@ $(document).ready(function(){
     checkSelect($('#select').val());
 
     $('#select').change(function(){
+        $('.subjectTd').html('<select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select>');
         checkSelect($('#select').val());
         var sg_id = $('#select').val();
         if (sg_id != 0)
@@ -14,8 +15,14 @@ $(document).ready(function(){
                 data: {'method':'getSchedule', 'id':sg_id},
                 success:function(response){
                     var resp = JSON.parse(response);
-                    if (jQuery.isEmptyObject(resp) === false)
+                    if (!jQuery.isEmptyObject(resp))
                     {
+                        for (var i = 0; i < resp.length; i++)
+                        {
+                            var td = document.getElementById(resp[i].position);
+                            td.innerHTML = resp[i].title;
+                            td.setAttribute('data-s_id', resp[i].subject_id);
+                        }
                         
                     }
                 }
@@ -24,6 +31,7 @@ $(document).ready(function(){
     });
 
     $('#editBttn').click(function(){
+        $('.subjectTd').html('<select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select>');
         $('.subjects').removeAttr('hidden');
         $('#cancelBttn').removeAttr('hidden');
         $('#saveBttn').removeAttr('hidden');
@@ -46,14 +54,18 @@ $(document).ready(function(){
             subject_data.push(select[i].value);
             position_data.push(select[i].parentElement.id);
         }
-        alert(subject_data);
-        alert(position_data);
+        checkSelect($('#select').val());
+        var sg_id = $('#select').val();
         $.ajax({
             type: 'POST',
             url: '/ajax',
-            data: {'method':'getData', 'subject_data':subject_data, 'position_data':position_data},
-            success:function(response){
-                var resp = JSON.parse(response);
+            data: {'method':'saveData', 'subject_data':subject_data, 'position_data':position_data, 'id':sg_id},
+            success:function(){
+                alert('Uspesno dodavanje!');
+                $('.subjects').attr('hidden', '');
+                $('#cancelBttn').attr('hidden', '');
+                $('#saveBttn').attr('hidden', '');
+                $('#editBttn').removeAttr('hidden');
             }
         });
     });

@@ -3,3 +3,7 @@
 -   metode : attendance, schedules, grades...
 -   u konstruktoru vrsiti proveru access-a i u zavisnosti da li je 1 ili 0, dozvoliti ili ne dozvoliti okidanje gore napisane metode
 -   napraviti array u koji se smestaju dozvoljene 
+
+
+
+- Cao Dora o/ :D

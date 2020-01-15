@@ -46,18 +46,50 @@ class Schedule extends BaseModel
         $this->result = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getData($subject_data, $position_data)
+    public function saveData($subject_data, $position_data, $id)
     {
-        function combine($keys, $values)
+        require('./app/db.php');
+
+        if (count($subject_data) === count($position_data))
         {
-            foreach ($keys as $k)
+            $sql = $conn->prepare('SELECT * FROM schedules WHERE schedules.student_group_id = :id');
+            
+            $sql->execute(array(':id' => $id));
+
+            $count = $sql->rowCount();
+
+            if ($count ==0)
             {
-                array_push()
+                $sql = $conn->prepare('INSERT INTO schedules (student_group_id, subject_id, position, semestar_id)
+                VALUES (:sg_id, :s_id, :pos, 1)');
+            
+                for ($i = 0; $i < count($subject_data); $i++)
+                {
+                    if ($subject_data[$i] != 0)
+                    {
+                        $sql->execute(array(':sg_id' => $id, ':s_id' => $subject_data[$i], ':pos' => $position_data[$i]));
+                    }
+                }
+                
+            }
+            else
+            {
+                $sql = $conn->prepare('UPDATE schedules SET student_group_id = :sg_id, subject_id = s_id, position = :pos, semestar_id = 1 WHERE student_group_id = :sg_id');
+            
+                for ($i = 0; $i < count($subject_data); $i++)
+                {
+                    if ($subject_data[$i] != 0)
+                    {
+                        $sql->execute(array(':sg_id' => $id, ':s_id' => $subject_data[$i], ':pos' => $position_data[$i]));
+                    }
+                    else
+                    {
+                        $sql = $conn->prepare('DELETE FROM schedules WHERE position = :pos AND student_group_id = :sg_id');
+
+                        $sql->execute(array(':pos' => $position_data[$i], ':sg_id' => $id));
+                    }
+                }
             }
         }
-        $data = array_push($subject_data, $position_data);
-        var_dump($subject_data);
-        var_dump($position_data);
-        var_dump($data);
     }
 }
