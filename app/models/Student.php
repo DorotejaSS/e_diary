@@ -5,7 +5,6 @@ class Student
     public function __construct($request)
     {
         $this->request = $request;
-        var_dump($this->request);
     }
 
     public function update($id)
@@ -28,5 +27,45 @@ class Student
                                 updated_at = "'.$updated_at.'"
                                 WHERE id = "'.$id.'"');
         $sql->execute();
+    }
+
+    public function studentGroup($students_data)
+    {
+        // var_dump($student_data);
+
+        require('./app/db.php');
+        $student_group_datas = $this->studentGroupId();
+        var_dump($students_data);
+                
+                    // $id = $student_data[1];
+                    // $start_year = $student_data[2];
+                    // $finish_year = $student_data[3];
+                    // echo 'student group id';
+                    // var_dump($student_group_id);
+                    // echo 'student id';
+                    // var_dump($id);
+                    // echo 'start y';
+                    // var_dump($start_year);
+                    // echo 'finish y';
+                    // var_dump($finish_year);
+                    
+                    // $sql = $conn->prepare('update students set student_group_id = '.$student_group_id.'');
+                    // $sql->execute();
+                    // var_dump($sql->execute());
+    
+
+    }
+
+    public function studentGroupId()
+    {
+         require('./app/db.php');
+
+         $sql = $conn->prepare('select id from student_group');
+         $sql->execute();
+        $data = [];
+        while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+            $data[] = $row;
+        }
+        return $data;
     }
 }

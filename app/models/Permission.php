@@ -2,12 +2,12 @@
 
 class Permission extends BaseModel
 {
-    public function delete($id)
+    public function delete($table, $id)
     {
         require('./app/db.php');
 
         $sql = 'delete from role_permissions where permission_id = '.$id.';
-                delete from permissions where id = '.$id.''; 
+                delete from '.$table.' where id = '.$id.''; 
 
             try {
                 $stmt = $conn->prepare($sql);
