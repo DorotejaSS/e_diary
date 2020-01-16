@@ -44,6 +44,9 @@ $routes = array(
     '/subjects/:id/edit' => 'SubjectController@edit',
     '/subjects/:id/delete' => 'SubjectController@delete',
 
+    '/schedule' => 'ScheduleController@index',
+    '/ajax' => 'ScheduleController@ajax',
+
     '/parents' => 'ParentController@index',
     '/parents/:id' => 'ParentController@showGrades',
 

@@ -1,1 +1,10 @@
 - SREDI BRISANJE STUDENATA, PRAVI GRESKU ZBOG FOREIGH KEY-A, napravi dva upita bazi
+-   U BaseController-u napraviti :
+-   $create $read $update $delete atr
+-   metode : attendance, schedules, grades...
+-   u konstruktoru vrsiti proveru access-a i u zavisnosti da li je 1 ili 0, dozvoliti ili ne dozvoliti okidanje gore napisane metode
+-   napraviti array u koji se smestaju dozvoljene 
+
+
+
+- Cao Dora o/ :D

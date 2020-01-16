@@ -14,7 +14,10 @@ class Parents extends BaseModel
         if (isset($_SESSION['user_data']) && isset($this->request->url_parts[1])) {
             $this->parent_id = $_SESSION['user_data']['id'];
             $this->getChild();
-            $this->getGrades($this->request->url_parts[1]);
+            if (isset($this->request->url_parts[1]))
+            {
+                $this->getGrades($this->request->url_parts[1]);
+            }
         }
     }
 
