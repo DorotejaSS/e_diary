@@ -6,6 +6,7 @@ $routes = array(
     '/reset-password' => 'AccessController@resetPassword',
 
     '/students' => 'StudentController@showAll',
+    '/students/add' => 'StudentController@add',
     '/students/:id' => 'StudentController@getOne',
     '/students/:id/edit' => 'StudentController@edit',
     '/students/:id/delete' => 'StudentController@delete',
@@ -42,6 +43,9 @@ $routes = array(
     '/subjects/:id' => 'SubjectController@getOne',
     '/subjects/:id/edit' => 'SubjectController@edit',
     '/subjects/:id/delete' => 'SubjectController@delete',
+
+    '/schedule' => 'ScheduleController@index',
+    '/ajax' => 'ScheduleController@ajax',
 
     '/parents' => 'ParentController@index',
     '/parents/:id' => 'ParentController@showGrades',

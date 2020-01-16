@@ -47,6 +47,22 @@ class User extends BaseModel
         $this->checkCredentials($this->role_id);
     }
 
+    public function resetPasswordByEmail($email)
+    {
+         require('./app/db.php');
+
+         $sql = $conn->prepare('select id from users where email = "'.$email.'"');
+         $sql->execute();
+         $data = '';
+         $data = $sql->fetchAll();
+         if (!empty($data)) {
+             return true;
+         } else 
+         {
+             false;
+         }
+    }
+
     public function update($id)
     {
         require('./app/db.php');

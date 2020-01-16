@@ -19,7 +19,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="btn btn-success btn-block" href="logout">Logout</a>
+                <a class="btn btn-success btn-block" href="/logout">Logout</a>
             </li>
         </ul>
     </div>
