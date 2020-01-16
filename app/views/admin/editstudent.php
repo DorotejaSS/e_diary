@@ -10,7 +10,6 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-<<<<<<< HEAD
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
@@ -22,7 +21,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="btn btn-success btn-block" href="logout">Logout</a>
+                <a class="btn btn-success btn-block" href="/logout">Logout</a>
             </li>
         </ul>
     </div>
@@ -35,23 +34,6 @@
         <div class="form-group">
                 <label>First Name:</label>
                 <input type="name" class="form-control form-control"value="<?php echo $this->data['student']['first_name'];?>" name="first_name" value="">
-=======
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin">Admin page</a>
-                    </li>
-                    <!--popraviti url-->
-                    <li class="nav-item">
-                        <a class="nav-link" href="/students/<?= $id;?>">Student</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="btn btn-success btn-block"  href="/logout">Logout</a>
-                    </li>
-                </ul>
->>>>>>> 8eaf8483a9fe796a4a339fc94ea0770b222d4e34
             </div>
         </nav>
         <div class="row">
