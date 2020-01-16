@@ -29,13 +29,22 @@ class Student
         $sql->execute();
     }
 
-    public function studentGroup($students_data)
+    public function studentGroups()
     {
-        // var_dump($student_data);
-
         require('./app/db.php');
-        $student_group_datas = $this->studentGroupId();
-        var_dump($student_group_datas);
+
+        $sql = $conn->prepare('select distinct id, year_id, subgroup_id from student_group');
+        $sql->execute();
+
+        $data = [];
+        while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+            $data[] = $row;
+        }
+        return $data;
+
+
+        // $student_group_datas = $this->studentGroupId();
+        // var_dump($student_group_datas);
                 
                     // $id = $student_data[1];
                     // $start_year = $student_data[2];
@@ -56,16 +65,16 @@ class Student
 
     }
 
-    public function studentGroupId()
-    {
-         require('./app/db.php');
+    // public function studentGroupId()
+    // {
+    //      require('./app/db.php');
 
-         $sql = $conn->prepare('select * from students join student_group on student_group.id = students.student_group_id');
-         $sql->execute();
-        $data = [];
-        while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
-            $data[] = $row;
-        }
-        return $data;
-    }
+    //      $sql = $conn->prepare('select * from students join student_group on student_group.id = students.student_group_id');
+    //      $sql->execute();
+    //     $data = [];
+    //     while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+    //         $data[] = $row;
+    //     }
+    //     return $data;
+    // }
 }
