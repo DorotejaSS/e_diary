@@ -8,8 +8,6 @@ class AccessController extends BaseController
     public function __construct($request)
     {
         $this->request = $request;
-        //čišćene ekrana
-        /*var_dump($this->request);*/
     }
     
     public function login()
@@ -30,6 +28,28 @@ class AccessController extends BaseController
         unset($_SESSION["user_data"]);    
         echo 'You have cleaned session';
         header('Refresh: 2; URL = /login');
+    }
+
+    public function resetPassword()
+    {
+        $view = new View();
+        $view->loadPage('pages', 'forgottenpassword');
+
+        $email = $this->request->post_params['email'] ?? array();
+        $child_social_id = $this->request->post_params['child_social_id'] ?? array();
+        $submit = $this->request->post_params['submit'] ?? array();
+
+        if (!empty($email) && !empty($child_social_id) && !empty($submit)) {
+            $user = new User();
+            if ($user->resetPasswordByEmail($email))
+            {
+                $user->resetPasswordByChildSID($child_social_id);
+            } else {
+                echo 'Korisnik ne postoji';
+            }
+            
+            
+        }
     }
 
 }

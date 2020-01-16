@@ -21,6 +21,7 @@
                     </div>
                 </div>
             </form>
+            <a href="/reset-password">*I forgot my password</a>
         </div>
     </div>
 </div>

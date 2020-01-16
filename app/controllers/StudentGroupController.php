@@ -15,7 +15,6 @@ class StudentGroupController
         $view = new View();
         $view->data['student_groups'] = $student_groups;
         $view->loadPage('admin', 'studentgroups');
-        
     }
 
     public function index()
