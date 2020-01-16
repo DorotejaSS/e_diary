@@ -1,3 +1,5 @@
+<div class="login_back">
+
 <div class="jumbotrone jumbotrone-fluid text-center">
     <h1 class="display-3">E-Diary</h1>
 </div>
@@ -25,7 +27,7 @@
     </div>
 </div>
 
-
+</div>
  
    
 
