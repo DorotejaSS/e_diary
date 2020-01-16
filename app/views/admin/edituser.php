@@ -1,4 +1,4 @@
-<?php include './app/views/inc/header.php'; ?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -7,6 +7,7 @@
         <title>Edit user</title>
     </head>
     <body>
+        <?php $id = $this->data['user']['id']; ?>
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
             <button class="navbar-toggler" type="button" 
@@ -24,7 +25,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link"  href="/users">User</a>
+                        <a class="nav-link"  href="/users/<?= $id; ?>">User</a>
                     </li>
                 </ul>
 
