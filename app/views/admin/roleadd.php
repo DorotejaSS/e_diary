@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-<title>Add New Role</title>
+<title>Add new role</title>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
     <button class="navbar-toggler" type="button" 
         data-toggle="collapse" 
@@ -20,7 +19,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="btn btn-success btn-block" href="logout">Sign Out</a>
+                <a class="btn btn-success btn-block" href="logout">Logout</a>
             </li>
         </ul>
     </div>
@@ -34,24 +33,8 @@
                         <label>Role:</label>
                         <input type="text" name="role" class="form-control form-control">
                     </div>
-                        <input type="submit" name="submit" value="Save" class="btn btn-success btn-block">
+                        <input type="submit" name="submit" value="Submit" class="btn btn-success btn-block">
                 </form>
         </div>
     </div>
 </div>
-=======
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Add New Role</title>
-    </head>
-    <body>
-        <form action="" method="post">
-            <label for="role">Role:</label>
-            <input type="text" name="role">
-            <input type="submit" name="submit" value="Save">
-        </form>
->>>>>>> 0a10ded05efd76a8ca445bca20c5bc99dbd59cfe

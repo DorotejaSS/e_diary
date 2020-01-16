@@ -1,15 +1,18 @@
 html,body {
     margin: 0 auto;
-    }
-   
+}
+    
 body {
     background: url(../img/siva.jpg) no-repeat fixed;
     background-size: cover;
-<<<<<<< HEAD
+}
+
+.subject{
+    margin-top: 100px;
 }
 
 .row {
-    marigin: auto;
+    margin: auto;  
     margin-top: 80px;
     margin-bottom: 60px;
     justify-content: center;
@@ -17,41 +20,6 @@ body {
 }
 
 #myTable {
-    position: relative;
-    border-collapse: collapse;
-	width: 100%;
-    height: auto;
-    background-color: #dddddd;
-    table-layout: auto;
-    box-shadow: 10px 10px 5px grey;
-    
-    font-size: 12px;
-	font-weight: bold;
-	padding-top: 30px;
-    margin-bottom: 60px;
-    margin-top: 100px;
-}
-
-th, td {
-    text-align: center;
-    padding: 12px;
-
-=======
-    }
-
-.subject{
-    margin-top: 100px;
-}
-
-.row{
-        margin: auto;  
-        margin-top: 80px;
-        margin-bottom: 60px;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #myTable {
     position: relative;
     border-collapse: collapse;
 	width: 100%;
@@ -71,18 +39,32 @@ th, td {
     text-align: center;
     padding: 12px;
 
->>>>>>> 0a10ded05efd76a8ca445bca20c5bc99dbd59cfe
 }
 
 tr:nth-child(even){background-color: white;}
 
 th {
-<<<<<<< HEAD
-=======
 	
->>>>>>> 0a10ded05efd76a8ca445bca20c5bc99dbd59cfe
     background-color: #4CAF50;
     color: white;
     font-size: 16px;
     text-align: center;
 }
+.current_role {
+
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.permission-checkbox {
+
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.scroll {
+    position: fixed;
+    top: calc(100% - 84px);
+    left: calc(100vw - 70px);
+   }

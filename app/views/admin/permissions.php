@@ -8,7 +8,6 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-<<<<<<< HEAD
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
@@ -18,36 +17,35 @@
                 <a class="nav-link" href="/roles">Roles</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-success btn-block" href="/permissions/add">Add Permission</a>
+                <a class="btn btn-success btn-block" href="/permissions/add">Add permission</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="btn btn-success btn-block" href="logout">Sign Out</a>
+                <a class="btn btn-success btn-block" href="logout">Logout</a>
             </li>
         </ul>
     </div>
 </nav>
-        <!--<button><a href="/permissions/add">ADD PERMISSION</a></button>-->
-<table id="myTable">
-    <tr>
-        <th>ID</th> 
-        <th>Permission Name:</th>
-        <th>Edit:</th>
-        <th>Delete:</th>
-    </tr>
 
-            <?php foreach ($this->data as $key => $value) : ?>
-            <?php $id = $value['id']; ?>
-    <tr>
-        <td><?= $id; ?></td>
-        <td><?= $value['title']; ?></td>
-        <td><a class="btn btn-primary" href="/permissions/<?= $id; ?>/edit">Edit</a></td>
-        <td><a class="btn btn-danger" href="/permissions/<?= $id; ?>/delete">Delete</a></td>
-    </tr>
-            <?php endforeach; ?>
+</br></br></br>
+    <h3>Permissions</h3>
+        <table id="myTable">
+            <tr>
+                <th>ID:</th> 
+                <th>Permission Name:</th>
+                <th>Edit:</th>
+                <th>Delete:</th>
+            </tr>
 
-</table>
-=======
+                    <?php foreach ($this->data as $key => $value) : ?>
+                    <?php $id = $value['id']; ?>
+            <tr>
+                <td><?= $id; ?></td>
+                <td><?= $value['title']; ?></td>
+                <td><a class="btn btn-primary" href="/permissions/<?= $id; ?>/edit">Edit</a></td>
+                <td><a class="btn btn-danger" href="/permissions/<?= $id; ?>/delete">Delete</a></td>
+            </tr>
+                    <?php endforeach; ?>
+
         </table>
->>>>>>> 0a10ded05efd76a8ca445bca20c5bc99dbd59cfe

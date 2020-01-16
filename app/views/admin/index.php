@@ -29,15 +29,10 @@
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-					<a class="btn btn-success btn-block" href="/logout">Sign Out</a>
+					<a class="btn btn-success btn-block" href="/logout">Logout</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
 
 
-<<<<<<< HEAD
-	
-
-=======
->>>>>>> 0a10ded05efd76a8ca445bca20c5bc99dbd59cfe

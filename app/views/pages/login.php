@@ -8,12 +8,12 @@
             <p>Please fill in your credentials to log in</p>
             <form action="" method="post" autocomplete="on">
                 <div class="form-group">
-                    <label>Email address:<span class="req"> *</span></label>
-                    <input type="email" name="email" class="form-control form-control-lg">
+                    <label for="email">Email Address:<span class="req"> *</span></label>
+                    <input type="email" name="email" id="email" class="form-control form-control-lg">
                 </div>
                 <div class="form-group">
-                    <label>Password:<span class="req"> *</span></label>
-                    <input type="password" name="password" class="form-control form-control-lg">
+                    <label for="password">Password:<span class="req"> *</span></label>
+                    <input type="password" name="password" id="password" class="form-control form-control-lg">
                 </div>
                 <div class="row">
                     <div class="col">
@@ -24,6 +24,8 @@
         </div>
     </div>
 </div>
+
+
  
    
 

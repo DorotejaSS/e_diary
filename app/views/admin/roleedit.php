@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <title>Role Edit</title>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
     <button class="navbar-toggler" type="button" 
@@ -21,7 +20,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="btn btn-success btn-block" href="logout">Sign Out</a>
+                <a class="btn btn-success btn-block" href="logout">Logout</a>
             </li>
         </ul>
     </div>
@@ -32,28 +31,11 @@
             <h2>Edit role</h2>
                 <form action="" method="post">
                     <div class="form-group">
-                        <label>Role Name: </label>
-                        
+                        <label>Role Name:</label>
                         <input type="text" name="role" class="form-control form-control" value="<?php echo $this->data['title']; ?>">
                     </div>
-                        <input type="submit" name="submit" value="Save" class="btn btn-success btn-block">
+                        <input type="submit" name="submit" value="Submit" class="btn btn-success btn-block">
                 </form>
         </div>
     </div>
 </div>
-=======
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Role Edit</title>
-    </head>
-    <body>
-        <form action="" method="post">
-            <label>Role Name: </label>
-            <input type="text" name="role" value="<?php echo $this->data['title']; ?>">
-            <input type="submit" name="submit" value="Save">
-        </form>
->>>>>>> 0a10ded05efd76a8ca445bca20c5bc99dbd59cfe

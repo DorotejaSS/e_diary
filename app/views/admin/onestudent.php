@@ -1,29 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=]; ?>, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Student</title>
-    </head>
-    <body>
+<title>Student</title>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
+            <button class="navbar-toggler" type="button" 
+                    data-toggle="collapse" 
+                    data-target="#navbarsExampleDefault" 
+                    aria-controls="navbarsExampleDefault" 
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto" >
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">Admin page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/students">Students</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="btn btn-success btn-block" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
         <?php $parent_id = $this->data['parent_data']['id'] ?? array();?>
         <?php $student_id = $this->data['student_data']['id'];?>
-        <button><a href="/students/<?= $student_id ?>/edit">EDIT</a></button>
-        <button><a href="/students/<?= $student_id; ?>/delete">DELETE</a></button>
-        <h3>Student Information</h3>
-        <table border="5" cellpadding="5" cellspacing="0" style="border-  collapse: collapse"
-            bordercolor="#808080" width="100&#3" bgcolor="#C0C0C0">
+        
+</br></br></br>
+    <h3>Student Information</h3>
+        <table id="myTable">
             <tr>
-                <td width=100>ID:</td> 
-                <td width=100>First Name</td> 
-                <td width=100>Last Name</td> 
-                <td width=100>Date Of Birth</td> 
-                <td width=100>Social Id</td>
-                <td width=100>Created At</td> 
-                <td width=100>Updated at</td> 
-                <td width=100>Student Group Id</td> 
-                <td width=100>Parent Id</td> 
+                <th>ID:</th> 
+                <th>First Name:</th> 
+                <th>Last Name:</th> 
+                <th>Date Of Birth:</th> 
+                <th>Social ID:</th>
+                <th>Created at:</th> 
+                <th>Updated at:</th> 
+                <th>Student Group ID:</h> 
+                <th>Parent ID:</th> 
+                <th>Edit:</th>
+                <th>Delete:</th>
             </tr> 
                 
             <tr> 
@@ -36,27 +56,31 @@
                 <td><?php echo $this->data['student_data']['updated_at']; ?></td>
                 <td><?php echo $this->data['student_data']['student_group_id']; ?></td> 
                 <td><?php echo $this->data['student_data']['parent_id']; ?></td> 
+                <td><a class="btn btn-primary" href="/students/<?= $student_id ?>/edit">Edit</a></td>
+                <td><a class="btn btn-danger" href="/students/<?= $student_id; ?>/delete">Delete</a></td>
             </tr>  
         </table> 
 
         <?php if(!empty($this->data['parent_data'])) : ?>
-            <h3>Parent Information</h3>
-            <table border="5" cellpadding="5" cellspacing="0" style="border-  collapse: collapse"
-                bordercolor="#808080" width="100&#3" bgcolor="#C0C0C0">
-                <tr>
-                    <td width=100>ID:</td> 
-                    <td width=100>First Name</td> 
-                    <td width=100>Last Name</td> 
-                    <td width=100>Email</td> 
-                    <td width=100>Last Login At</td>
-                </tr> 
-                    
-                <tr> 
-                    <td><a href="/users/<?= $parent_id ?>"></a><?php echo $this->data['parent_data']['id']; ?></td> 
-                    <td><a href="/users/<?= $parent_id ?>"><?php echo $this->data['parent_data']['first_name']; ?></td> 
-                    <td><a href="/users/<?= $parent_id ?>"><?php echo $this->data['parent_data']['last_name']; ?></td> 
-                    <td><?php echo $this->data['parent_data']['email']; ?></td>
-                    <td><?php echo $this->data['parent_data']['last_login_at']; ?></td>
-                </tr>  
-            </table> 
+
+</br></br></br>
+    <h3>Parent Information</h3>
+        <table id="myTable">
+            <tr>
+                <th>ID:</th> 
+                <th>First Name:</th> 
+                <th>Last Name:</th> 
+                <th>Email:</th> 
+                <th>Last Login at:</th>
+            </tr> 
+                
+            <tr> 
+                <td><a href="/users/<?= $parent_id ?>"></a><?php echo $this->data['parent_data']['id']; ?></td> 
+                <td><a href="/users/<?= $parent_id ?>"><?php echo $this->data['parent_data']['first_name']; ?></td> 
+                <td><a href="/users/<?= $parent_id ?>"><?php echo $this->data['parent_data']['last_name']; ?></td> 
+                <td><?php echo $this->data['parent_data']['email']; ?></td>
+                <td><?php echo $this->data['parent_data']['last_login_at']; ?></td>
+            </tr>  
+        </table> 
+
         <?php endif;?>
