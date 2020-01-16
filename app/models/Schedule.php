@@ -13,7 +13,9 @@ class Schedule extends BaseModel
     {
         require('./app/db.php');
 
-        $sql = $conn->prepare('SELECT student_group.id, student_group.year_id, student_group.subgroup_id FROM student_group ORDER BY student_group.year_id ASC');
+        $sql = $conn->prepare('SELECT student_group.id, student_group.year_id, student_group.subgroup_id 
+                               FROM student_group 
+                               ORDER BY student_group.year_id ASC');
 
         $sql->execute();
 
@@ -37,8 +39,8 @@ class Schedule extends BaseModel
     {
         require('./app/db.php');
 
-        $sql = $conn->prepare('SELECT schedules.subject_id, schedules.position, subjects.title 
-                               FROM schedules INNER JOIN subjects ON schedules.subject_id = subjects.id 
+        $sql = $conn->prepare('SELECT schedules.subject_id, schedules.position, subjects.title, users.first_name, users.last_name
+                               FROM subjects INNER JOIN schedules ON subjects.id = schedules.subject_id  INNER JOIN users ON subjects.lecturer_id = users.id
                                WHERE schedules.student_group_id = :id');
 
         $sql->execute(array(':id' => $id));
@@ -52,7 +54,8 @@ class Schedule extends BaseModel
 
         if (count($subject_data) === count($position_data))
         {
-            $sql = $conn->prepare('SELECT * FROM schedules WHERE schedules.student_group_id = :id');
+            $sql = $conn->prepare('SELECT * FROM schedules 
+                                   WHERE schedules.student_group_id = :id');
             
             $sql->execute(array(':id' => $id));
 
@@ -60,8 +63,8 @@ class Schedule extends BaseModel
 
             if ($count ==0)
             {
-                $sql = $conn->prepare('INSERT INTO schedules (student_group_id, subject_id, position, semestar_id)
-                VALUES (:sg_id, :s_id, :pos, 1)');
+                $sql = $conn->prepare('INSERT INTO schedules (student_group_id, subject_id, position, semestar_id) 
+                                       VALUES (:sg_id, :s_id, :pos, 1)');
             
                 for ($i = 0; $i < count($subject_data); $i++)
                 {
@@ -74,19 +77,19 @@ class Schedule extends BaseModel
             }
             else
             {
-                $sql = $conn->prepare('UPDATE schedules SET student_group_id = :sg_id, subject_id = s_id, position = :pos, semestar_id = 1 WHERE student_group_id = :sg_id');
+                $sql = $conn->prepare('DELETE FROM schedules 
+                                       WHERE student_group_id = :sg_id');
+
+                $sql->execute(array(':sg_id' => $id));
+
+                $sql = $conn->prepare('INSERT INTO schedules (student_group_id, subject_id, position, semestar_id) 
+                                       VALUES (:sg_id, :s_id, :pos, 1)');
             
                 for ($i = 0; $i < count($subject_data); $i++)
                 {
                     if ($subject_data[$i] != 0)
                     {
                         $sql->execute(array(':sg_id' => $id, ':s_id' => $subject_data[$i], ':pos' => $position_data[$i]));
-                    }
-                    else
-                    {
-                        $sql = $conn->prepare('DELETE FROM schedules WHERE position = :pos AND student_group_id = :sg_id');
-
-                        $sql->execute(array(':pos' => $position_data[$i], ':sg_id' => $id));
                     }
                 }
             }

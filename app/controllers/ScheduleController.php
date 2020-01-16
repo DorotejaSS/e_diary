@@ -28,8 +28,8 @@ class ScheduleController extends BaseController
     {
         if (isset($_POST['method']) && $_POST['method'] != '')
         {
-            switch ($_POST['method']) {
-
+            switch ($_POST['method'])
+            {
                 case 'fillSelect':
                     $this->model->fillSelect();
                     echo json_encode($this->model->result, 256);
@@ -48,10 +48,6 @@ class ScheduleController extends BaseController
                 case 'saveData':
                     $this->model->saveData($_POST['subject_data'], $_POST['position_data'], $_POST['id']);
                     echo json_encode($this->model->result, 256);
-                    break;
-                
-                default:
-                
                     break;
             }
         }
