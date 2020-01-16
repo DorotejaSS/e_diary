@@ -15,7 +15,7 @@ class BaseModel
     {
         require('./app/db.php');
 
-        $sql = $connn->prepare('select * from '.$table.'');
+        $sql = $conn->prepare('select * from '.$table.'');
         $sql->execute();
 
         $results = [];
@@ -23,22 +23,14 @@ class BaseModel
             $results = $row;
         }
         return $results;
-
-        // $sql = 'select * from '.$table.'';
-        // $result = $conn->query($sql);
-        
-        // $results = [];
-        // while($row = $result->fetch_assoc()) {
-        //    $results[] = $row;
-        // }
-        // return $results;
     }
  
     public function getOne($table, $id)
     {        
         require('./app/db.php');
 
-        $sql = $connn->prepare('select * from '.$table. ' where id ='.$id.'');
+        $sql = $conn->prepare('select * from '.$table. ' where id ='.$id.'');
+        
         $sql->execute();
 
         $data = [];
@@ -46,15 +38,25 @@ class BaseModel
             $data[] = $row;
         }
         return $data;
-
-        // $sql = 'select * from '.$table. ' where id ="'.$id.'"';
-        // $result = $conn->query($sql);
-        
-        // $data = [];
-        // while ($row = $result->fetch_assoc()) {
-        //     $data[] = $row;
-        // }
-        // return $data;
     }
+
+    public function getByRoleId($table, $role_id)
+    {        
+        require('./app/db.php');
+
+        $sql = $conn->prepare('select * from '.$table. ' where role_id ='.$role_id.'');
+        
+        $sql->execute();
+
+        $data = [];
+        while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+
+
+
 
 }

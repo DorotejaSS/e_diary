@@ -8,9 +8,18 @@
 </head>
 <body>
     <form action="" method="post">
-        <label for="role">Permission: </label>
-        <input type="text" name="permission">
-        <input type="submit" name="submit" value="Save">
+        <label for="role">Permission: 
+            <input type="text" name="permission">
+            <input type="submit" name="submit" value="Save">
+        </label>
+        <br>
+
+        <?php foreach ($this->data['role_data'] as $index => $data) : ?>
+            <label>
+                <input type="checkbox" name="roles[]" value="<?php echo $data['id']; ?>">
+                <span><?php echo $data['title']; ?></span><br>
+            </label>
+        <?php endforeach; ?>
     </form>
 </body>
 </html>

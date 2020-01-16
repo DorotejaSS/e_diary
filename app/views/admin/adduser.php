@@ -22,7 +22,11 @@
             </div>
             <div>
                 <label>Password</label>
-                <input type="text" name="password" value="<?php echo $this->data['password']; ?>">
+                <?php if (isset($this->data['password'])) : ?>
+                    <input type="text" name="password" value="<?php echo $this->data['password']; ?>">
+                <?php else : ?>
+                    <input type="text" name="password" value="">
+                <?php endif; ?>
                 <input type="submit" name="hash" value="rand password">
             </div>
             <div>

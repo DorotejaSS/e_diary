@@ -14,7 +14,10 @@ class Parents extends BaseModel
         {
             $this->parent_id = $_SESSION['user_data']['id'];
             $this->getChild();
-            $this->getGrades($this->request->url_parts[1]);
+            if (isset($this->request->url_parts[1]))
+            {
+                $this->getGrades($this->request->url_parts[1]);
+            }
         }
     }
 
@@ -22,9 +25,9 @@ class Parents extends BaseModel
     {
         require('./app/db.php');
 
-        $sql = $connn->prepare('SELECT students.id, students.first_name, students.last_name 
-                                FROM students INNER JOIN parent_student ON students.id = parent_student.student_id 
-                                WHERE parent_student.parent_id = :id');
+        $sql = $conn->prepare('SELECT students.id, students.first_name, students.last_name 
+                               FROM students INNER JOIN parent_student ON students.id = parent_student.student_id 
+                               WHERE parent_student.parent_id = :id');
 
         $sql->execute (array(':id' => $this->parent_id));
 
@@ -35,9 +38,9 @@ class Parents extends BaseModel
     {
         require('./app/db.php');
 
-        $sql = $connn->prepare ('SELECT grades.lecturer_id, grades.grade, grades.closing, users.first_name, users.last_name, subjects.title 
-                                 FROM grades INNER JOIN users ON grades.lecturer_id = users.id INNER JOIN subjects ON grades.lecturer_id = subjects.lecturer_id
-                                 WHERE grades.student_id = :id');
+        $sql = $conn->prepare ('SELECT grades.lecturer_id, grades.grade, grades.closing, users.first_name, users.last_name, subjects.title 
+                                FROM grades INNER JOIN users ON grades.lecturer_id = users.id INNER JOIN subjects ON grades.lecturer_id = subjects.lecturer_id
+                                WHERE grades.student_id = :id');
 
         $sql->execute (array(':id' => $child_id));
 

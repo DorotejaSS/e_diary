@@ -1,9 +1,9 @@
--   cekiranjem permisije menjaju se podaci u bazi (access za tu rolu se menja u 1 ili 0)
--   prebaciti new mysql u PDO
+-   U BaseController-u napraviti :
+-   $create $read $update $delete atr
+-   metode : attendance, schedules, grades...
+-   u konstruktoru vrsiti proveru access-a i u zavisnosti da li je 1 ili 0, dozvoliti ili ne dozvoliti okidanje gore napisane metode
+-   napraviti array u koji se smestaju dozvoljene 
 
-promeni sve da budu 0 sem onih koje su prosledjene u nizu , njih stavi da budu 1
 
 
-nene
-
-uzmi sve iz niza i stavi im 1 , a ostalima stavi 0
+- Cao Dora o/ :D

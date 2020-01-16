@@ -1,12 +1,18 @@
 <?php
-
-class UserController extends BaseController
+//user nasledjuje admina, a admin bazni kontroler
+class UserController extends AdminController
 {
+    protected $role_id = '1';
 
     public function __construct($request)
     {
         $this->request = $request;
         $this->checkSession();
+        if ($this->checkRole($this->role_id) === false)
+        {
+            echo 'NEMAS PRISTUP!';
+            exit;
+        }
     }
 
     public function showAll()
@@ -65,7 +71,7 @@ class UserController extends BaseController
             $this->generatePassword();
         }
         
-        $view->data['password'] = $password;
+        $view->data['password'] = $password ?? false;
         $view->loadPage('admin', 'adduser');
         
         if (isset($_POST['submit'])) {

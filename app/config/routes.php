@@ -30,10 +30,22 @@ $routes = array(
     '/users/:id/edit' => 'UserController@edit',
     '/users/:id/delete' => 'UserController@delete',
 
+    '/subjects' => 'SubjectController@showAll',
+
+    '/schedule' => 'ScheduleController@index',
+    '/ajax' => 'ScheduleController@ajax',
+
     '/parents' => 'ParentController@index',
     '/parents/:id' => 'ParentController@showGrades',
 
     '/professor' => 'ProfessorController@homePage',
+
+    '/grades' => 'GradesController@Grades',
+    '/grades/:id/addgrades' => 'ProfessorController@addGrades',
+    '/grades/:id/editgrades' => 'ProfessorController@editGrades',
+    '/grades/:id/concludegrades' => 'ProfessorController@concludeGrades',
+
+
     '/principal' => 'PrincipalController@homePage',
     '/teacher' => 'TeacherController@studentGroup'
 );

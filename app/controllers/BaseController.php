@@ -3,6 +3,7 @@
 class BaseController
 {
     protected $request;
+    protected $role_id;
 
     public function __construct($request)
     {
