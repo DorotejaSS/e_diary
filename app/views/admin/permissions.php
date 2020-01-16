@@ -1,28 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Permissions</title>
-    </head>
-    <body>
-        <button><a href="/permissions/add">ADD PERMISSION</a></button>
-        <table border=5 cellpadding=5 cellspacing=0 
-                style=border-  collapse: collapse bordercolor=#808080 
-                width=100&#37; bgcolor=#C0C0C0>
-                <tr>
-                    <td width=100>ID</td> 
-                    <td width=100>Permission Name</td>
-                </tr>
-                <?php foreach ($this->data as $key => $value) : ?>
+<title>Permissions</title>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
+    <button class="navbar-toggler" type="button" 
+        data-toggle="collapse" 
+        data-target="#navbarsExampleDefault" 
+        aria-controls="navbarsExampleDefault" 
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/admin">Admin page</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/roles">Roles</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-success btn-block" href="/permissions/add">Add permission</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="btn btn-success btn-block" href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+</br></br></br>
+    <h3>Permissions</h3>
+        <table id="myTable">
+            <tr>
+                <th>ID:</th> 
+                <th>Permission Name:</th>
+                <th>Edit:</th>
+                <th>Delete:</th>
+            </tr>
+
+                    <?php foreach ($this->data as $key => $value) : ?>
                     <?php $id = $value['id']; ?>
-                        <tr>
-                            <td><?= $id; ?></td>
-                            <td><?= $value['title']; ?></td>
-                            <td><a href="/permissions/<?= $id; ?>/edit">Edit</a></td>
-                            <td><a href="/permissions/<?= $id; ?>/delete">Delete</a></td>
-                        </tr>
-                <?php endforeach; ?>
+            <tr>
+                <td><?= $id; ?></td>
+                <td><?= $value['title']; ?></td>
+                <td><a class="btn btn-primary" href="/permissions/<?= $id; ?>/edit">Edit</a></td>
+                <td><a class="btn btn-danger" href="/permissions/<?= $id; ?>/delete">Delete</a></td>
+            </tr>
+                    <?php endforeach; ?>
 
         </table>

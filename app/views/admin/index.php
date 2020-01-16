@@ -6,7 +6,6 @@
 				aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-
 		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
@@ -30,14 +29,10 @@
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-					<a class="btn btn-success btn-block" href="/logout">Sign Out</a>
+					<a class="btn btn-success btn-block" href="/logout">Logout</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
 
-	<div class="jumbotrone jumbotrone-fluid text-center">
-		<div class="container">
-
-		</div>
 

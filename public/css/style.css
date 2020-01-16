@@ -1,25 +1,25 @@
 html,body {
     margin: 0 auto;
-    }
-   
+}
+    
 body {
     background: url(../img/siva.jpg) no-repeat fixed;
     background-size: cover;
-    }
+}
 
 .subject{
     margin-top: 100px;
 }
 
-.row{
-        margin: auto;  
-        margin-top: 80px;
-        margin-bottom: 60px;
-        justify-content: center;
-        align-items: center;
-    }
+.row {
+    margin: auto;  
+    margin-top: 80px;
+    margin-bottom: 60px;
+    justify-content: center;
+    align-items: center;
+}
 
-    #myTable {
+#myTable {
     position: relative;
     border-collapse: collapse;
 	width: 100%;
@@ -50,3 +50,21 @@ th {
     font-size: 16px;
     text-align: center;
 }
+.current_role {
+
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.permission-checkbox {
+
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.scroll {
+    position: fixed;
+    top: calc(100% - 84px);
+    left: calc(100vw - 70px);
+   }
