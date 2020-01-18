@@ -7,7 +7,16 @@ body {
     background-size: cover;
 }
 
-.subject{
+.login_back{
+    margin: 0 auto;
+    background: url(../img/dnevnik.jpg) no-repeat fixed;
+    background-size: cover;
+
+}
+.navbar {
+    background-image: url(../img/dnevnik.jpg);
+}
+.subject {
     margin-top: 100px;
 }
 
@@ -23,22 +32,21 @@ body {
     position: relative;
     border-collapse: collapse;
 	width: 100%;
-    height: auto;
+    /*height: auto;*/
     background-color: #dddddd;
     table-layout: auto;
     box-shadow: 10px 10px 5px grey;
-    margin: auto;
+    /*margin: auto;
     font-size: 12px;
-	font-weight: bold;
+	font-weight: bold;*/
 	padding-top: 30px;
     margin-bottom: 60px;
     margin-top: 80px;
 }
 
 th, td {
+    padding: 10px;
     text-align: center;
-    padding: 12px;
-
 }
 
 tr:nth-child(even){background-color: white;}
@@ -49,6 +57,7 @@ th {
     color: white;
     font-size: 16px;
     text-align: center;
+
 }
 .current_role {
 
@@ -66,5 +75,29 @@ th {
 .scroll {
     position: fixed;
     top: calc(100% - 84px);
-    left: calc(100vw - 70px);
-   }
+    left: calc(100vw - 140px);
+}
+
+    input[type="checkbox"] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	display: inline-block;
+	width: 25px;
+	height:25px;
+	padding: 6px;
+	background-clip: content-box;
+	border: 2px solid #bbb;
+	background-color: #e7e6e7;
+	border-radius: 50%;
+	border-color:#007bff;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+}
+
+input[type="checkbox"]:checked {
+	background-color: #007bff;
+}
+
+

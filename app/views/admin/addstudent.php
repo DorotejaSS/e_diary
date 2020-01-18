@@ -1,12 +1,5 @@
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Add new student</title>
-    </head>
-        <body>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
+<title>Add new student</title>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
                 <button class="navbar-toggler" type="button" 
                 data-toggle="collapse" 
                 data-target="#navbarsExampleDefault" 
@@ -15,23 +8,22 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin">Admin page</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="/students">Students</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="btn btn-success btn-block" href="/logout">Sign Out</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/admin">Admin page</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/students">Students</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="btn btn-success btn-block" href="/logout">Sign Out</a>
+            </li>
+        </ul>
+    </div>
+</nav>
         <div class="row">
             <div class="col-md-6 mx-auto">
                 <div class="card card-body bg-light mt-5" style="box-shadow: 10px 10px 5px grey; border-radius: 0 0 0 0;">
@@ -39,23 +31,18 @@
                     <h2>New student</h2>
                     <p>Please fill the data for new user</p>
                     <form action="" method="post">
-
                         <div class="form-group">
                             <label>First name:</label>
                             <input type="text" name="first_name" class="form-control form-control">
                         </div>    
-                            
-
                         <div class="form-group">
                             <label>Last name:</label>
                             <input type="text" name="last_name" class="form-control form-control">
                         </div>
-
                         <div class="form-group">
                             <label>Birth Date</label>
                             <input type="date" name="date_of_birth" class="form-control form-control">
                         </div>
-
                         <div class="form-group">
                             <label>Social Id</label>
                             <input type="text" name="social_id" class="form-control form-control">
@@ -78,7 +65,6 @@
                                     <?php endforeach; ?>
                                 </select>
                         </div>
-
                         <div class="form-group">
                             <label>Parent:</label>
                                 <select name="parent" class="form-control form-control">
@@ -88,7 +74,6 @@
                                     <?php endforeach; ?>
                                 </select>
                         </div>
-                        
                         <input type="submit" name="submit" value="Submit" class="btn btn-success btn-block">
                     </form>
                 </div>

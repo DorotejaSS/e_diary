@@ -46,6 +46,7 @@
                 <td><a class="btn btn-primary" href="/permissions/<?= $id; ?>/edit">Edit</a></td>
                 <td><a class="btn btn-danger" href="/permissions/<?= $id; ?>/delete">Delete</a></td>
             </tr>
+            
                     <?php endforeach; ?>
 
         </table>
