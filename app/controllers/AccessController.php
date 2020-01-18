@@ -25,7 +25,7 @@ class AccessController extends BaseController
 
     public function logout()
     {   
-        unset($_SESSION["user_data"]);    
+        unset($_SESSION['user_data']);    
         echo 'You have cleaned session';
         header('Refresh: 2; URL = /login');
     }
@@ -34,21 +34,21 @@ class AccessController extends BaseController
     {
         $view = new View();
         $view->loadPage('pages', 'forgottenpassword');
-
+    
         $email = $this->request->post_params['email'] ?? array();
         $child_social_id = $this->request->post_params['child_social_id'] ?? array();
         $submit = $this->request->post_params['submit'] ?? array();
 
         if (!empty($email) && !empty($child_social_id) && !empty($submit)) {
             $user = new User();
-            if ($user->resetPasswordByEmail($email))
-            {
-                $user->resetPasswordByChildSID($child_social_id);
+            if ($user->resetPassword($email, $child_social_id)) {
+                echo 'You have entered valid informations, please save your new password and log in.';
+                $view->loadPage('pages', 'newpassword');
+                var_dump($_POST);
             } else {
-                echo 'Korisnik ne postoji';
-            }
-            
-            
+                echo 'Invalid informations, access denied.';
+                header('Refresh: 2; URL = /login');
+            } 
         }
     }
 

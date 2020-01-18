@@ -28,6 +28,7 @@ class ScheduleController extends BaseController
     {
         if (isset($_POST['method']) && $_POST['method'] != '')
         {
+            var_dump($_POST); die;
             switch ($_POST['method'])
             {
                 case 'fillSelect':

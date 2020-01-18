@@ -36,7 +36,7 @@
             <div class="col-md-6 mx-auto">
                 <div class="card card-body bg-light mt-5" style="box-shadow: 10px 10px 5px grey; border-radius: 0 0 0 0;">
 
-                    <h2>New user</h2>
+                    <h2>New student</h2>
                     <p>Please fill the data for new user</p>
                     <form action="" method="post">
 
