@@ -6,6 +6,10 @@ $(document).ready(function(){
     // Kada se #select promeni callback funkcija
     $('#select').change(function(){
 
+            $('.subjectTd').html('<select hidden class="subjects"> <option value="0" selected>-- Choose a subject --</option> </select>');
+
+            fillSubjects('fillSubjects');
+
         // Provera da li je korisnik izabrao neku studentsku grupu
         checkSelect($('#select').val());
 
@@ -13,7 +17,7 @@ $(document).ready(function(){
 
         // Ako jeste salju se podaci (method, id) ScheduleController-u
         if (sg_id != 0)
-        {
+        {           
             $.ajax({
                 type: 'POST',
                 url: '/ajax',
@@ -25,7 +29,7 @@ $(document).ready(function(){
 
                     // Provera da li studentska grupa ima vec uneti raspored casova
                     if (!jQuery.isEmptyObject(resp))
-                    {
+                    { 
                         // Stampanje rasporeda
                         for (var i = 0; i < resp.length; i++)
                         {
