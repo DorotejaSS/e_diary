@@ -21,12 +21,15 @@
     </ul>
 </div>
 </nav>
-
-        <select id="select">
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <div class="card card-body bg-light" style="box-shadow: 10px 10px 5px grey; border-radius: 0 0 0 0;">
+        <select id="select" class="form-control form-control">
             <option selected value="0">--- Choose student group ---</option>
         </select>
-        
-</br></br></br>
+</div>
+</div>
+</div>
     <h3>Shedule</h3>
         <table id="myTable">
             <tr>
