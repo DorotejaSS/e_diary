@@ -13,8 +13,7 @@
                 echo 'NEMAS PRISTUP!';
                 exit;
             }
-            var_dump(1);
-            $this->db = Database ::getInstance()->getConnection();
+                        
         }
 
         public function homePage()

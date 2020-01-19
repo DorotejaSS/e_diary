@@ -7,12 +7,12 @@ body {
     background-size: cover;
 }
 
-.login_back{
+/*.login_back{
     margin: 0 auto;
     background: url(../img/dnevnik.jpg) no-repeat fixed;
     background-size: cover;
+}*/
 
-}
 .navbar {
     background-image: url(../img/dnevnik.jpg);
 }

@@ -25,12 +25,13 @@
                 </ul>
             </div>
         </nav>
-        <div class="subject">
-            <h3><?php echo $this->data['prof_data'][0]['title'] ?? false; ?></h3>
-        </div>
 
-</br></br></br>
-    <h3>User Information</h3>
+        <!--<div class="subject">
+            <h3><?php echo $this->data['prof_data'][0]['title'] ?? false; ?></h3>
+        </div>-->
+
+    </br></br></br>
+    <h3>User</h3>
         <table id="myTable">
             <tr>
                 <th>ID:</th> 

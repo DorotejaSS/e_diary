@@ -52,7 +52,7 @@ $routes = array(
 
     '/professor' => 'ProfessorController@homePage',
 
-    
     '/principal' => 'PrincipalController@homePage',
+    
     '/teacher' => 'TeacherController@studentGroup'
 );

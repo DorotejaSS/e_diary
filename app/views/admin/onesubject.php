@@ -26,6 +26,7 @@
 </nav>
 
         <?php $id = $this->data['subject']['id'];?>
+        
 </br></br></br>
     <h3>Subject</h3>
         <table id="myTable">
