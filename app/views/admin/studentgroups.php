@@ -35,12 +35,11 @@
                 <th>Seventh Year:</th>
                 <th>Eight Year:</th>
             </tr>
-
             <tr> 
                 <td><a class="btn btn-success" href="/studentgroup/22"><h5>1</h5></a>
                     <a class="btn btn-success" href="/studentgroup/23"><h5>2</h5></a>
                     <a class="btn btn-success" href="/studentgroup/24"><h5>3</h5></a></td>
-            
+        
                 <td><a class="btn btn-success" href="/studentgroup/19"><h5>1</h5></a>
                     <a class="btn btn-success" href="/studentgroup/20"><h5>2</h5></a>
                     <a class="btn btn-success" href="/studentgroup/21"><h5>3</h5></a></td>

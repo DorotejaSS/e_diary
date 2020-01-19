@@ -57,7 +57,7 @@
                 <div class="form-group">
                     <label>Role:</label>
                     <select name="role_id" class="form-control form-control">
-                        <option>---</option>
+                        <option></option>
                         <option value="1">Admin</option>
                         <option value="2">Principal</option>
                         <option value="3">Professor</option>

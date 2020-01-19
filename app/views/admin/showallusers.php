@@ -40,9 +40,8 @@
                 <th>Last Login at:</th> 
             </tr>
         
-    
-        <?php foreach ($this->data as $key => $value) : ?>
-        <?php $id = $value['id']; ?>
+                <?php foreach ($this->data as $key => $value) : ?>
+                <?php $id = $value['id']; ?>
 
             <tr> 
                 <td><a href="/users/<?= $id ?>"> <?php echo $value['id']; ?></a></td>
@@ -56,7 +55,7 @@
                 <td> <?php echo $value['last_login_at']; ?> </td> 
             </tr>
 
-        <?php endforeach; ?>
+                <?php endforeach; ?>
         
 </table> 
 

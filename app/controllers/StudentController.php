@@ -46,8 +46,7 @@ class StudentController
             $student->update($id);
             header('Location: /students');
         }
-        var_dump($parent_ids);
-        $parent = new Parents($this->request);
+        
     }
 
     public function delete()
