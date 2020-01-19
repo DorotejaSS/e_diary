@@ -26,6 +26,9 @@
 				<li class="nav-item">
 					<a class="nav-link" href="/studentgroup">Student Groups</a>
 				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/schedule">Schedules</a>
+				</li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
