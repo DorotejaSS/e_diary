@@ -9,7 +9,7 @@ if (isset($_SESSION['user_data']))
 
     echo '<ul>';
 
-    echo '<li> <a href="href="/logout"> Odjavi se </a> </li>';
+    echo '<li> <a href="/logout"> Odjavi se </a> </li>';
 
     for ($i=0; $i<count($menu->menu_title); $i++) {
         echo '<li> <a href="' . $menu->menu_url[$i] . '"> ' . $menu->menu_title[$i] . ' </a> </li>';
