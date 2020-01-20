@@ -2,21 +2,12 @@
 
 class Permission extends BaseModel
 {
-
-    public function edit($id)
-    {
-        require('./app/db.php');
-
-        $sql = $conn->prepare('update permissions set title = "'.$_POST['permission'].'" where id = "'.$id.'"');
-        $sql->execute();
-    }
-
-    public function delete($id)
+    public function delete($table, $id)
     {
         require('./app/db.php');
 
         $sql = 'delete from role_permissions where permission_id = '.$id.';
-                delete from permissions where id = '.$id.''; 
+                delete from '.$table.' where id = '.$id.''; 
 
             try {
                 $stmt = $conn->prepare($sql);

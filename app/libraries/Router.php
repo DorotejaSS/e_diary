@@ -17,7 +17,8 @@ class Router
     {
         global $routes;
         if (in_array($this->request->request_uri, array_keys($routes))) {
-            // /var_dump('imamo rutu, slucaj 1, basic');
+            //čišćene ekrana
+           /* var_dump('imamo rutu, slucaj 1, basic');*/
             return true;
         } else {
             $pattern = '/^\/[a-z]{2,}\/[0-9]{1,}+$/';

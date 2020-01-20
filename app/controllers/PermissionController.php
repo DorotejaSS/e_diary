@@ -60,8 +60,7 @@ class PermissionController extends BaseController
         $view->loadPage('admin', 'permissionedit');
 
         if (isset($this->request->post_params['submit'])) {
-            $permission = new Permission();
-            $permission->edit($id);
+            $base_model->edit('permissions', $this->request->post_params['permission'], $id);
             header('Location: /permissions');
         }
     }
@@ -70,7 +69,7 @@ class PermissionController extends BaseController
     {
         $id = $this->request->url_parts[1];
         $permission = new Permission();
-        $permission->delete($id);
+        $permission->delete('permissions', $id);
         header('Location: /permissions');
     }
 

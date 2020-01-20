@@ -47,25 +47,38 @@ class User extends BaseModel
         $this->checkCredentials($this->role_id);
     }
 
-    public function delete($id)
+    public function resetPassword($email, $child_social_id)
     {
-        require('./app/db.php');
+         require('./app/db.php');
 
-        $sql = $conn->prepare('delete from users where id = ?');
-        $sql->execute(array($id));
+         $sql = $conn->prepare('select users.id from users 
+                                inner join students on 
+                                users.email = "'.$email.'" and students.social_id = "'.$child_social_id.'" and
+                                users.id = students.parent_id');
+        $sql->execute();
+        $data = '';
+        $data = $sql->fetchAll();
+
+        if (!empty($data)) {
+            return true;
+        } else 
+        {
+            return false;
+         }
     }
-
+        
+        
     public function update($id)
     {
         require('./app/db.php');
 
         $sql = $conn->prepare('update users set 
-                                first_name = "'.$this->first_name.'",
-                                last_name = "'.$this->last_name.'",
-                                email = "'.$this->email.'",
-                                password = "'.$this->password.'",
-                                role_id = "'.$this->role_id.'"
-                                WHERE id = "'.$id.'"');
+                            first_name = "'.$this->first_name.'",
+                            last_name = "'.$this->last_name.'",
+                            email = "'.$this->email.'",
+                            password = "'.$this->password.'",
+                            role_id = "'.$this->role_id.'"
+                            WHERE id = "'.$id.'"');
 
         $sql->execute();
     }

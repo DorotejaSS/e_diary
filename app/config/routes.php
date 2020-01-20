@@ -6,7 +6,15 @@ $routes = array(
     '/reset-password' => 'AccessController@resetPassword',
 
     '/students' => 'StudentController@showAll',
+    '/students/add' => 'StudentController@add',
     '/students/:id' => 'StudentController@getOne',
+    '/students/:id/edit' => 'StudentController@edit',
+    '/students/:id/delete' => 'StudentController@delete',
+
+    '/studentgroup' => 'StudentGroupController@showAll',
+    '/studentgroup/:id' => 'StudentGroupController@index',
+    '/studentgroup/:id/students' => 'StudentGroupController@students',
+    '/studentgroup/:id/schedule' => 'StudentGroupController@schedule',
 
     '/admin' => 'AdminController@homePage',
 
@@ -31,6 +39,10 @@ $routes = array(
     '/users/:id/delete' => 'UserController@delete',
 
     '/subjects' => 'SubjectController@showAll',
+    '/subjects/add' => 'SubjectController@addSubject',
+    '/subjects/:id' => 'SubjectController@getOne',
+    '/subjects/:id/edit' => 'SubjectController@edit',
+    '/subjects/:id/delete' => 'SubjectController@delete',
 
     '/schedule' => 'ScheduleController@index',
     '/ajax' => 'ScheduleController@ajax',
@@ -40,12 +52,7 @@ $routes = array(
 
     '/professor' => 'ProfessorController@homePage',
 
-    '/grades' => 'GradesController@Grades',
-    '/grades/:id/addgrades' => 'ProfessorController@addGrades',
-    '/grades/:id/editgrades' => 'ProfessorController@editGrades',
-    '/grades/:id/concludegrades' => 'ProfessorController@concludeGrades',
-
-
     '/principal' => 'PrincipalController@homePage',
+    
     '/teacher' => 'TeacherController@studentGroup'
 );

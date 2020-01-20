@@ -1,0 +1,69 @@
+Softmetrix Beograd
+Zadatak za praksu
+
+Elektronski dnevnik
+
+Potrebno je napraviti aplikaciju za elektronsko evidentiranje ocena ucenika po predmetima kao i
+pracenje istih.
+Aplikacija treba da ima login. Pristup aplikaciji da imaju sledece uloge:
+• profesor
+• ucitelj
+• roditelj
+• direktor
+• administrator
+Profesor(razdredni)/ucitelj i roditelj mogu komunicirati i u vidu poruka preko aplikacije.
+
+
+Uloga ucitelja :
+• moze imati jedno odeljenje i jedino njemu moze pristupiti
+• moze pristupati svom odeljenju i upisivati, brisati i zakljucivati ocene
+• da ima pristup delu aplikacije u kojoj ce prihvatati i odbijati zahtev za dolazak roditelja na
+otvorena vrata
+• da ima pristup odeljku za poruke (moze funkcionisati preko ajax-a a moze i da se
+ocekuje od ucitelja da ucita ponovo stranu kako bi video nove poruke)
+• da ima pristup odeljku u kome bi bio ispisan raspored casova
+• generisanje svedocanstva u pdf-u.( Koristiti Composer)
+
+
+Uloga profesora :
+• moze predavati jedan predmet u vise odeljenja i biti razredni samo jednom odeljenju
+• moze pristupati dnevniku odeljenja i upisivati, brisati i zakljucivati ocene za svoj predmet
+• da ima pristup delu aplikacije u kojoj ce prihvatati i odbijati zahtev za dolazak roditelja na
+otvorena vrata
+• da ima pristup odeljku za poruke (moze funkcionisati preko ajax-a a moze i da se
+ocekuje od ucitelja da ucita ponovo stranu kako bi video nove poruke)
+• da ima pristup odeljku u kome bi bio ispisan raspored casova
+• razredni / generisanje svedocanstva u pdf-u.( Koristiti Composer)
+
+Uloga roditelja:
+• da ima pristip i uvid u ocene jedino za svoje dete
+• da ima pristup delu aplikacije u kojoj ce zakazati dolazak na otvorena vrata kod ucitelja
+u vreme otvorenih vrata
+• Odeljak za poruke ista logika kao za ucitelja.
+• Da ima pristup odeljku sa obavestenjima za roditelje.
+
+
+Uloga direktora:
+• da ima pristup statistici uspesnosti odeljenja po predmetima
+• da ima pristup statistici uspesnosti po predmetima na nivou skole
+(Preporuka koristiti AmCharts biblioteku https://www.amcharts.com/).
+
+
+Uloga administratora:
+ pristup jedino stranici za podesavanja (administriranje aplikacije) :
+✔ da dodaje, brise i menja korisnike               *
+✔ da korisnicima dodeljuje uloge                   *
+✔ da dodaje, brise i menja predmete i odeljenja    *
+✔ da dodaje, brise i menja raspored casova
+✔ da upravlja odeljkom za obavestenja roditeljima
+✔ da dodaje, brise i menja informacije o ucenicima *
+
+
+Bonus:
+Uloga ucitelja/profesora :
+ upisivanje casova prema svom rasporedu u vremenu odrzavanja casa.
+ Upisivanje izostanaka
+
+Uloga roditelja:
+ Slanje opravdanja ucitelju/profesoru (slika)
+* postavljanje aplikacije na besplatan server

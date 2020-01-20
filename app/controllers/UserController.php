@@ -28,11 +28,19 @@ class UserController extends AdminController
     public function getOne()
     {
         $id = $this->request->url_parts[1];
-        $user = new User();
-        $get_one_user = $user->getOne('users', $id);
-
+        $base_model = new BaseModel();
+        $get_one_user = $base_model->getOne('users', $id);
         $view = new View();
-        $view->data = $get_one_user[0];
+        
+        if ($get_one_user[0]['role_id'] === '3') {
+            $get_by_role_id = $base_model->getByRoleId($id);
+        } else if($get_one_user[0]['role_id'] === '5') {
+            var_dump('roditelj');
+            $bring_the_child = $base_model->usersChild($id);
+        }
+        $view->data['child_data'] = $bring_the_child ?? array();
+        $view->data['prof_data'] = $get_by_role_id  ?? array();
+        $view->data['user'] = $get_one_user[0];
         $view->loadPage('admin', 'showoneuser');
     }
 
@@ -41,24 +49,40 @@ class UserController extends AdminController
         $id = $this->request->url_parts[1];
         $user = new User();
         $get_one_user = $user->getOne('users', $id);
-
+        $show_all_subj = $user->distinctShowAll('subjects');
+        
         $view = new View();
-        $view->data = $get_one_user[0];
-        $view->loadPage('admin', 'showoneuser');
+        $view->data['subjects'] = $show_all_subj;
+        if ($get_one_user[0]['role_id'] === '3') {
+            $get_by_role_id = $user->getByRoleId($id);
+        } 
+
+        $view->data['prof_data'] = $get_by_role_id  ?? array();
+        $view->data['user'] = $get_one_user[0];
         $view->loadPage('admin', 'edituser');
-     
-        if (isset($_POST['submit'])) {
+
+        if ($get_one_user[0]['role_id'] === '3' && isset($this->request->post_params['submit'])) {
             $user = new User();
             $user->update($id);
-            header('Location: /users');
+            $subject = new Subject();
+            $subject->update($id);
+            // header('Location: /users');
+    
         }
+     
+        if (isset($this->request->post_params['submit'])) {
+            $user = new User();
+            $user->update($id);
+        }
+    
     }
 
     public function delete()
     {
         $id = $this->request->url_parts[1];
-        $user = new User();
-        $user->delete($id);
+        $base_model = new BaseModel();
+        $base_model->deleteParent($id);
+        $base_model->delete('users', $id);
         header('Location: /users');
     }
 

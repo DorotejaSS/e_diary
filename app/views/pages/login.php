@@ -1,36 +1,33 @@
-<html>
-   <head>
-      <title>Login Page</title>
-      <style type = "text/css">
-         body {
-            font-family:Arial, Helvetica, sans-serif;
-            font-size:14px;
-         }
-         label {
-            font-weight:bold;
-            width:100px;
-            font-size:14px;
-         }
-         .box {
-            border:#666666 solid 1px;
-         }
-      </style>
-   </head>
-   <body bgcolor = "#FFFFFF">
-      <?php include './app/views/inc/header.php'; ?>
-      <div align = "center">
-         <div style = "width:300px; border: solid 1px #333333; " align = "left">
-            <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Login</b></div>
-            <div style = "margin:30px">
-               <form action="" method="post">
-                  <label>Email  :</label><input type = "text" name = "email" class = "box"/><br/><br />
-                  <label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
-                  <input type="submit" value="Submit"/><br/>
-               </form>
-               <div style = "font-size:11px; color:#cc0000; margin-top:10px"></div>
+<div class="login_back">
+<div class="jumbotrone jumbotrone-fluid text-center">
+    <h1 class="display-3">E-Diary</h1>
+</div>
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card card-body bg-light mt-5" style="box-shadow: 10px 10px 5px grey; border-radius: 0 0 0 0;">
+                <h2>Login</h2>
+                <p>Please fill in your credentials to log in</p>
+                <form action="" method="post" autocomplete="on">
+                    <div class="form-group">
+                        <label for="email">Email Address:<span class="req"> *</span></label>
+                        <input type="email" name="email" id="email" class="form-control form-control-lg">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:<span class="req"> *</span></label>
+                        <input type="password" name="password" id="password" class="form-control form-control-lg">
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                        <input type="submit" value="Login" class="btn btn-success btn-block">
+                        </div>
+                    </div>
+                </form>
+                <a href="/reset-password">*I forgot my password</a>
             </div>
-         </div>
-      </div>
-      <?php include './app/views/inc/footer.php'; ?>
-   </body>
-</html>
+        </div>
+    </div>
+</div>
+ 
+   
+
+

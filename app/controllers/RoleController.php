@@ -48,8 +48,7 @@ class RoleController extends BaseController
         $view->loadPage('admin', 'roleedit');
 
         if (isset($this->request->post_params['submit'])) {
-            $role = new Role();
-            $role->edit($id);
+            $base_model->edit('roles', $this->request->post_params['role'], $id);
             header('Location: /roles');
         }
     }
@@ -57,8 +56,8 @@ class RoleController extends BaseController
     public function roleDelete()
     {
         $id = $this->request->url_parts[1];
-        $role = new Role();
-        $role->delete($id);
+        $base_model = new BaseModel();
+        $base_model->delete('roles', $id);
         header('Location: /roles');
     }
 }

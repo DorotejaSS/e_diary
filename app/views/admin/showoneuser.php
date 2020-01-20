@@ -1,42 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=]; ?>, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>User</title>
-</head>
-<body>
-            <?php $id = $this->data['id'];?>
+<?php $id = $this->data['user']['id'];?>
+<title>User</title>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
+            <button class="navbar-toggler" type="button" 
+                    data-toggle="collapse" 
+                    data-target="#navbarsExampleDefault" 
+                    aria-controls="navbarsExampleDefault" 
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <table border="5" cellpadding="5" cellspacing="0" style="border-  collapse: collapse"
-             bordercolor="#808080" width="100&#3" bgcolor="#C0C0C0">
-                <tr>
-                    <td width=100>ID:</td> 
-                    <td width=100>First Name</td> 
-                    <td width=100>Last Name</td> 
-                    <td width=100>Email</td> 
-                    <td width=100>Role Id</td>
-                    <td width=100>Password</td> 
-                    <td width=100>Updated at</td> 
-                    <td width=100>Created at</td> 
-                    <td width=100>Last Login at</td> 
-                </tr> 
-                
-                <button><a href="/users/<?= $id ?>/edit">EDIT</a></button>
-                <button><a href="/users/<?= $id; ?>/delete">DELETE</a></button>
-                    
-                <tr> 
-                    <td><?php echo $this->data['id']; ?></td> 
-                    <td><?php echo $this->data['first_name']; ?></td> 
-                    <td><?php echo $this->data['last_name']; ?></td> 
-                    <td><?php echo $this->data['email']; ?></td>
-                    <td><?php echo $this->data['role_id']; ?></td>
-                    <td><?php echo $this->data['password']; ?></td>
-                    <td><?php echo $this->data['updated_at']; ?></td>
-                    <td><?php echo $this->data['created_at']; ?></td> 
-                    <td><?php echo $this->data['last_login_at']; ?></td> 
-                </tr>  
-             </table> 
-</body>
-</html>
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto" >
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">Admin page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users">Users</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="btn btn-success btn-block" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!--<div class="subject">
+            <h3><?php echo $this->data['prof_data'][0]['title'] ?? false; ?></h3>
+        </div>-->
+
+    </br></br></br>
+    <h3>User</h3>
+        <table id="myTable">
+            <tr>
+                <th>ID:</th> 
+                <th>First Name:</th> 
+                <th>Last Name:</th> 
+                <th>Email:</th> 
+                <th>Role ID:</th>
+                <th>Password:</th> 
+                <th>Updated at:</th> 
+                <th>Created at:</th> 
+                <th>Last Login at:</th> 
+                <th>Edit:</th>
+                <th>Delete:</th>
+            </tr>
+       
+            <tr> 
+                <td><?php echo $this->data['user']['id']; ?></td> 
+                <td><?php echo $this->data['user']['first_name']; ?></td> 
+                <td><?php echo $this->data['user']['last_name']; ?></td> 
+                <td><?php echo $this->data['user']['email']; ?></td>
+                <td><?php echo $this->data['user']['role_id']; ?></td>
+                <td><?php echo $this->data['user']['password']; ?></td>
+                <td><?php echo $this->data['user']['updated_at']; ?></td>
+                <td><?php echo $this->data['user']['created_at']; ?></td> 
+                <td><?php echo $this->data['user']['last_login_at']; ?></td> 
+                <td><a class="btn btn-primary" href="/users/<?= $id ?>/edit">Edit</a></td>
+                <td><a class="btn btn-danger" href="/users/<?= $id ?>/delete">Delete</a></td>
+            </tr>  
+        </table> 
+    
+            	<?php if (isset($this->data['child_data'])) : ?>
+                <?php foreach ($this->data['child_data'] as $key => $child) : ?>
+
+</br></br></br>
+    <h3 class="child">Child</h3>
+        <table id="myTable">
+            <tr>
+                <th>ID:</th> 
+                <th>First Name:</th> 
+                <th>Last Name:</th> 
+                <th>Date Of Birth:</th> 
+                <th>Social ID:</th>
+                <th>Student Group ID:</th> 
+            </tr> 
+            <tr> 
+                <td><?php echo $child['id']; ?></td> 
+                <td><?php echo $child['first_name']; ?></td> 
+                <td><?php echo $child['last_name']; ?></td> 
+                <td><?php echo $child['date_of_birth']; ?></td>
+                <td><?php echo $child['social_id']; ?></td>
+                <td><?php echo $child['student_group_id']; ?></td>
+            </tr>  
+        </table> 
+
+                <?php endforeach; ?>
+                <?php endif; ?>
