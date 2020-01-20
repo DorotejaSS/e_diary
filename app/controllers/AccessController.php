@@ -26,8 +26,7 @@ class AccessController extends BaseController
     public function logout()
     {   
         unset($_SESSION['user_data']);    
-        echo 'You have cleaned session';
-        header('Refresh: 2; URL = /login');
+        header('Refresh: 1; URL = /login');
     }
 
     public function resetPassword()
