@@ -6,12 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Welcome</title>
 </head>
-<body>
-    
-    <?php include ('././app/views/inc/header.php') ?>
-
-    </br></br></br>
-    <h3>Subjects</h3>
+    <body>
+        <button><a href="/subjects/add">Add New Subject</a></button>
+        <h3>Subjects</h3>
         <table id="myTable">
             <tr>
                 <th>Subject:</th> 
@@ -21,23 +18,20 @@
                 <th>Role ID:</th>
             </tr>
             
-                <?php foreach ($this->data as $key => $value) : ?>
-                    <?php $lecturer_id = $value['lecturer_id']; ?>
-                    <?php $subject_id = $value['id']; ?>
-                    
-                    <tr> 
-                        <td><a href="/subjects/<?= $subject_id ?>"> <?php echo $value['title']; ?> </td>
-                        <td> <?php echo $lecturer_id; ?> </td>
-                        <td><a href="/users/<?= $lecturer_id ?>"> <?php echo $value['first_name']; ?></a></td>
-                        <td><a href="/users/<?= $lecturer_id ?>"> <?php echo $value['last_name']; ?></a></td>
-                        <td> <?php echo $value['role_id']; ?> </td>
-                    </tr>
+            <?php foreach ($this->data as $key => $value) : ?>
+                <?php $lecturer_id = $value['lecturer_id']; ?>
+                <?php $subject_id = $value['id']; ?>
+                
+                <tr> 
+                    <td><a href="/subjects/<?= $subject_id ?>"> <?php echo $value['title']; ?> </td>
+                    <td> <?php echo $lecturer_id; ?> </td>
+                    <td><a href="/users/<?= $lecturer_id ?>"> <?php echo $value['first_name']; ?></a></td>
+                    <td><a href="/users/<?= $lecturer_id ?>"> <?php echo $value['last_name']; ?></a></td>
+                    <td> <?php echo $value['role_id']; ?> </td>
+                </tr>
 
-                <?php endforeach; ?>
+            <?php endforeach; ?>
 
         </table> 
-
-    <?php include ('././app/views/inc/footer.php') ?>
-
-</body>
+    </body>
 </html>

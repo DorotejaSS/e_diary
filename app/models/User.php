@@ -58,7 +58,7 @@ class User extends BaseModel
         $sql->execute();
         $data = '';
         $data = $sql->fetchAll();
-        $_SESSION['id'] = $data[0]['id'];
+        $_SESSION['id'] = $data[0]['id'] ?? array();
     
         if (!empty($data)) {
             return true;
@@ -67,19 +67,24 @@ class User extends BaseModel
         }
     }
 
-    public function updatePassword($email, $password)
+    public function updatePassword()
     {
         require('./app/db.php');
-        var_dump($email);
-        var_dump($password);
-
-        // $sqp = $conn->prepare('update users set password = ')
+        var_dump($_POST);
+        var_dump($_SESSION);
+        if($_POST['password'] === $_POST['re-password']) {
+            $sql = $conn->prepare('update users set password = "'.$_POST['password'].'" where id = "'.$_SESSION['id'].'"');
+            return $sql->execute();
+        } else {
+            echo 'Try Again. Enter the same password twice.';
+        }
     }
         
         
     public function update($id)
     {
         require('./app/db.php');
+
 
         $sql = $conn->prepare('update users set 
                             first_name = "'.$this->first_name.'",
@@ -88,7 +93,6 @@ class User extends BaseModel
                             password = "'.$this->password.'",
                             role_id = "'.$this->role_id.'"
                             WHERE id = "'.$id.'"');
-
         $sql->execute();
     }
 
@@ -162,9 +166,7 @@ class User extends BaseModel
                 break;
             }
             
-            $view = new View();
-            $view->loadPage('pages', 'welcome');
-            
+        
         } else {
             $error = 'Your Email or Password is invalid';
             echo $error;

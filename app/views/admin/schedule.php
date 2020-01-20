@@ -1,26 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-        <script  type="text/javascript" src="./././public/js/jquery-3.4.1.js"></script>
-        <script  type="text/javascript" src="./././public/js/schedule.js"></script>
-
-        <title>Schedule</title>
-
-    </head>
-
-    <body>
-    
-        <?php include './app/views/inc/header.php'; ?>
-
+        <br><br>
+        <br><br>
         <select id="select">
             <option selected value="0">--- Choose student group ---</option>
         </select>
         <br><br>
+
 
         <table border="5" cellpadding="5" cellspacing="0" style="border-  collapse: collapse" bordercolor="#808080" width="100&#3" bgcolor="#C0C0C0">
             <tr>
@@ -98,8 +82,3 @@
         </table>
         <br>
         <button hidden id="editBttn">Edit</button> <button hidden id="cancelBttn">Cancel</button> <button hidden id="saveBttn">Save</button>
-
-        <?php include './app/views/inc/footer.php'; ?>
-
-    </body>
-</html>

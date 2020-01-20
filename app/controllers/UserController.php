@@ -66,8 +66,6 @@ class UserController extends AdminController
             $user->update($id);
             $subject = new Subject();
             $subject->update($id);
-            // header('Location: /users');
-    
         }
      
         if (isset($this->request->post_params['submit'])) {

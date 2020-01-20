@@ -23,7 +23,6 @@
             $user->permissionTitles($this->role_id);
             // var_dump($user->permissionTitles($this->role_id));
             $this->loadView('admin', 'index');
-            $this->loadView('pages', 'welcome');
         }
         
     }

@@ -1,21 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Welcome</title>
-</head>
-<body>
-    
-    <?php include ('././app/views/inc/header.php') ?>
-
-    
-
-    <?php $parent_id = $this->data['parent_data']['id'] ?? array();?>
+        <?php $parent_id = $this->data['parent_data']['id'] ?? array();?>
         <?php $student_id = $this->data['student_data']['id'];?>
         
-</br></br></br>
     <h3>Student Information</h3>
         <table id="myTable">
             <tr>
@@ -49,29 +34,23 @@
 
         <?php if(!empty($this->data['parent_data'])) : ?>
 
-</br></br></br>
-    <h3>Parent Information</h3>
-        <table id="myTable">
-            <tr>
-                <th>ID:</th> 
-                <th>First Name:</th> 
-                <th>Last Name:</th> 
-                <th>Email:</th> 
-                <th>Last Login at:</th>
-            </tr> 
-                
-            <tr> 
-                <td><a href="/users/<?= $parent_id ?>"></a><?php echo $this->data['parent_data']['id']; ?></td> 
-                <td><a href="/users/<?= $parent_id ?>"><?php echo $this->data['parent_data']['first_name']; ?></td> 
-                <td><a href="/users/<?= $parent_id ?>"><?php echo $this->data['parent_data']['last_name']; ?></td> 
-                <td><?php echo $this->data['parent_data']['email']; ?></td>
-                <td><?php echo $this->data['parent_data']['last_login_at']; ?></td>
-            </tr>  
-        </table> 
+            <h3>Parent Information</h3>
+            <table id="myTable">
+                <tr>
+                    <th>ID:</th> 
+                    <th>First Name:</th> 
+                    <th>Last Name:</th> 
+                    <th>Email:</th> 
+                    <th>Last Login at:</th>
+                </tr> 
+                    
+                <tr> 
+                    <td><a href="/users/<?= $parent_id ?>"></a><?php echo $this->data['parent_data']['id']; ?></td> 
+                    <td><a href="/users/<?= $parent_id ?>"><?php echo $this->data['parent_data']['first_name']; ?></td> 
+                    <td><a href="/users/<?= $parent_id ?>"><?php echo $this->data['parent_data']['last_name']; ?></td> 
+                    <td><?php echo $this->data['parent_data']['email']; ?></td>
+                    <td><?php echo $this->data['parent_data']['last_login_at']; ?></td>
+                </tr>  
+            </table> 
 
         <?php endif;?>
-
-    <?php include ('././app/views/inc/footer.php') ?>
-
-</body>
-</html>
