@@ -1,30 +1,16 @@
-<title>Add new permission</title>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
-    <button class="navbar-toggler" type="button" 
-        data-toggle="collapse" 
-        data-target="#navbarsExampleDefault" 
-        aria-controls="navbarsExampleDefault" 
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome</title>
+</head>
+<body>
+    
+    <?php include ('././app/views/inc/header.php') ?>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/admin">Admin page</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/permissions">Permissions</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="btn btn-success btn-block" href="/logout">Logout</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-<div class="row">
+    <div class="row">
     <div class="col-md-6 mx-auto">
         <div class="card card-body bg-light mt-5" style="box-shadow: 10px 10px 5px grey; border-radius: 0 0 0 0;">
             <h2>Add new permission</h2>
@@ -55,3 +41,8 @@
         </div>
     </div>
 </div>
+
+    <?php include ('././app/views/inc/footer.php') ?>
+
+</body>
+</html>

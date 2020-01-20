@@ -7,8 +7,10 @@
         <title>Reset Password</title>
     </head>
     <body>
-    <?php $action = $this->data['action'] ?? false;?>
-        <form action="<?= $action; ?>" method="post">
+
+    <?php include ('././app/views/inc/header.php') ?>
+
+        <form action="" method="post">
             <label for="email">Enter Your Email</label>
             <input type="email" name="email">
 
@@ -17,5 +19,8 @@
 
             <input type="submit" name="submit" value="Submit">
         </form>
+
+    <?php include ('././app/views/inc/footer.php') ?>
+    
     </body>
 </html>

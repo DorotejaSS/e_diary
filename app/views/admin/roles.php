@@ -1,33 +1,16 @@
-<title>Roles</title>
- <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
-    <button class="navbar-toggler" type="button" 
-        data-toggle="collapse" 
-        data-target="#navbarsExampleDefault" 
-        aria-controls="navbarsExampleDefault" 
-        aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/admin">Admin page</a>
-            </li>
-            <li class="nav-item mr-2">
-                <a class="btn btn-success btn-block" href="/roles/add">Add role</a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-success btn-block" href="/permissions">List of permissions</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="btn btn-success btn-block" href="/logout">Logout</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome</title>
+</head>
+<body>
+    
+    <?php include ('././app/views/inc/header.php') ?>
 
-</br></br></br>
+    </br></br></br>
     <h3>Roles</h3>
             <table id="myTable">
                 <tr>
@@ -50,3 +33,9 @@
             <?php endforeach; ?>
         
         </table>
+
+    <?php include ('././app/views/inc/footer.php') ?>
+
+</body>
+</html>
+

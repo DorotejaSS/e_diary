@@ -1,33 +1,16 @@
-<!--popraviti-->
-<?php $id = $this->data['student']['id'];?>
-        <title>Edit student</title>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
-            <button class="navbar-toggler" type="button" 
-                    data-toggle="collapse" 
-                    data-target="#navbarsExampleDefault" 
-                    aria-controls="navbarsExampleDefault" 
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit student</title>
+</head>
+<body>
+    
+    <?php include ('././app/views/inc/header.php') ?>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/admin">Admin page</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/students/<?= $id;?>">Student</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="btn btn-success btn-block" href="/logout">Logout</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-<div class="row">
+    <div class="row">
         <div class="col-md-6 mx-auto">
             <div class="card card-body bg-light mt-5" style="box-shadow: 10px 10px 5px grey; border-radius: 0 0 0 0;">
             <h2>Edit student</h2>
@@ -62,6 +45,43 @@
                     </div>
                 <input type="submit" name="submit" value="Submit" class="btn btn-success btn-block">
             </form>
+            </div>
         </div>
     </div>
-</div>
+
+    <?php include ('././app/views/inc/footer.php') ?>
+
+</body>
+</html>
+
+<!-- Ne znam za sta ovo koristis, treba da vidimo kako da ga implementujemo u header.php
+
+<?php // $id = $this->data['student']['id'];?>
+        <title>Edit student</title>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
+            <button class="navbar-toggler" type="button" 
+                    data-toggle="collapse" 
+                    data-target="#navbarsExampleDefault" 
+                    aria-controls="navbarsExampleDefault" 
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/admin">Admin page</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/students/<?php // $id;?>">Student</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="btn btn-success btn-block" href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+-->

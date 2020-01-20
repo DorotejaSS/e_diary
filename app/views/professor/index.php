@@ -1,11 +1,18 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Professor Page</title>
+</head>
+<body>
+    
+    <?php include ('././app/views/inc/header.php') ?>
 
-echo '<h1>PROFESSOR PAGE</h1>';
+    
 
-?>
+    <?php include ('././app/views/inc/footer.php') ?>
 
-<button><a href="/diary">DIARY</a></button>
-<button><a href="/open_door">OPEN DOOR</a></button>
-<button><a href="/messages">MESSAGES</a></button>
-<button><a href="/schedule">SCHEDULE</a></button>
-<button><a href="/certificate">CERTIFICATE</a></button>
+</body>
+</html>
