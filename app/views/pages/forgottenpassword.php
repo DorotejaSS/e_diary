@@ -7,7 +7,8 @@
         <title>Reset Password</title>
     </head>
     <body>
-        <form action="" method="post">
+    <?php $action = $this->data['action'] ?? false;?>
+        <form action="<?= $action; ?>" method="post">
             <label for="email">Enter Your Email</label>
             <input type="email" name="email">
 

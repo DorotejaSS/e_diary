@@ -4,6 +4,7 @@ $routes = array(
     '/login' => 'AccessController@login',
     '/logout' => 'AccessController@logout',
     '/reset-password' => 'AccessController@resetPassword',
+    '/newpassword' => 'AccessController@newPassword',
 
     '/students' => 'StudentController@showAll',
     '/students/add' => 'StudentController@add',
@@ -20,13 +21,11 @@ $routes = array(
 
     '/roles' => 'RoleController@roles',
     '/roles/add' => 'RoleController@roleAdd',
-    // '/roles/:id' => 'RoleController@getOne',
     '/roles/:id/edit' => 'RoleController@roleEdit',
     '/roles/:id/delete' => 'RoleController@roleDelete',
 
     '/permissions' => 'PermissionController@permissions',
     '/permissions/add' => 'PermissionController@addPermission',
-    // '/permissions/:id' => 'PermissionController@getOne',
     '/permissions/:id/edit' => 'PermissionController@editPermission',
     '/permissions/:id/delete' => 'PermissionController@deletePermission',
 

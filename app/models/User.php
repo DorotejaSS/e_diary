@@ -49,22 +49,31 @@ class User extends BaseModel
 
     public function resetPassword($email, $child_social_id)
     {
-         require('./app/db.php');
+        require('./app/db.php');
 
-         $sql = $conn->prepare('select users.id from users 
+        $sql = $conn->prepare('select users.id from users 
                                 inner join students on 
                                 users.email = "'.$email.'" and students.social_id = "'.$child_social_id.'" and
                                 users.id = students.parent_id');
         $sql->execute();
         $data = '';
         $data = $sql->fetchAll();
-
+        $_SESSION['id'] = $data[0]['id'];
+    
         if (!empty($data)) {
             return true;
-        } else 
-        {
+        } else {
             return false;
-         }
+        }
+    }
+
+    public function updatePassword($email, $password)
+    {
+        require('./app/db.php');
+        var_dump($email);
+        var_dump($password);
+
+        // $sqp = $conn->prepare('update users set password = ')
     }
         
         

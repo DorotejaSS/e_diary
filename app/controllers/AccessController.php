@@ -33,6 +33,7 @@ class AccessController extends BaseController
     {
         $view = new View();
         $view->loadPage('pages', 'forgottenpassword');
+        $view->data['action'] = '';
     
         $email = $this->request->post_params['email'] ?? array();
         $child_social_id = $this->request->post_params['child_social_id'] ?? array();
@@ -40,15 +41,40 @@ class AccessController extends BaseController
 
         if (!empty($email) && !empty($child_social_id) && !empty($submit)) {
             $user = new User();
+            $view->data['action'] = '/newpassword';
             if ($user->resetPassword($email, $child_social_id)) {
+                var_dump($_SESSION);
                 echo 'You have entered valid informations, please save your new password and log in.';
-                $view->loadPage('pages', 'newpassword');
-                var_dump($_POST);
+                $this->newPassword();
             } else {
                 echo 'Invalid informations, access denied.';
                 header('Refresh: 2; URL = /login');
             } 
         }
+    }
+    
+    public function newPassword()
+    {   
+        $view = new View();
+        $view->loadPage('pages', 'newpassword');
+        
+        // $email = $this->request->post_params['email'] ?? array();
+        // $password = $this->request->post_params['password'] ?? array();
+        // $re_password = $this->request->post_params['re-password'] ?? array();
+        
+        // var_dump($_POST);
+        // if ($_POST['password'] === $_POST['re-password']) {
+        //     echo 'success';
+        // } else {
+        //     echo 'not success';
+        // }
+        // if ($password === $re_password) {
+        //     echo 'ok';
+        //     $user = new User();
+        //     $user->updatePassword($email, $password);
+        // } else {
+        //     echo 'nije ok';
+        //}
     }
 
 }
