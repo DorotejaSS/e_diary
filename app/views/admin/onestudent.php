@@ -1,32 +1,18 @@
-<title>Student</title>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
-            <button class="navbar-toggler" type="button" 
-                    data-toggle="collapse" 
-                    data-target="#navbarsExampleDefault" 
-                    aria-controls="navbarsExampleDefault" 
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome</title>
+</head>
+<body>
+    
+    <?php include ('././app/views/inc/header.php') ?>
 
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav mr-auto" >
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin">Admin page</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/students">Students</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="btn btn-success btn-block" href="/logout">Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+    
 
-
-        <?php $parent_id = $this->data['parent_data']['id'] ?? array();?>
+    <?php $parent_id = $this->data['parent_data']['id'] ?? array();?>
         <?php $student_id = $this->data['student_data']['id'];?>
         
 </br></br></br>
@@ -84,3 +70,8 @@
         </table> 
 
         <?php endif;?>
+
+    <?php include ('././app/views/inc/footer.php') ?>
+
+</body>
+</html>

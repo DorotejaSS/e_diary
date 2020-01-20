@@ -1,31 +1,16 @@
-<title>Subject <?= $this->data['subject']['title']; ?></title>   
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 fixed-top">
-        <button class="navbar-toggler" type="button" 
-                data-toggle="collapse" 
-                data-target="#navbarsExampleDefault" 
-                aria-controls="navbarsExampleDefault" 
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome</title>
+</head>
+<body>
+    
+    <?php include ('././app/views/inc/header.php') ?>
 
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin">Admin page</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/subjects">Subjects</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="btn btn-success btn-block" href="/logout">Logout</a>
-                </li>
-            </ul>
-        </div>
-</nav>
-
-        <?php $id = $this->data['subject']['id'];?>
+    <?php $id = $this->data['subject']['id'];?>
         
 </br></br></br>
     <h3>Subject</h3>
@@ -46,3 +31,8 @@
                         <td><a class="btn btn-danger" href="/subjects/<?= $id; ?>/delete">Delete</a></td>
                     </tr>  
         </table> 
+
+    <?php include ('././app/views/inc/footer.php') ?>
+
+</body>
+</html>

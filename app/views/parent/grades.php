@@ -7,6 +7,7 @@
     <title>Grades Page</title>
 </head>
 <body>
+
     <?php include './app/views/inc/header.php'; ?>
 
     <?php
@@ -14,5 +15,6 @@
     ?>
 
     <?php include './app/views/inc/footer.php'; ?>
+    
 </body>
 </html>
