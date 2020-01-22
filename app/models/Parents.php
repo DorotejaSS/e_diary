@@ -11,9 +11,11 @@ class Parents extends BaseModel
     {
         $this->request = $request;
         
-        if (isset($_SESSION['user_data']) && isset($this->request->url_parts[1])) {
+        if (isset($_SESSION['user_data']) && !empty($_SESSION['user_data'])) {
             $this->parent_id = $_SESSION['user_data']['id'];
-            $this->getChild();
+
+            $this->child_data = $this->usersChild($this->parent_id);
+
             if (isset($this->request->url_parts[1]))
             {
                 $this->getGrades($this->request->url_parts[1]);
@@ -26,9 +28,7 @@ class Parents extends BaseModel
         require('./app/db.php');
 
         $sql = $conn->prepare('SELECT students.id, students.first_name, students.last_name 
-                                FROM students INNER JOIN parent_student ON students.id = parent_student.student_id 
-                                WHERE parent_student.parent_id = :id');
-
+                               FROM students WHERE students.parent_id = :id');
         $sql->execute (array(':id' => $this->parent_id));
 
         $this->child_data = $sql->fetchAll();
@@ -38,20 +38,22 @@ class Parents extends BaseModel
     {
         require('./app/db.php');
 
-        $sql = $conn->prepare ('SELECT grades.lecturer_id, grades.grade, grades.closing, users.first_name, users.last_name, subjects.title 
-                                 FROM grades INNER JOIN users ON grades.lecturer_id = users.id INNER JOIN subjects ON grades.lecturer_id = subjects.lecturer_id
-                                 WHERE grades.student_id = :id');
-
+        $sql = $conn->prepare ('SELECT students.student_group_id FROM students WHERE students.id = :id');
         $sql->execute (array(':id' => $child_id));
 
-        //$result = $sql->fetchAll(PDO::FETCH_ASSOC);
+        $child_sg_id = $sql->fetch(PDO::FETCH_ASSOC);
 
-        $this->grades_data = $sql->fetchAll(PDO::FETCH_ASSOC);           
+        $sql = $conn->prepare ('SELECT DISTINCT subjects.title, grades.closing, grades.grade 
+                                FROM subjects INNER JOIN schedules ON subjects.id = schedules.subject_id INNER JOIN grades ON subjects.lecturer_id = grades.lecturer_id 
+                                WHERE schedules.student_group_id = :sg_id AND grades.student_id = :id');
+        $sql->execute (array(':sg_id' => $child_sg_id['student_group_id'], ':id' => $child_id));
+
+        $this->grades_data = $sql->fetchAll(PDO::FETCH_GROUP);
     }
 
     public function parentStudentCollation($id)
     {
-         require('./app/db.php');
+        require('./app/db.php');
 
         $sql = $conn->prepare('select u.id, u.first_name, u.last_name, u.email, u.last_login_at
                                 from users as u 

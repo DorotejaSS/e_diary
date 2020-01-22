@@ -16,7 +16,7 @@
     {
         echo '<a href="/parents/' . $data['id'] . '">' . $data['first_name'] . ' ' . $data['last_name'] . '</a> <br>';
     }
-    var_dump($this->data);
+    
     ?>
 
     <?php include './app/views/inc/footer.php'; ?>
