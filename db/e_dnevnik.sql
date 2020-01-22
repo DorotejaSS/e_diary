@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 19, 2020 at 04:02 PM
+-- Generation Time: Jan 22, 2020 at 03:26 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -111,12 +111,12 @@ CREATE TABLE IF NOT EXISTS `menu` (
 --
 
 INSERT INTO `menu` (`id`, `title`, `url`) VALUES
-(10, 'users', '#'),
-(11, 'subjects', '#'),
-(12, 'student groups', '#'),
-(13, 'schedules', '#'),
+(10, 'users', '/users'),
+(11, 'subjects', '/subjects'),
+(12, 'student groups', '/studentgroup'),
+(13, 'schedules', '/schedule'),
 (14, 'notifications', '#'),
-(15, 'students', '#'),
+(15, 'students', '/students'),
 (16, 'statistic - student groups', '#'),
 (17, 'statistic - subject', '#'),
 (18, 'grades - professor', '#'),
@@ -258,9 +258,20 @@ CREATE TABLE IF NOT EXISTS `role_menu` (
   `menu_id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_role_menu_roles1_idx` (`menu_id`),
-  KEY `fk_role_menu_menu1_idx` (`role_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
+  KEY `menu_id_fk_idx` (`menu_id`),
+  KEY `role_id_fk_idx` (`role_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `role_menu`
+--
+
+INSERT INTO `role_menu` (`id`, `menu_id`, `role_id`) VALUES
+(6, 10, 1),
+(7, 11, 1),
+(8, 12, 1),
+(9, 13, 1),
+(10, 15, 1);
 
 -- --------------------------------------------------------
 
@@ -487,14 +498,17 @@ CREATE TABLE IF NOT EXISTS `schedules` (
   KEY `fk_schedules_users1_idx` (`subject_id`),
   KEY `fk_schedules_student_group1_idx` (`student_group_id`),
   KEY `fk_schedules_semestars1_idx` (`semestar_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `schedules`
 --
 
 INSERT INTO `schedules` (`id`, `student_group_id`, `subject_id`, `start_time`, `end_time`, `semestar_id`, `type`, `position`) VALUES
-(1, 22, 12, NULL, NULL, 1, NULL, 'mon1');
+(2, 22, 23, NULL, NULL, 1, NULL, 'mon1'),
+(3, 24, 16, NULL, NULL, 1, NULL, 'mon1'),
+(4, 24, 30, NULL, NULL, 1, NULL, 'mon2'),
+(5, 24, 29, NULL, NULL, 1, NULL, 'mon3');
 
 -- --------------------------------------------------------
 
@@ -1220,8 +1234,8 @@ ALTER TABLE `parent_student`
 -- Constraints for table `role_menu`
 --
 ALTER TABLE `role_menu`
-  ADD CONSTRAINT `fk_role_menu_menu1` FOREIGN KEY (`role_id`) REFERENCES `menu` (`id`),
-  ADD CONSTRAINT `fk_role_menu_roles1` FOREIGN KEY (`menu_id`) REFERENCES `roles` (`id`);
+  ADD CONSTRAINT `menu_id_fk_idx` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`),
+  ADD CONSTRAINT `role_id_fk_idx` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
 
 --
 -- Constraints for table `role_permissions`

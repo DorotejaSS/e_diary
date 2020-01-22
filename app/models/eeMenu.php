@@ -20,9 +20,9 @@ class eeMenu extends BaseModel
 
         if (isset($_SESSION['user_data']))
         {
-            $sql = $conn->prepare('    SELECT menu.title, menu.url 
-                                        FROM menu INNER JOIN role_menu ON menu.id = role_menu.menu_id 
-                                        WHERE role_menu.role_id = :id');
+            $sql = $conn->prepare('SELECT menu.title, menu.url 
+                                   FROM menu INNER JOIN role_menu ON menu.id = role_menu.menu_id 
+                                   WHERE role_menu.role_id = :id');
 
             $sql->execute (array(':id' => $this->role_id));
 
