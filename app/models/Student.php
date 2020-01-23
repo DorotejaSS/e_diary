@@ -131,5 +131,23 @@ class Student extends BaseModel
         return $data;
     }
 
+    public function mainTeacher($id)
+    {
+        require('./app/db.php');
+
+        $sql = $conn->prepare('select users.id, users.first_name, users.last_name 
+                                from users 
+                                inner join student_group 
+                                on student_group.main_teacher_id = users.id 
+                                where student_group.id = "'.$id.'"');
+        $sql->execute();
+        $data = [];
+        while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+            $data[] = $row;
+        }
+        return $data;
+
+    }
+
 
 }

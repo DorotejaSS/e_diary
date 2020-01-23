@@ -7,7 +7,7 @@
     <title>Welcome</title>
 </head>
     <body>
-        <button><a href="/subjects/add">Add New Subject</a></button>
+        <button><a href="/subjects/add">Add New Subject</a></button> 
         <h3>Subjects</h3>
         <table id="myTable">
             <tr>

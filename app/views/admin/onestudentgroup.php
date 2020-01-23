@@ -30,3 +30,12 @@
                 <?php endforeach; ?>
 
         </table>
+       
+        <span>
+            Main Teacher: 
+            <a href="/users/<?=$this->data['main_teacher'][0]['id']; ?>">
+            <?= $this->data['main_teacher'][0]['first_name'].' '.
+                $this->data['main_teacher'][0]['last_name'];
+            ?>
+            </a>
+        </span>

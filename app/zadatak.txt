@@ -54,7 +54,7 @@ Uloga administratora:
 ✔ da dodaje, brise i menja korisnike               *
 ✔ da korisnicima dodeljuje uloge                   *
 ✔ da dodaje, brise i menja predmete i odeljenja    *
-✔ da dodaje, brise i menja raspored casova
+✔ da dodaje, brise i menja raspored casova         *
 ✔ da upravlja odeljkom za obavestenja roditeljima
 ✔ da dodaje, brise i menja informacije o ucenicima *
 
