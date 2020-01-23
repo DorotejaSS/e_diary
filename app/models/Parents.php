@@ -23,17 +23,6 @@ class Parents extends BaseModel
         }
     }
 
-    public function getChild()
-    {
-        require('./app/db.php');
-
-        $sql = $conn->prepare('SELECT students.id, students.first_name, students.last_name 
-                               FROM students WHERE students.parent_id = :id');
-        $sql->execute (array(':id' => $this->parent_id));
-
-        $this->child_data = $sql->fetchAll();
-    }
-
     public function getGrades($child_id)
     {
         require('./app/db.php');
@@ -43,12 +32,19 @@ class Parents extends BaseModel
 
         $child_sg_id = $sql->fetch(PDO::FETCH_ASSOC);
 
+        $sql = $conn->prepare ('SELECT DISTINCT subjects.title 
+                                FROM subjects INNER JOIN schedules ON subjects.id = schedules.subject_id 
+                                WHERE schedules.student_group_id = :sg_id');
+        $sql->execute (array(':sg_id' => $child_sg_id['student_group_id']));
+
+        $this->grades_data['subjects'] = $sql->fetchAll(PDO::FETCH_ASSOC);
+
         $sql = $conn->prepare ('SELECT DISTINCT subjects.title, grades.closing, grades.grade 
                                 FROM subjects INNER JOIN schedules ON subjects.id = schedules.subject_id INNER JOIN grades ON subjects.lecturer_id = grades.lecturer_id 
                                 WHERE schedules.student_group_id = :sg_id AND grades.student_id = :id');
         $sql->execute (array(':sg_id' => $child_sg_id['student_group_id'], ':id' => $child_id));
 
-        $this->grades_data = $sql->fetchAll(PDO::FETCH_GROUP);
+        $this->grades_data['grades'] = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function parentStudentCollation($id)

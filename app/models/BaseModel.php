@@ -82,8 +82,8 @@ class BaseModel
     {
          require('./app/db.php');
 
-        $sql = $conn->prepare('select * from students where parent_id = '.$id.'');
-        $sql->execute();
+        $sql = $conn->prepare('select * from students where parent_id = :id');
+        $sql->execute(array(':id' => $id));
 
         $data = [];
         while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {

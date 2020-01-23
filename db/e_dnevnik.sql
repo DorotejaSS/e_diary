@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 22, 2020 at 03:26 PM
+-- Generation Time: Jan 23, 2020 at 01:55 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.10
 
@@ -74,7 +74,16 @@ CREATE TABLE IF NOT EXISTS `grades` (
   PRIMARY KEY (`id`),
   KEY `fk_grades_students1_idx` (`student_id`),
   KEY `fk_grades_users1_idx` (`lecturer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `grades`
+--
+
+INSERT INTO `grades` (`id`, `grade`, `created_at`, `semestar`, `closing`, `student_id`, `lecturer_id`) VALUES
+(1, 3, '2020-01-22 16:08:18', '1', b'0', 1, 4),
+(2, 5, '2020-01-22 16:08:18', '1', b'0', 1, 4),
+(3, 4, '2020-01-22 16:08:18', '1', b'1', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -498,17 +507,62 @@ CREATE TABLE IF NOT EXISTS `schedules` (
   KEY `fk_schedules_users1_idx` (`subject_id`),
   KEY `fk_schedules_student_group1_idx` (`student_group_id`),
   KEY `fk_schedules_semestars1_idx` (`semestar_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `schedules`
 --
 
 INSERT INTO `schedules` (`id`, `student_group_id`, `subject_id`, `start_time`, `end_time`, `semestar_id`, `type`, `position`) VALUES
-(2, 22, 23, NULL, NULL, 1, NULL, 'mon1'),
-(3, 24, 16, NULL, NULL, 1, NULL, 'mon1'),
-(4, 24, 30, NULL, NULL, 1, NULL, 'mon2'),
-(5, 24, 29, NULL, NULL, 1, NULL, 'mon3');
+(6, 1, 12, NULL, NULL, 1, NULL, 'mon1'),
+(7, 1, 12, NULL, NULL, 1, NULL, 'tue1'),
+(8, 1, 12, NULL, NULL, 1, NULL, 'wed1'),
+(9, 1, 12, NULL, NULL, 1, NULL, 'thr1'),
+(10, 1, 12, NULL, NULL, 1, NULL, 'fri1'),
+(11, 1, 1, NULL, NULL, 1, NULL, 'mon2'),
+(12, 1, 1, NULL, NULL, 1, NULL, 'tue2'),
+(13, 1, 1, NULL, NULL, 1, NULL, 'wed2'),
+(14, 1, 1, NULL, NULL, 1, NULL, 'thr2'),
+(15, 1, 1, NULL, NULL, 1, NULL, 'fri2'),
+(16, 24, 12, NULL, NULL, 1, NULL, 'mon1'),
+(17, 24, 12, NULL, NULL, 1, NULL, 'tue1'),
+(18, 24, 12, NULL, NULL, 1, NULL, 'wed1'),
+(19, 24, 12, NULL, NULL, 1, NULL, 'thr1'),
+(20, 24, 12, NULL, NULL, 1, NULL, 'fri1'),
+(21, 24, 1, NULL, NULL, 1, NULL, 'mon2'),
+(22, 24, 1, NULL, NULL, 1, NULL, 'tue2'),
+(23, 24, 1, NULL, NULL, 1, NULL, 'wed2'),
+(24, 24, 1, NULL, NULL, 1, NULL, 'thr2'),
+(25, 24, 1, NULL, NULL, 1, NULL, 'fri2'),
+(36, 22, 1, NULL, NULL, 1, NULL, 'mon1'),
+(37, 22, 10, NULL, NULL, 1, NULL, 'tue1'),
+(38, 22, 19, NULL, NULL, 1, NULL, 'wed1'),
+(39, 22, 4, NULL, NULL, 1, NULL, 'thr1'),
+(40, 22, 2, NULL, NULL, 1, NULL, 'fri1'),
+(41, 22, 1, NULL, NULL, 1, NULL, 'mon2'),
+(42, 22, 10, NULL, NULL, 1, NULL, 'tue2'),
+(43, 22, 22, NULL, NULL, 1, NULL, 'wed2'),
+(44, 22, 5, NULL, NULL, 1, NULL, 'thr2'),
+(45, 22, 2, NULL, NULL, 1, NULL, 'fri2'),
+(46, 22, 3, NULL, NULL, 1, NULL, 'mon3'),
+(47, 22, 30, NULL, NULL, 1, NULL, 'tue3'),
+(48, 22, 2, NULL, NULL, 1, NULL, 'wed3'),
+(49, 22, 23, NULL, NULL, 1, NULL, 'thr3'),
+(50, 22, 31, NULL, NULL, 1, NULL, 'fri3'),
+(51, 22, 12, NULL, NULL, 1, NULL, 'mon4'),
+(52, 22, 30, NULL, NULL, 1, NULL, 'tue4'),
+(53, 22, 2, NULL, NULL, 1, NULL, 'wed4'),
+(54, 22, 12, NULL, NULL, 1, NULL, 'thr4'),
+(55, 22, 17, NULL, NULL, 1, NULL, 'fri4'),
+(56, 22, 18, NULL, NULL, 1, NULL, 'mon5'),
+(57, 22, 23, NULL, NULL, 1, NULL, 'tue5'),
+(58, 22, 2, NULL, NULL, 1, NULL, 'wed5'),
+(59, 22, 18, NULL, NULL, 1, NULL, 'thr5'),
+(60, 22, 17, NULL, NULL, 1, NULL, 'fri5'),
+(61, 22, 18, NULL, NULL, 1, NULL, 'mon6'),
+(62, 22, 18, NULL, NULL, 1, NULL, 'thr6'),
+(63, 22, 1, NULL, NULL, 1, NULL, 'fri6'),
+(64, 22, 1, NULL, NULL, 1, NULL, 'fri7');
 
 -- --------------------------------------------------------
 
@@ -1206,7 +1260,6 @@ ALTER TABLE `certificates`
 --
 ALTER TABLE `grades`
   ADD CONSTRAINT `fk_grades_students1` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`),
-  ADD CONSTRAINT `fk_grades_students2` FOREIGN KEY (`lecturer_id`) REFERENCES `students` (`id`),
   ADD CONSTRAINT `fk_grades_users1` FOREIGN KEY (`lecturer_id`) REFERENCES `users` (`id`);
 
 --
