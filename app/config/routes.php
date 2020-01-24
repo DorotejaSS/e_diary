@@ -50,6 +50,8 @@ $routes = array(
     '/parents/:id' => 'ParentController@showGrades',
 
     '/professor' => 'ProfessorController@homePage',
+    '/mystudents/:id' => 'ProfessorController@mainClass',
+    '/studentgroups/:id' => 'ProfessorController@otherClasses',
 
     '/principal' => 'PrincipalController@homePage',
     

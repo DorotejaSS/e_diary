@@ -4,25 +4,41 @@
     {
         protected $role_id = '3';
 
-        public function __construct()
+        public function __construct($request)
         {
-           
+            $this->request = $request;
             $this->checkSession();
             if ($this->checkRole($this->role_id) === false)
             {
                 echo 'NEMAS PRISTUP!';
                 exit;
             }
-            var_dump(1);
         }
 
         public function homePage()
         {
-            $user = new User();
-            $user->permissionTitles($this->role_id);
-            var_dump($user->permissionTitles($this->role_id));
-            $this->loadView('professor', 'index');
-            $this->loadView('pages', 'welcome');
+           $view = new View();
+           $view->loadPage('professor', 'index');
+        }
+
+        public function mainClass()
+        {
+            $lecturer_id = $this->request->url_parts[1];
+            $student = new Student($this->request);
+            $student_group_id = $student->mainTeacherClass($lecturer_id);
+            $students = $student->studentsInGroups($student_group_id);
+            
+            $view = new View();
+            $view->data = $students;
+            $view->loadPage('professor', 'mainclass');
+
+        }
+
+        public function otherClasses()
+        {
+            $lecturer_id = $this->request->url_parts[1];
+            $student = new Student($this->request);
+            $student->otherClasses($lecturer_id);
         }
         
     }

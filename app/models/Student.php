@@ -149,5 +149,41 @@ class Student extends BaseModel
 
     }
 
+    public function mainTeacherClass($id)
+    {
+        require('./app/db.php');
+
+        $sql = $conn->prepare('select id from student_group where main_teacher_id = "'.$id.'"');
+        $sql->execute();
+        $data = $sql->fetchAll();
+        $id = $data[0]['id'];
+
+        return $id;
+    }
+
+    public function otherClasses($id)
+    {
+        require('./app/db.php');
+        $id = intval($id);
+        
+        $sql = $conn->prepare('select * from students 
+                                inner join student_group
+                                on students.student_group_id = student_group.id
+                                inner join schedules
+                                on student_group.id = schedules.student_group_id
+                                inner join subjects
+                                on schedules.subject_id = subjects.id
+                                where subjects.lecturer_id = '.$id.'');
+        var_dump($sql);
+                                
+        $sql->execute();
+        $data = [];
+        while($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+            $data[] = $row;
+        }
+        var_dump($data);
+                            
+                         
+    }
 
 }
