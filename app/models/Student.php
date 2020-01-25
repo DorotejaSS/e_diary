@@ -166,24 +166,22 @@ class Student extends BaseModel
         require('./app/db.php');
         $id = intval($id);
         
-        $sql = $conn->prepare('select * from students 
-                                inner join student_group
-                                on students.student_group_id = student_group.id
+        $sql = $conn->prepare('select s.id, s.first_name, s.last_name, sg.id, sg.main_teacher_id
+                                from students as s
+                                inner join student_group as sg
+                                on s.student_group_id = sg.id
                                 inner join schedules
-                                on student_group.id = schedules.student_group_id
+                                on sg.id = schedules.student_group_id
                                 inner join subjects
                                 on schedules.subject_id = subjects.id
                                 where subjects.lecturer_id = '.$id.'');
-        var_dump($sql);
                                 
         $sql->execute();
         $data = [];
         while($row = $sql->fetch(PDO::FETCH_ASSOC)) {
             $data[] = $row;
         }
-        var_dump($data);
-                            
-                         
+        return $data;    
     }
 
 }

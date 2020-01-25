@@ -38,7 +38,14 @@
         {
             $lecturer_id = $this->request->url_parts[1];
             $student = new Student($this->request);
-            $student->otherClasses($lecturer_id);
+            $classes = $student->otherClasses($lecturer_id);
+            $main_teacher = $student->getOne('users', $lecturer_id);
+            
+
+            $view = new View();
+            $view->data['students'] = $classes;
+            $view->data['main_teacher'] = $main_teacher;
+            $view->loadPage('professor', 'otherclasses');
         }
         
     }

@@ -1,6 +1,8 @@
     <h3>Students</h3>
-    <button><a href="/students/add">Add New Student</a></button>
-    <table id="myTable">
+    <div class="subject">
+        <button><a href="/students/add">Add New Student</a></button>
+    </div> 
+        <table id="myTable">
         <tr>
             <th>ID:</td> 
             <th>First Name:</th>
