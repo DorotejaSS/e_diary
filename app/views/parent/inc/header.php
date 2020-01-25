@@ -22,25 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin">Admin page</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/users">Users</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/roles">Roles</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/subjects">Subjects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/students">Students</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/studentgroup">Student Groups</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/schedule">Schedules</a>
+                    <a class="nav-link" href="/parents">Parent page</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -49,5 +31,5 @@
                 </li>
             </ul>
         </div>
-    </nav>
+    </nav><br><br><br>
         

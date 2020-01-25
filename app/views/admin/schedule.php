@@ -1,3 +1,4 @@
+        <script  type="text/javascript" src="../../../public/js/schedule.js"></script>
         <br><br>
         <br><br>
         <select id="select">
