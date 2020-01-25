@@ -39,13 +39,40 @@
             $lecturer_id = $this->request->url_parts[1];
             $student = new Student($this->request);
             $classes = $student->otherClasses($lecturer_id);
-            $main_teacher = $student->getOne('users', $lecturer_id);
-            
+            // $main_teacher_id = [];
+            // foreach ($classes as $key => $main_teacher_data) {
+            //    $main_teacher_id[] = $main_teacher_data['main_teacher_id'];
+            // }
+            // $main_teacher = $student->mainTeacherForClass($main_teacher_id);
+               
 
             $view = new View();
             $view->data['students'] = $classes;
-            $view->data['main_teacher'] = $main_teacher;
+            // $view->data['main_teacher'] = $main_teacher;
             $view->loadPage('professor', 'otherclasses');
+        }
+
+        public function gradesTeacherView()
+        {
+           $student_id = $this->request->url_parts[1];
+           $lecturer_id = $_SESSION['user_data']['id'];
+           $student = new Student($this->request);
+           $grades = $student->getGrades($student_id, $lecturer_id); 
+           
+           $view = new View();
+           $view->data['grades'] = $grades;
+           $view->loadPage('professor', 'studentgrades');
+        }
+
+        public function gradesMainTeacherView()
+        {
+            $student_id = $this->request->url_parts[1];
+            $student = new Student($this->request);
+            $grades = $student->getGradesMainTeacher($student_id);  
+            
+            $view = new View();
+            $view->data = $grades;
+            $view->loadPage('professor', 'mystudentgrades');
         }
         
     }

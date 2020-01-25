@@ -16,8 +16,8 @@
                 
         <tr> 
             <td> <?php echo $value['id']; ?></a></td>
-            <td> <?php echo $value['first_name']; ?></a></td>
-            <td> <?php echo $value['last_name']; ?></a></td>
+            <td> <a href="/mystudentgrade/<?= $id;?>"><?php echo $value['first_name']; ?></a></td>
+            <td> <a href="/mystudentgrade/<?= $id;?>"><?php echo $value['last_name']; ?></a></td>
             <td> <?php echo $value['date_of_birth']; ?> </td>
             <td> <?php echo $value['social_id']; ?> </td>
             <td> <?php echo $value['created_at']; ?> </td>

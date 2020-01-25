@@ -166,7 +166,7 @@ class Student extends BaseModel
         require('./app/db.php');
         $id = intval($id);
         
-        $sql = $conn->prepare('select s.id, s.first_name, s.last_name, sg.id, sg.main_teacher_id
+        $sql = $conn->prepare('select distinct s.id, s.first_name, s.last_name, sg.main_teacher_id
                                 from students as s
                                 inner join student_group as sg
                                 on s.student_group_id = sg.id
@@ -182,6 +182,35 @@ class Student extends BaseModel
             $data[] = $row;
         }
         return $data;    
+    }
+
+    public function getGrades($student_id, $lecturer_id)
+    {
+        require('./app/db.php');
+        $sql = $conn->prepare('select * from grades 
+                                where student_id = "'.$student_id.'" and lecturer_id = "'.$lecturer_id.'"');
+        $sql->execute();
+        $data = [];
+        while($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    public function getGradesMainTeacher($student_id)
+    {
+        require('./app/db.php');
+        $sql = $conn->prepare('select grades.grade, grades.created_at, grades.semestar, grades.closing, subjects.title
+                             from grades
+                            inner join subjects
+                            on grades.lecturer_id = subjects.lecturer_id
+                            where student_id = "'.$student_id.'"');
+        $sql->execute();
+        $data = [];
+        while($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+            $data[] = $row;
+        }
+        return $data;
     }
 
 }

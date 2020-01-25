@@ -52,6 +52,8 @@ $routes = array(
     '/professor' => 'ProfessorController@homePage',
     '/mystudents/:id' => 'ProfessorController@mainClass',
     '/studentgroups/:id' => 'ProfessorController@otherClasses',
+    '/grades/:id' => 'ProfessorController@gradesTeacherView',
+    '/mystudentgrade/:id' => 'ProfessorController@gradesMainTeacherView',
 
     '/principal' => 'PrincipalController@homePage',
     
