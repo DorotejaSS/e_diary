@@ -115,4 +115,20 @@ class BaseModel
         $sql->execute();
     }
 
+    public function mainTeacherForClass($main_teachers_ids)
+    {
+        require('./app/db.php');
+       
+        $data = [];
+        foreach ($main_teachers_ids as $main_teacher_id) {
+            $sql = $conn->prepare('select id, first_name, last_name from users 
+                                    where id = '.$main_teacher_id.'');
+            $sql->execute();     
+            while($row = $sql->fetch(PDO::FETCH_ASSOC)){
+                $data[] = $row;
+            }
+        }
+       return $data;
+    }
+
 }

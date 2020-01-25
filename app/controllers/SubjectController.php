@@ -63,7 +63,6 @@ class SubjectController extends AdminController
 
         if (!empty($this->request->post_params['subject']) && isset($this->request->post_params['submit'])) {
             $base_model->edit('subjects',$this->request->post_params['subject'], $id);
-            header('Location: /subjects');
         }
     }
 

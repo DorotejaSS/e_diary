@@ -22,9 +22,11 @@ class StudentGroupController
         $id = $this->request->url_parts[1];
         $student = new Student($this->request);
         $students = $student->studentsInGroups($id);
-        
+        $main_teacher = $student->mainTeacher($id);
+
         $view = new View();
         $view->data['students'] = $students;
+        $view->data['main_teacher'] = $main_teacher;
         $view->loadPage('admin', 'onestudentgroup');
     }
 }

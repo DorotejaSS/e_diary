@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Welcome</title>
-</head>
-<body>
-    
-    <?php include ('././app/views/inc/header.php') ?>
-
-    </br></br></br>
-    <h3>Student Group</h3>
+        <h3>Student Group</h3>
         <table id="myTable">
             <tr>
                 <th>ID:</th> 
@@ -43,9 +30,12 @@
                 <?php endforeach; ?>
 
         </table>
-    
-
-    <?php include ('././app/views/inc/footer.php') ?>
-
-</body>
-</html>
+       
+        <span>
+            Main Teacher: 
+            <a href="/users/<?=$this->data['main_teacher'][0]['id']; ?>">
+            <?= $this->data['main_teacher'][0]['first_name'].' '.
+                $this->data['main_teacher'][0]['last_name'];
+            ?>
+            </a>
+        </span>

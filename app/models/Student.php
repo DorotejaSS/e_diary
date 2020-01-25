@@ -131,5 +131,86 @@ class Student extends BaseModel
         return $data;
     }
 
+    public function mainTeacher($id)
+    {
+        require('./app/db.php');
+
+        $sql = $conn->prepare('select users.id, users.first_name, users.last_name 
+                                from users 
+                                inner join student_group 
+                                on student_group.main_teacher_id = users.id 
+                                where student_group.id = "'.$id.'"');
+        $sql->execute();
+        $data = [];
+        while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+            $data[] = $row;
+        }
+        return $data;
+
+    }
+
+    public function mainTeacherClass($id)
+    {
+        require('./app/db.php');
+
+        $sql = $conn->prepare('select id from student_group where main_teacher_id = "'.$id.'"');
+        $sql->execute();
+        $data = $sql->fetchAll();
+        $id = $data[0]['id'];
+
+        return $id;
+    }
+
+    public function otherClasses($id)
+    {
+        require('./app/db.php');
+        $id = intval($id);
+        
+        $sql = $conn->prepare('select distinct s.id, s.first_name, s.last_name, sg.main_teacher_id
+                                from students as s
+                                inner join student_group as sg
+                                on s.student_group_id = sg.id
+                                inner join schedules
+                                on sg.id = schedules.student_group_id
+                                inner join subjects
+                                on schedules.subject_id = subjects.id
+                                where subjects.lecturer_id = '.$id.'');
+                                
+        $sql->execute();
+        $data = [];
+        while($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+            $data[] = $row;
+        }
+        return $data;    
+    }
+
+    public function getGrades($student_id, $lecturer_id)
+    {
+        require('./app/db.php');
+        $sql = $conn->prepare('select * from grades 
+                                where student_id = "'.$student_id.'" and lecturer_id = "'.$lecturer_id.'"');
+        $sql->execute();
+        $data = [];
+        while($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    public function getGradesMainTeacher($student_id)
+    {
+        require('./app/db.php');
+        $sql = $conn->prepare('select grades.grade, grades.created_at, grades.semestar, grades.closing, subjects.title
+                             from grades
+                            inner join subjects
+                            on grades.lecturer_id = subjects.lecturer_id
+                            where student_id = "'.$student_id.'"');
+        $sql->execute();
+        $data = [];
+        while($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+            $data[] = $row;
+        }
+        return $data;
+    }
 
 }
