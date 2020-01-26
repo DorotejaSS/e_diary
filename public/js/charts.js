@@ -9,6 +9,8 @@ $(document).ready(function(){
         $('#subject').attr('hidden','')
 
         $('#student_group').removeAttr('hidden')
+        
+        $('#chartdiv').attr('hidden','')
 
     });
 
@@ -17,11 +19,13 @@ $(document).ready(function(){
         $('#student_group').attr('hidden','')
 
         $('#subject').removeAttr('hidden')
+        
+        $('#chartdiv').attr('hidden','')
 
     });
 
     $('#student_group').change(function(){
-
+        
         am4core.disposeAllCharts();
 
         $('#chartdiv').removeAttr('hidden')
@@ -42,6 +46,14 @@ $(document).ready(function(){
                     am4core.useTheme(am4themes_kelly);
 
                     var chart = am4core.create("chartdiv", am4charts.XYChart);
+                    
+                    chart.legend = new am4charts.Legend();
+                    chart.legend.useDefaultMarker = true;
+                    var marker = chart.legend.markers.template.children.getIndex(0);
+                    marker.cornerRadius(12, 12, 12, 12);
+                    marker.strokeWidth = 2;
+                    marker.strokeOpacity = 1;
+                    marker.stroke = am4core.color("#ccc");
 
                     chart.marginRight = 400;
 
@@ -96,11 +108,56 @@ $(document).ready(function(){
                 }
             }); 
         }
-
     });
 
     $('#subject').change(function(){
-        
+
+        am4core.disposeAllCharts();
+
+        $('#chartdiv').removeAttr('hidden')
+
+        if ($('#subject').val() != 0)
+        {
+            var s_id = $('#subject').val()
+            $.ajax({
+                type: 'POST',
+                url: '/charts',
+                data: {'method':'getSData', 'id':s_id},
+                success:function(response){
+                    var resp = JSON.parse(response);
+
+                    console.log(resp);
+
+                    am4core.useTheme(am4themes_animated);
+                    am4core.useTheme(am4themes_kelly);
+
+                    var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+                    chart.marginRight = 400;
+
+                    chart.data = resp;
+
+                    var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+                    categoryAxis.dataFields.category = "grades";
+                    categoryAxis.title.text = "Grades";
+                    categoryAxis.renderer.grid.template.location = 0;
+                    categoryAxis.renderer.minGridDistance = 20;
+
+                    var  valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+                    valueAxis.title.text = "# of grades";
+
+                    var series = chart.series.push(new am4charts.ColumnSeries());
+                    series.dataFields.valueY = "#ofgrades";
+                    series.dataFields.categoryX = "grades";
+                    series.name = "# of grades";
+                    series.tooltipText = "{name}: [bold]{valueY}[/]";
+                    series.stacked = true;
+
+                    // Add cursor
+                    chart.cursor = new am4charts.XYCursor();
+                }
+            }); 
+        }
     });
 
 });
@@ -143,7 +200,7 @@ function fillSubjects(method)
             // Punjenje select-a
             {
                 var option = document.createElement('option');
-                option.setAttribute('value', resp[i].id);
+                option.setAttribute('value', resp[i].lecturer_id);
                 option.innerHTML=resp[i].title+' - '+resp[i].first_name+' '+resp[i].last_name
                 select.appendChild(option);
             }

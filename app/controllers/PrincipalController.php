@@ -45,7 +45,16 @@ class PrincipalController extends BaseController
                     $this->model->getSgData($_POST['id']);
                     echo json_encode($this->model->result, 256);
                     break;
+                    
+                case 'getSData':
+                    $this->model->getSData($_POST['id']);
+                    echo json_encode($this->model->result, 256);
+                    break;
             }
+        }
+        else
+        {
+            header('Refresh: 1; URL = /principal'); 
         }
     }
 }

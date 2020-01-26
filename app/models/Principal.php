@@ -26,7 +26,7 @@ class Principal extends BaseModel
     {
         require('./app/db.php');
 
-        $sql = $conn->prepare('SELECT subjects.id, subjects.title, users.first_name, users.last_name 
+        $sql = $conn->prepare('SELECT subjects.lecturer_id, subjects.title, users.first_name, users.last_name 
                                FROM subjects INNER JOIN users ON subjects.lecturer_id = users.id 
                                ORDER BY subjects.title ASC');
 
@@ -44,16 +44,13 @@ class Principal extends BaseModel
                                 WHERE schedules.student_group_id = :sg_id');
         $sql->execute (array(':sg_id' => $id));
 
-        $sql = $conn->prepare ('SELECT students.id FROM students WHERE students.student_group_id = :sg_id');
-        $sql->execute (array(':sg_id' => $id));
-
-        $students = $sql->fetchAll(PDO::FETCH_ASSOC);
-
         $this->result = $sql->fetchAll(PDO::FETCH_ASSOC);
         for ($i = 0; $i < count($this->result); $i++)
         {
-            $sql = $conn->prepare ('SELECT grades.grade FROM grades WHERE grades.lecturer_id = :id AND grades.closing = 0 grades.student_id = :s_id');
-            $sql->execute (array(':id' => $this->result[$i]['id'], ':s_id' => ));
+            $sql = $conn->prepare ('SELECT grades.grade 
+                                    FROM grades INNER JOIN students ON grades.student_id = students.id
+                                    WHERE grades.lecturer_id = :id AND grades.closing = 0 AND students.student_group_id = :sg_id');
+            $sql->execute (array(':id' => $this->result[$i]['id'], ':sg_id' => $id));
 
             $grades = $sql->fetchAll(PDO::FETCH_ASSOC);
         
@@ -104,5 +101,73 @@ class Principal extends BaseModel
             $i4 = 0;
             $i5 = 0;
         }
+    }
+
+    public function getSData($id)
+    {
+        require('./app/db.php');
+
+        $sql = $conn->prepare ('SELECT grades.grade 
+                                FROM grades 
+                                WHERE grades.closing = 0 AND grades.lecturer_id = :id');
+        $sql->execute (array(':id' => $id));
+
+        $grades = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        $i1 = 0;
+        $i2 = 0;
+        $i3 = 0;
+        $i4 = 0;
+        $i5 = 0;
+
+        if (count($grades) != 0)
+        {
+            for ($z = 0; $z < count($grades); $z++)
+            {
+                switch ($grades[$z]['grade'])
+                {
+                    case '1':
+                        $i1++;
+                        break;
+
+                    case '2':
+                        $i2++;
+                        break;
+
+                    case '3':
+                        $i3++;
+                        break;
+
+                    case '4':
+                        $i4++;
+                        break;
+
+                    case '5':
+                        $i5++;
+                        break;
+                }
+            }
+        }
+
+        $this->result[0]['grades'] = '1';
+        $this->result[0]['#ofgrades'] = $i1;
+
+        $this->result[1]['grades'] = '2';
+        $this->result[1]['#ofgrades'] = $i2;
+
+        $this->result[2]['grades'] = '3';
+        $this->result[2]['#ofgrades'] = $i3;
+
+        $this->result[3]['grades'] = '4';
+        $this->result[3]['#ofgrades'] = $i4;
+
+        $this->result[4]['grades'] = '5';
+        $this->result[4]['#ofgrades'] = $i5;
+
+        $i1 = 0;
+        $i2 = 0;
+        $i3 = 0;
+        $i4 = 0;
+        $i5 = 0;
     }
 }
