@@ -9,6 +9,28 @@ class User extends BaseModel
     public $password;
     public $role_id;
     
+    /***
+     * ovo je super, ovo bi svaki model trebao da sadrzi
+     * s tim sto, bolje je odraditi ovako nesto 
+     * public function __construct($data)
+     * onda u konstruktoru umesto $_POST['neko_polje'], koristite $data['neko_polje']
+     * I onda negde uradite $user = new User($_POST);
+     * Iz prostog razloga sto zelite da vas kod bude sto je vise moguce reusable
+     * Evo primera:
+     * 
+     * $sql = $conn->prepare('select * from users where id = 1');
+     * $sql->execute();
+     * $result = $sql->fetch(PDO::FETCH_ASSOC);
+     * 
+     * izvlacite user-a iz baze i dobijate asocijativni niz, i zelite da instancirate User objekat sa tim podacima koje ste dobili iz baze
+     * kako bi vrsili neke operacije nad tim objektom
+     * 
+     * Prostom promenom konstruktora kao sto sam iznad napisao, mogli biste jednostavno da uradite sledece:
+     * $user = new User($result);
+     * 
+     * Sada imate user objekat i mozete da izvrsavate nad njim sve metode koje su deo BaseModel i User klasa
+     * 
+     */
     public function __construct()
     {
         if (isset($_POST['first_name'])) {

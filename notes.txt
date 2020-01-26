@@ -1,0 +1,42 @@
+Mozda bi bilo bolje da napravite klasu za konektovanje na bazu i uz nju neki staticni metod/polje uz pomoc kog mozete
+lako da uhvatite tu konekciju. Tako da, umesto sto svuda radite require('./app/db.php'), mozete jednostavno u konstruktoru baznog 
+modela da uradite ovo:
+$this->conn = Database::getConnection();
+I kraj price :)
+
+Pokusajte jos malo da se udubite u Active Record pattern i dodate svim modelima polja za ime tabele i polje koji bi sadrzalo niz svih kolona tabele
+Na taj nacin ne biste morali uvek da saljete ime tabele.
+Konstruktor u User modelu vam je dobra polazna tacka. Pokusajte da osmislite kako bi dodali tu logiku u BaseModel gde biste uz pomoc
+polja za kolone u tabeli izgenerisali model sa poslatim podacima
+
+Na dobrom ste putu sa Active Record-om. Mozda bi bilo dobro da pokusate do kraja da ga zavrsite, znaci da napravite neke osnovne
+staticke metode kao sto su npr 
+findById
+findAll
+
+User::findById(1) bi trebala da vrati User objekat 
+Role::findById(1) bi trebala da vrati Role objekat
+
+Nakon toga i obicne metode (ne staticke) za save, delete i update. Zapamtite, objekat treba da predstavlja jedan set podataka,
+jedan red iz baze. Tom objektu bi trebali da mozemo da menjamo atribute i da mu jednostavno cuvamo stanje kroz save, delete, update
+
+Setite se kako ste manipulisali stringovima kad ste radili routing, na isti nacin mozete da manipulisete stringovima u BaseModel-u
+iz polja $table i polja $columns koja se nalaze u child klasama.
+
+
+Razmislite o tome da ubacite u bazni kontroler render metodu, da biste mogli u ostalim kontrolerima ovo da radite
+
+$this->render('ime-viewa', [
+    'nekipodatak' => $varijablaIzKontrolera,
+    'drugiPodatak' => $drugaVarijabla,
+]);
+
+umesto sto ovo radite
+$view = new View();
+$view->data['nekipodatak'] = $varijablaIzKontrolera;
+$view->data['drugiPodatak'] = $drugaVarijabla;
+$view->loadPage('admin', 'ime-viewa');
+Ovo bi trebali da radite u toj render metodi
+
+Razmislite i o tome kako bi mogli da ne saljete svaki put ime foldera u kom se nalaze view-ovi jer svaki kontroler ima svoj folder,
+nema potrebe da se to iznova i iznova pise u metodama kontrolera

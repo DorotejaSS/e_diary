@@ -71,6 +71,9 @@ class StudentController
         $view->loadPage('admin', 'addstudent');
         
 
+        /***
+         * ovo je logika koja bi trebala da se nalazi u modelu
+         */
         $first_name = $this->request->post_params['first_name'] ?? array();
         $last_name = $this->request->post_params['last_name'] ?? array();
         $date_of_birth = $this->request->post_params['date_of_birth'] ?? array();

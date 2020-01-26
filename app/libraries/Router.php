@@ -13,6 +13,13 @@ class Router
         }
     }
 
+    /***
+     * kada se u if-u nalazi return, nema potrebe za pravljenjem else grane, moze se i bez nje
+     * ako skripta udje u if, izacice iz metode, ako ne udje, nastavice da se izvrsava ostatak koda bio on u else-u ili ne
+     * probaj malo ovo da refaktorises, sigurno moze sa manje else grana
+     * vidim i da je u else granama slicna logika samo se pattern i resolver_key razlikuju, don't repeat yourself :)
+     * Probaj da napravis jos jednu metodu kojoj ces poslati pattern i jednostavno je dva puta pozvati
+     */
     public function routeExists()
     {
         global $routes;

@@ -38,6 +38,14 @@ class UserController extends AdminController
             var_dump('roditelj');
             $bring_the_child = $base_model->usersChild($id);
         }
+        /***
+         * Mozda je ovako malo preglednije ?
+         * $view->data[
+         *      'child_data' => $bring_the_child ?? array(),
+         *      'prof_data' => $get_by_role_id  ?? array(),
+         *      'user' => $get_one_user[0]
+         * ]
+         */
         $view->data['child_data'] = $bring_the_child ?? array();
         $view->data['prof_data'] = $get_by_role_id  ?? array();
         $view->data['user'] = $get_one_user[0];
@@ -77,6 +85,14 @@ class UserController extends AdminController
 
     public function delete()
     {
+        /***
+         * na dobrom ste putu sa active record-om
+         * ono sto bih voleo ovde da vidim je sledece
+         * 
+         * $user = User::findById($id);
+         * $user->deleteParent();
+         * $user->delete();
+         */
         $id = $this->request->url_parts[1];
         $base_model = new BaseModel();
         $base_model->deleteParent($id);

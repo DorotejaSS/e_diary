@@ -6,7 +6,12 @@
 
         public function __construct()
         {
-           
+           /***
+            * Ova logika se nalazi u svakom kontroleru,
+            * bilo bi dobro da se nekako ubaci u bazni kontroler, don't repeat yourself :)
+            * Jedini problem bi bio AccessController ako sam dobro ukapirao, gde se korisnik loguje, ali tu jednostavno mozete da 
+            * override-ujete logiku iz baznog kontrolera pa da se ne radi checkSession i checkRole
+            */
             $this->checkSession();
             if ($this->checkRole($this->role_id) === false)
             {
