@@ -51,5 +51,9 @@ class ScheduleController extends BaseController
                     break;
             }
         }
+        else
+        {
+            header('Refresh: 1; URL = /admin'); 
+        }
     }
 }
